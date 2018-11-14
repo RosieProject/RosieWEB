@@ -29,7 +29,6 @@
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="assets/css/demo.css" rel="stylesheet" />
 
-
     <!--  Fonts and icons     -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
@@ -57,7 +56,7 @@
                     <div class="sidebar-wrapper" style="background-color: #181A1C">
                         <div class="logo">
                             <a href="http://www.creative-tim.com" class="simple-text" style="color: #127486">Rosie
-                </a>
+                            </a>
                         </div>
                         <ul class="nav">
                             <li class="active">
@@ -190,36 +189,10 @@
                                         </div>
                                         <div class="content">
                                             <div class="Grafico">
-                                                <canvas data-chart="grafico1"></canvas>
+                                                <canvas data-chart="cpuChart"></canvas>
                                                 <script>
-                                                    var ctxChart1 = document.querySelector('[data-chart="grafico1"').getContext('2d')
-                                                    var cpuChart1 = new Chart(ctxChart1, {
-                                                        type: 'line',
-                                                        data: {
-                                                            labels: [],
-                                                            datasets: [{
-                                                                borderColor: 'black',
-                                                                data: []
-                                                            }]
-                                                        },
-                                                        options: {}
-                                                    })
-                                                    var i = 1
-                                                    function updateChart1() {
-                                                        PageMethods.teste(function (data) { cpuChart1.data.datasets[0].data.push(data)}, fnerrorcallback)
-                                                        cpuChart1.data.labels.push(i++)
-                                                        if (cpuChart1.data.labels.length > 15) {
-                                                            cpuChart1.data.labels.shift()
-                                                            cpuChart1.data.datasets[0].data.shift()
-                                                        }
-                                                        cpuChart1.update()
-                                                        setTimeout(updateChart1, 1000)
-                                                    }
-                                                    function fnerrorcallback(result) {
-                                                        alert(result.statusText);
-                                                    }
-                                                    updateChart1()
-                                                </script>
+
+</script>
                                             </div>
                                             <div class="footer">
                                                 <hr />
@@ -238,38 +211,7 @@
                                         </div>
                                         <div class="content">
                                             <div class="Grafico">
-                                                <canvas data-chart="grafico2"></canvas>
-                                                <script>
-                                                    var ctxChart2 = document.querySelector('[data-chart="grafico2"').getContext('2d')
-                                                    var cpuChart2 = new Chart(ctxChart2, {
-                                                        type: 'line',
-                                                        data: {
-                                                            labels: [],
-                                                            datasets: [{
-                                                                borderColor: 'black',
-                                                                data: []
-                                                            }]
-                                                        },
-                                                        options: {}
-                                                    })
-
-                                                    var x = 0
-
-                                                    function updateChart2() {
-
-                                                        cpuChart2.data.labels.push(x++)
-                                                        PageMethods.AtualizaDisk(function (data) { cpuChart2.data.datasets[0].data.push((Number)(data)) }, fnerrorcallback)
-                                                        if (cpuChart2.data.labels.length > 15) {
-                                                            cpuChart2.data.labels.shift()
-                                                            cpuChart2.data.datasets[0].data.shift()
-                                                        }
-                                                        cpuChart2.update()
-                                                        setTimeout(updateChart2, 5000)
-
-                                                    }
-
-                                                    updateChart2()
-                                                </script>
+                                                <canvas data-chart="diskChart"></canvas>
                                             </div>
                                             <div class="footer">
                                                 <hr>
@@ -289,38 +231,7 @@
                                         </div>
                                         <div class="content">
                                             <div class="Grafico">
-                                                <canvas data-chart="grafico3"></canvas>
-                                                <script>
-                                                    var ctxChart3 = document.querySelector('[data-chart="grafico3"').getContext('2d')
-                                                    var cpuChart3 = new Chart(ctxChart3, {
-                                                        type: 'line',
-                                                        data: {
-                                                            labels: [],
-                                                            datasets: [{
-                                                                borderColor: 'black',
-                                                                data: []
-                                                            }]
-                                                        },
-                                                        options: {}
-                                                    })
-
-                                                    var z = 0
-
-                                                    function updateChart3() {
-
-                                                        cpuChart3.data.labels.push(z++)
-                                                        PageMethods.AtualizaMemory(function (data) { cpuChart3.data.datasets[0].data.push((Number)(data)) }, fnerrorcallback)
-                                                        if (cpuChart3.data.labels.length > 15) {
-                                                            cpuChart3.data.labels.shift()
-                                                            cpuChart3.data.datasets[0].data.shift()
-                                                        }
-                                                        cpuChart3.update()
-                                                        setTimeout(updateChart3, 5000)
-
-                                                    }
-
-                                                    updateChart3()
-                                                </script>
+                                                <canvas data-chart="memoryChart"></canvas>
                                             </div>
                                             <div class="footer">
                                                 <hr>
@@ -359,26 +270,105 @@
     var $disk = document.querySelector("[data-dados=disk]") || undefined
     var $memory = document.querySelector("[data-dados=memory]") || undefined
 
-    var loopCpu;
-    var loopDisk;
-    var loopMemory;
+    var ctxCpuChart = document.querySelector('[data-chart="cpuChart"]').getContext('2d')
+    var cpuChart = new Chart(ctxCpuChart, {
+        type: 'line',
+        data: {
+            labels: [],
+            datasets: [{
+                label: 'CpuUsage',
+                backgroundColor: 'rgba(221, 66, 76, 30%)',
+                borderColor: 'rgb(40, 40, 40)',
+                data: []
+            }]
+        },
+        options: {
+            animation: {
+                duration: 500
+            },
+            legend: {
+                onClick: function () { return }
+            }
+        }
+    })
 
-    AtualizarDados()
-    function AtualizarDados() {
-        AtualizaCpu()
-        AtualizaDisk()
-        AtualizaMemory()
-    }
+    var ctxDiskChart = document.querySelector('[data-chart="diskChart"]').getContext('2d')
+    var diskChart = new Chart(ctxDiskChart, {
+        type: 'line',
+        data: {
+            labels: [],
+            datasets: [{
+                label: 'DiskUsage',
+                backgroundColor: 'rgba(33, 255, 84, 30%)',
+                borderColor: 'rgb(40, 40, 40)',
+                data: []
+            }]
+        },
+        options: {
+            animation: {
+                duration: 500
+            },
+            legend: {
+                onClick: function () { return }
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        callback: function (value, index, values) {
+                            return value + 'bytes';
+                        }
+                    }
+                }]
+            }
+        }
+    })
+
+    var ctxMemoryChart = document.querySelector('[data-chart="memoryChart"]').getContext('2d')
+    var memoryChart = new Chart(ctxMemoryChart, {
+        type: 'line',
+        data: {
+            labels: [],
+            datasets: [{
+                label: 'MemoryUsage',
+                backgroundColor: 'rgba(106, 250, 252, 30%)',
+                borderColor: 'rgb(40, 40, 40)',
+                data: []
+            }]
+        },
+        options: {
+            animation: {
+                duration: 500
+            },
+            legend: {
+                onClick: function () { return }
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        callback: function (value, index, values) {
+                            return value + 'bytes';
+                        }
+                    }
+                }]
+            }
+        }
+    })
+
+    var loopCpu;
 
     function AtualizaCpu() {
         PageMethods.AtualizarCpu(function (data) { $cpu.innerHTML = data }, fnerrorcallback)
         loopCpu = setTimeout(AtualizaCpu, 2000)
     }
 
+    var loopDisk;
+
     function AtualizaDisk() {
         PageMethods.AtualizarDisco(function (data) { $disk.innerHTML = data }, fnerrorcallback)
         loopDisk = setTimeout(AtualizaDisk, 2000)
     }
+
+    var loopMemory
 
     function AtualizaMemory() {
         PageMethods.AtualizarMemoria(function (data) { $memory.innerHTML = data }, fnerrorcallback)
@@ -389,10 +379,133 @@
         alert(result.statusText);
     }
 
-    function Stop() {
-        clearTimeout(loopCpu)
-        clearTimeout(loopDisk)
-        clearTimeout(loopMemory)
+    var y = 0
+
+    function updateDiskChart() {
+        //Ao Iniciar o Gráfico na tela, pega os primeiros 10 Dados do Banco e Exibe no Grafico
+        if (y === 0) {
+            PageMethods.AtualizarDiskFirst(function (datas) {
+                datas.forEach(function (data) {
+                    diskChart.data.labels.push(y++)
+                    diskChart.data.datasets[0].data.push(data)
+                })
+            }, fnerrorcallback)
+        }
+        /*---*/
+        //Inicia a Atualização dos dados do grafico com uma função de callback (onSucess) do WebMethod do C#
+        PageMethods.AtualizarDisk(attData, fnerrorcallback)
+        /*---*/
+        //Função de callback chamado pelo WebMethod acima, que atualiza os dados no grafico com o parametro de retorno do WebMethod do C#
+        function attData(data) {
+            var dataLength = diskChart.data.datasets[0].data.length
+            var dataSetData = diskChart.data.datasets[0].data
+            //Verifica se o dado pego do Banco de Dados não é igual aos ultimos 3 dados do gráfico (ou seja, confirma se o dado esta sendo atualizado)
+            if (data !== dataSetData[dataLength - 1] || data !== dataSetData[dataLength - 2] || data !== dataSetData[dataLength - 3]) {
+                diskChart.data.datasets[0].data.push(data)
+                diskChart.data.labels.push(y++)
+                //Verifica se o Eixo X do gráfico passou de 10 Itens, se sim, exclui o primeiro dado do grafico
+                if (diskChart.data.labels.length > 10) {
+                    diskChart.data.labels.shift()
+                    diskChart.data.datasets[0].data.shift(1, )
+                }
+                /*---*/
+                //Atualiza o gráfico com os novos dados
+                diskChart.update()
+                /*---*/
+            }
+            /*---*/
+            //Invoca um loop da função asíncronamente a cada 3 segundos
+            setTimeout(updateDiskChart, 3000)
+            /*--*/
+        }
+        /*---*/
     }
+
+    var x = 0
+
+    function updateCpuChart() {
+        //Ao Iniciar o Gráfico na tela, pega os primeiros 10 Dados do Banco e Exibe no Grafico
+        if (y === 0) {
+            PageMethods.AtualizarCpuFirst(function (datas) {
+                datas.forEach(function (data) {
+                    cpuChart.data.labels.push(y++)
+                    cpuChart.data.datasets[0].data.push(data)
+                })
+            }, fnerrorcallback)
+        }
+        /*---*/
+        //Inicia a Atualização dos dados do grafico com uma função de callback (onSucess) do WebMethod do C#
+        PageMethods.AtualizarCpu(attData, fnerrorcallback)
+        /*---*/
+        //Função de callback chamado pelo WebMethod acima, que atualiza os dados no grafico com o parametro de retorno do WebMethod do C#
+        function attData(data) {
+            var dataLength = cpuChart.data.datasets[0].data.length
+            var dataSetData = cpuChart.data.datasets[0].data
+            //Verifica se o dado pego do Banco de Dados não é igual aos ultimos 3 dados do gráfico (ou seja, confirma se o dado esta sendo atualizado)
+            if (data !== dataSetData[dataLength - 1] || data !== dataSetData[dataLength - 2] || data !== dataSetData[dataLength - 3]) {
+                cpuChart.data.datasets[0].data.push(data)
+                cpuChart.data.labels.push(y++)
+                //Verifica se o Eixo X do gráfico passou de 10 Itens, se sim, exclui o primeiro dado do grafico
+                if (cpuChart.data.labels.length > 10) {
+                    cpuChart.data.labels.shift()
+                    cpuChart.data.datasets[0].data.shift(1, )
+                }
+                /*---*/
+                //Atualiza o gráfico com os novos dados
+                cpuChart.update()
+                /*---*/
+            }
+            /*---*/
+            //Invoca um loop da função asíncronamente a cada 3 segundos
+            setTimeout(updateCpuChart, 3000)
+            /*--*/
+        }
+        /*---*/
+    }
+
+    var z = 0
+
+    function updateMemoryChart() {
+        //Ao Iniciar o Gráfico na tela, pega os primeiros 10 Dados do Banco e Exibe no Grafico
+        if (z === 0) {
+            PageMethods.AtualizarMemoryFirst(function (datas) {
+                datas.forEach(function (data) {
+                    memoryChart.data.labels.push(z++)
+                    memoryChart.data.datasets[0].data.push(data)
+                })
+            }, fnerrorcallback)
+        }
+        /*---*/
+        //Inicia a Atualização dos dados do grafico com uma função de callback (onSucess) do WebMethod do C#
+        PageMethods.AtualizarMemory(attData, fnerrorcallback)
+        /*---*/
+        //Função de callback chamado pelo WebMethod acima, que atualiza os dados no grafico com o parametro de retorno do WebMethod do C#
+        function attData(data) {
+            var dataLength = memoryChart.data.datasets[0].data.length
+            var dataSetData = memoryChart.data.datasets[0].data
+            //Verifica se o dado pego do Banco de Dados não é igual aos ultimos 3 dados do gráfico (ou seja, confirma se o dado esta sendo atualizado)
+            if (data !== dataSetData[dataLength - 1] || data !== dataSetData[dataLength - 2] || data !== dataSetData[dataLength - 3]) {
+                memoryChart.data.datasets[0].data.push(data)
+                memoryChart.data.labels.push(z++)
+                //Verifica se o Eixo X do gráfico passou de 10 Itens, se sim, exclui o primeiro dado do grafico
+                if (memoryChart.data.labels.length > 10) {
+                    memoryChart.data.labels.shift()
+                    memoryChart.data.datasets[0].data.shift(1, )
+                }
+                /*---*/
+                //Atualiza o gráfico com os novos dados
+                memoryChart.update()
+                /*---*/
+            }
+            /*---*/
+            //Invoca um loop da função asíncronamente a cada 3 segundos
+            setTimeout(updateMemoryChart, 3000)
+            /*--*/
+        }
+        /*---*/
+    }
+    updateMemoryChart()
+    updateDiskChart()
+    updateCpuChart()
 </script>
 </html>

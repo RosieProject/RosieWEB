@@ -19,74 +19,112 @@ namespace TesteRosieEnvioDeDados
         }
 
         [WebMethod]
-        public static string AtualizarCpu()
+        public static List<double> AtualizarCpuFirst()
         {
             string strConn = ConfigurationManager.ConnectionStrings["connectRosie"].ToString();
 
             using (SqlConnection conn = new SqlConnection(strConn))
             {
                 conn.Open();
-                using (SqlDataAdapter cpuQuery = new SqlDataAdapter("SELECT * FROM CpuData ORDER BY Id_Cpu DESC", conn))
+                using (SqlCommand cpuTenQuery = new SqlCommand("SELECT TOP 10 Usage_Cpu FROM CpuData ORDER BY ID_cpu DESC", conn))
                 {
-                    DataTable dt = new DataTable();
-                    cpuQuery.Fill(dt);
-
-                    var dado = Convert.ToString(dt.Rows[0][1]);
-                    return dado;
-                }
-            }
-        }
-
-        [WebMethod]
-        public static string AtualizarDisco()
-        {
-            string strConn = ConfigurationManager.ConnectionStrings["connectRosie"].ToString();
-
-            using (SqlConnection conn = new SqlConnection(strConn))
-            {
-                conn.Open();
-                using (SqlDataAdapter diskQuery = new SqlDataAdapter("SELECT * FROM DiskData ORDER BY Id_Disk DESC", conn))
-                {
-                    DataTable dt = new DataTable();
-                    diskQuery.Fill(dt);
-
-                    return Convert.ToString(dt.Rows[0][1]);
-                }
-            }
-            
-        }
-
-        [WebMethod]
-        public static string AtualizarMemoria()
-        {
-            string strConn = ConfigurationManager.ConnectionStrings["connectRosie"].ToString();
-
-            using (SqlConnection conn = new SqlConnection(strConn))
-            {
-                conn.Open();
-                using (SqlDataAdapter memoryQuery = new SqlDataAdapter("SELECT * FROM memoryData ORDER BY Id_Memory DESC", conn))
-                {
-                    DataTable dt = new DataTable();
-                    memoryQuery.Fill(dt);
-
-                    return Convert.ToString(dt.Rows[0][1]);
-                }
-            }
-        }
-
-        [WebMethod]
-        public static double teste()
-        {
-            string strConn = ConfigurationManager.ConnectionStrings["connectRosie"].ToString();
-
-            using (SqlConnection conn = new SqlConnection(strConn))
-            {
-                conn.Open();
-                using (SqlCommand cpuQueryTest = new SqlCommand("SELECT c.USAGE_CPU FROM CPUDATA AS c, Computador AS pc WHERE c.ID_PC = pc.ID_PC AND c.ID_PC = 4 ORDER BY c.ID_CPU DESC", conn))
-                {
-                    var data = (double)cpuQueryTest.ExecuteScalar();
+                    List<double> data = new List<double>();
+                    SqlDataReader rd = cpuTenQuery.ExecuteReader();
+                    while (rd.Read())
+                    {
+                        data.Add((double)rd.GetValue(0));
+                    }
 
                     return data;
+                }
+            }
+        }
+
+        [WebMethod]
+        public static double AtualizarCpu()
+        {
+            string strConn = ConfigurationManager.ConnectionStrings["connectRosie"].ToString();
+
+            using (SqlConnection conn = new SqlConnection(strConn))
+            {
+                conn.Open();
+                using (SqlCommand cpuOneQuery = new SqlCommand("SELECT TOP 1 Usage_Cpu FROM CpuData ORDER BY ID_cpu DESC", conn))
+                {
+                    return (double)cpuOneQuery.ExecuteScalar();
+                }
+            }
+        }
+
+        [WebMethod]
+        public static List<long> AtualizarDiskFirst()
+        {
+            string strConn = ConfigurationManager.ConnectionStrings["connectRosie"].ToString();
+
+            using (SqlConnection conn = new SqlConnection(strConn))
+            {
+                conn.Open();
+                using (SqlCommand diskTenQuery = new SqlCommand("SELECT TOP 10 Usage_Disk FROM DiskData ORDER BY Id_Disk DESC", conn))
+                {
+                    List<long> data = new List<long>();
+                    SqlDataReader rd = diskTenQuery.ExecuteReader();
+                    while (rd.Read())
+                    {
+                        data.Add((long)rd.GetValue(0));
+                    }
+
+                    return data;
+                }
+            }
+        }
+
+        [WebMethod]
+        public static long AtualizarDisk()
+        {
+            string strConn = ConfigurationManager.ConnectionStrings["connectRosie"].ToString();
+
+            using (SqlConnection conn = new SqlConnection(strConn))
+            {
+                conn.Open();
+                using (SqlCommand diskOneQuery = new SqlCommand("SELECT TOP 1 Usage_Disk FROM DiskData ORDER BY Id_Disk DESC", conn))
+                {
+                    return (long)diskOneQuery.ExecuteScalar();
+                }
+            }
+        }
+
+        [WebMethod]
+        public static List<long> AtualizarMemoryFirst()
+        {
+            string strConn = ConfigurationManager.ConnectionStrings["connectRosie"].ToString();
+
+            using (SqlConnection conn = new SqlConnection(strConn))
+            {
+                conn.Open();
+                using (SqlCommand memoryTenQuery = new SqlCommand("SELECT TOP 10 Usage_Memoria FROM MemoryData ORDER BY Id_Memory DESC", conn))
+                {
+                    List<long> data = new List<long>();
+                    SqlDataReader rd = memoryTenQuery.ExecuteReader();
+                    while (rd.Read())
+                    {
+                        data.Add((long)rd.GetValue(0));
+                    }
+
+                    return data;
+                }
+            }
+        }
+
+        [WebMethod]
+        public static long AtualizarMemory()
+        {
+            string strConn = ConfigurationManager.ConnectionStrings["connectRosie"].ToString();
+
+            using (SqlConnection conn = new SqlConnection(strConn))
+            {
+                conn.Open();
+                using (SqlCommand memoryOneQuery = new SqlCommand("SELECT TOP 1 Usage_Memoria FROM MemoryData ORDER BY Id_Memory DESC", conn))
+                {
+                    return (long)memoryOneQuery.ExecuteScalar();
                 }
             }
         }
