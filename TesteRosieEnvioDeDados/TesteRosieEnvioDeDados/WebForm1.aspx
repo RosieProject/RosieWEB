@@ -204,18 +204,16 @@
                                                         },
                                                         options: {}
                                                     })
-                                                    var i = 0
+                                                    var i = 1
                                                     function updateChart1() {
-
+                                                        PageMethods.teste(function (data) { cpuChart1.data.datasets[0].data.push(data)}, fnerrorcallback)
                                                         cpuChart1.data.labels.push(i++)
-                                                        
                                                         if (cpuChart1.data.labels.length > 15) {
                                                             cpuChart1.data.labels.shift()
                                                             cpuChart1.data.datasets[0].data.shift()
                                                         }
                                                         cpuChart1.update()
-                                                        setTimeout(updateChart1, 500)
-
+                                                        setTimeout(updateChart1, 1000)
                                                     }
                                                     function fnerrorcallback(result) {
                                                         alert(result.statusText);
@@ -260,13 +258,13 @@
                                                     function updateChart2() {
 
                                                         cpuChart2.data.labels.push(x++)
-                                                        PageMethods.AtualizarMemoria(function (data) { cpuChart2.data.datasets[0].data.push((Number)(data)) }, fnerrorcallback)
+                                                        PageMethods.AtualizaDisk(function (data) { cpuChart2.data.datasets[0].data.push((Number)(data)) }, fnerrorcallback)
                                                         if (cpuChart2.data.labels.length > 15) {
                                                             cpuChart2.data.labels.shift()
                                                             cpuChart2.data.datasets[0].data.shift()
                                                         }
                                                         cpuChart2.update()
-                                                        setTimeout(updateChart2, 500)
+                                                        setTimeout(updateChart2, 5000)
 
                                                     }
 
@@ -311,13 +309,13 @@
                                                     function updateChart3() {
 
                                                         cpuChart3.data.labels.push(z++)
-                                                        cpuChart3.data.datasets[0].data.push(Math.random())
+                                                        PageMethods.AtualizaMemory(function (data) { cpuChart3.data.datasets[0].data.push((Number)(data)) }, fnerrorcallback)
                                                         if (cpuChart3.data.labels.length > 15) {
                                                             cpuChart3.data.labels.shift()
                                                             cpuChart3.data.datasets[0].data.shift()
                                                         }
                                                         cpuChart3.update()
-                                                        setTimeout(updateChart3, 500)
+                                                        setTimeout(updateChart3, 5000)
 
                                                     }
 
@@ -364,6 +362,7 @@
     var loopCpu;
     var loopDisk;
     var loopMemory;
+
     AtualizarDados()
     function AtualizarDados() {
         AtualizaCpu()

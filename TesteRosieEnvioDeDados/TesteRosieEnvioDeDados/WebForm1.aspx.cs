@@ -73,5 +73,22 @@ namespace TesteRosieEnvioDeDados
                 }
             }
         }
+
+        [WebMethod]
+        public static double teste()
+        {
+            string strConn = ConfigurationManager.ConnectionStrings["connectRosie"].ToString();
+
+            using (SqlConnection conn = new SqlConnection(strConn))
+            {
+                conn.Open();
+                using (SqlCommand cpuQueryTest = new SqlCommand("SELECT c.USAGE_CPU FROM CPUDATA AS c, Computador AS pc WHERE c.ID_PC = pc.ID_PC AND c.ID_PC = 4 ORDER BY c.ID_CPU DESC", conn))
+                {
+                    var data = (double)cpuQueryTest.ExecuteScalar();
+
+                    return data;
+                }
+            }
+        }
     }
 }
