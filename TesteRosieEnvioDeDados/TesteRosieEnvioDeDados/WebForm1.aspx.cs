@@ -31,7 +31,8 @@ namespace TesteRosieEnvioDeDados
                     DataTable dt = new DataTable();
                     cpuQuery.Fill(dt);
 
-                    return Convert.ToString(dt.Rows[0][1]);
+                    var dado = Convert.ToString(dt.Rows[0][1]);
+                    return dado;
                 }
             }
         }
