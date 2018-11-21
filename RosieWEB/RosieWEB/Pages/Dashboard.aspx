@@ -314,7 +314,7 @@
                             } else if (dataType === 'GB') {
                                 return `${Math.round(value)} GB`
 
-                            } else if (value > 1000000) {
+                            } else if (dataType === 'MB') {
                                 return `${Math.round(value)} MB`
 
                             } else {
@@ -356,7 +356,7 @@
                             } else if (dataType === 'GB') {
                                 return `${Math.round(value)} GB`
 
-                            } else if (value === 'MB') {
+                            } else if (dataType === 'MB') {
                                 return `${Math.round(value)} MB`
 
                             } else {
@@ -398,15 +398,15 @@
     var y = 0
 
     function roundBytesData(data) {
-        if (data > 1000000000000) {
+        if (data >= 1000000000000) {
             dataType = 'TB'
             return Math.round(data / 1000000000000)
 
-        } else if (data > 1000000000) {
+        } else if (data >= 1000000000) {
             dataType = 'GB'
             return Math.round(data / 1000000000)
 
-        } else if (data > 1000000) {
+        } else if (data >= 1000000) {
             dataType = 'MB'
             return Math.round(data / 1000000)
 
@@ -458,7 +458,16 @@
         /*---*/
     }
 
-    function testeDisk(data) {
+    function testeDisk(data, datas) {
+
+
+        datas.forEach(function (data) {
+            diskChart.data.labels.push(y++)
+            diskChart.data.datasets[0].data.push(roundBytesData(data))
+        })
+        diskChart.update()
+
+
         data = roundBytesData(data)
         console.log(data)
         var dataLength = diskChart.data.datasets[0].data.length
@@ -483,7 +492,7 @@
 
     function updateCpuChart() {
         //Ao Iniciar o Gráfico na tela, pega os primeiros 10 Dados do Banco e Exibe no Grafico
-        if (y === 0) {
+        if (x === 0) {
             PageMethods.AtualizarCpuFirst(function (datas) {
                 datas.forEach(function (data) {
                     cpuChart.data.labels.push(x++)
