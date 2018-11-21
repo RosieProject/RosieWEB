@@ -17,15 +17,15 @@
 
     <!--  Paper Dashboard core CSS    -->
     <link href="assets/css/paper-dashboard.css" rel="stylesheet" />
-
+    <!--  Fonts and icons     -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+    <link href="assets/css/themify-icons.css" rel="stylesheet">
 </head>
 <body>
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true"></asp:ScriptManager>
         <div>
-
-            <asp:Button runat="server" Text="Start" OnClientClick="AtualizarDados();return false;" />
-            <asp:Button runat="server" Text="Stop" OnClientClick="Stop();return false;" />
 
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
 
@@ -44,7 +44,7 @@
                         </div>
                         <ul class="nav">
                             <li class="active">
-                                <a href="dashboard.html">
+                                <a href="Dashboard.aspx">
                                     <i class="ti-panel" style="color: #127486"></i>
                                     <p style="color: #127486">Dashboard</p>
                                 </a>
@@ -52,9 +52,9 @@
                         </ul>
                         <ul class="nav">
                             <li class="active">
-                                <a href="WebForm1.aspx">
+                                <a href="Table.aspx">
                                     <i class="ti-panel" style="color: #127486"></i>
-                                    <p style="color: #127486">Dashboard</p>
+                                    <p style="color: #127486">Table</p>
                                 </a>
                             </li>
                         </ul>
@@ -79,9 +79,6 @@
 
                     <div class="content">
                         <div class="container-fluid">
-
-                            <asp:Button runat="server" Text="Start" OnClientClick="AtualizarDados();return false;" />
-                            <asp:Button runat="server" Text="Stop" OnClientClick="Stop();return false;" />
 
                             <div class="row">
                                 <div class="col-lg-3 col-sm-6">
@@ -272,16 +269,16 @@
             },
             legend: {
                 onClick: function () { return }
-            }//,
-            //scales: {
-            //    yAxes: [{
-            //        ticks: {
-            //            callback: function (value, index, values) {
-            //                return `${value}%`
-            //            }
-            //        }
-            //    }]
-            //}
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        callback: function (value, index, values) {
+                            return `${value}%`
+                        }
+                    }
+                }]
+            }
         }
     })
 
@@ -586,15 +583,16 @@
 <!--  Checkbox, Radio & Switch Plugins -->
 <script src="assets/js/bootstrap-checkbox-radio.js"></script>
 
-<!--  Charts Plugin REMOVER-->
-<script src="assets/js/chartist.min.js"></script>
-
 <!--  Notifications Plugin    -->
 <script src="assets/js/bootstrap-notify.js"></script>
 
+<!-- Paper Dashboard Core javascript and methods for Demo purpose REMOVER-->
+<script src="assets/js/paper-dashboard.js"></script>
+
+
+
 <script type="text/javascript">
     $(document).ready(function () {
-
 
         $.notify({
             icon: 'ti-gift',

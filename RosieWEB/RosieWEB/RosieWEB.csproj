@@ -166,6 +166,7 @@
     <Content Include="Pages\php\mail.php" />
     <Content Include="Pages\php\newslatter.txt" />
     <Content Include="Pages\php\newsletter.php" />
+    <Content Include="Pages\Table.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -198,6 +199,13 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\PasswordHash.cs" />
+    <Compile Include="Pages\Table.aspx.cs">
+      <DependentUpon>Table.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Table.aspx.designer.cs">
+      <DependentUpon>Table.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
