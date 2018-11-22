@@ -17,10 +17,10 @@
 
     <!--  Paper Dashboard core CSS    -->
     <link href="assets/css/paper-dashboard.css" rel="stylesheet" />
-    <!--  Fonts and icons     -->
+
+    <!--  Fonts   -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
-    <link href="assets/css/themify-icons.css" rel="stylesheet">
 </head>
 <body>
     <form id="form1" runat="server">
@@ -31,30 +31,23 @@
 
             <div class="wrapper">
                 <div class="sidebar" data-background-color="white" data-active-color="danger">
-
-                    <!--
-		Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
-		Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
-	-->
-
                     <div class="sidebar-wrapper" style="background-color: #181A1C">
                         <div class="logo">
-                            <a href="http://www.creative-tim.com" class="simple-text" style="color: #127486">Rosie
+                            <a href="Dashboard.aspx" class="simple-text" style="color: #127486">Rosie
                             </a>
                         </div>
+
                         <ul class="nav">
-                            <li class="active">
+                            <li>
                                 <a href="Dashboard.aspx">
                                     <i class="ti-panel" style="color: #127486"></i>
                                     <p style="color: #127486">Dashboard</p>
                                 </a>
                             </li>
-                        </ul>
-                        <ul class="nav">
-                            <li class="active">
+                            <li>
                                 <a href="Table.aspx">
-                                    <i class="ti-panel" style="color: #127486"></i>
-                                    <p style="color: #127486">Table</p>
+                                    <i class="ti-user" style="color: #127486"></i>
+                                    <p style="color: #127486">Computadores</p>
                                 </a>
                             </li>
                         </ul>
@@ -162,7 +155,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="card">
                                         <div class="header">
                                             <h4 class="title">CPU</h4>
@@ -171,9 +164,6 @@
                                         <div class="content">
                                             <div class="Grafico">
                                                 <canvas data-chart="cpuChart"></canvas>
-                                                <script>
-
-</script>
                                             </div>
                                             <div class="footer">
                                                 <hr />
@@ -184,7 +174,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="card">
                                         <div class="header">
                                             <h4 class="title">Disco</h4>
@@ -203,8 +193,7 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="card">
                                         <div class="header">
                                             <h4 class="title">Memoria</h4>
@@ -223,11 +212,9 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
-
 
                     <footer class="footer">
                         <div class="container-fluid">
@@ -588,7 +575,6 @@
 
 <!-- Paper Dashboard Core javascript and methods for Demo purpose REMOVER-->
 <script src="assets/js/paper-dashboard.js"></script>
-
 
 
 <script type="text/javascript">
