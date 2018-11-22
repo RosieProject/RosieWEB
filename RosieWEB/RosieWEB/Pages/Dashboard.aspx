@@ -50,6 +50,12 @@
                                     <p style="color: #127486">Computadores</p>
                                 </a>
                             </li>
+                            <li>
+                                <a href="UserRegister.aspx">
+                                    <i class="ti-user" style="color: #127486"></i>
+                                    <p style="color: #127486">Registrar Usuarios</p>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -74,7 +80,7 @@
                         <div class="container-fluid">
 
                             <div class="row">
-                                <div class="col-lg-3 col-sm-6">
+                                <div class="col-lg-4 col-sm-6">
                                     <div class="card">
                                         <div class="content">
                                             <div class="row">
@@ -101,7 +107,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-sm-6">
+                                <div class="col-lg-4 col-sm-6">
                                     <div class="card">
                                         <div class="content">
                                             <div class="row">
@@ -127,7 +133,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-sm-6">
+                                <div class="col-lg-4 col-sm-6">
                                     <div class="card">
                                         <div class="content">
                                             <div class="row">
@@ -155,7 +161,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-12">
                                     <div class="card">
                                         <div class="header">
                                             <h4 class="title">CPU</h4>
@@ -174,7 +180,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="card">
                                         <div class="header">
                                             <h4 class="title">Disco</h4>
@@ -193,7 +199,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="card">
                                         <div class="header">
                                             <h4 class="title">Memoria</h4>

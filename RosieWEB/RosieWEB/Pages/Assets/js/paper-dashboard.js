@@ -99,7 +99,7 @@ pd = {
 
             nav_content = $navbar.html();
 
-            nav_content = '<ul class="nav nav-mobile-menu">' + nav_content + '</ul>';
+            //nav_content = '<ul class="nav nav-mobile-menu">' + nav_content + '</ul>';
 
             $sidebar_nav = $sidebar_wrapper.find(' > .nav');
 
