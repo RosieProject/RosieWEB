@@ -86,7 +86,6 @@
     <Content Include="Pages\Assets\js\bootstrap-notify.js" />
     <Content Include="Pages\Assets\js\bootstrap.min.js" />
     <Content Include="Pages\Assets\js\chartist.min.js" />
-    <Content Include="Pages\Assets\js\demo.js" />
     <Content Include="Pages\Assets\js\jquery.min.js" />
     <Content Include="Pages\Assets\js\paper-dashboard.js" />
     <Content Include="Pages\Cadastro.aspx" />
