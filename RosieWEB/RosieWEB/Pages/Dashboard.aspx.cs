@@ -39,7 +39,7 @@ namespace RosieWEB
         public static double AtualizarCpu()
         {
             string strConn = ConfigurationManager.ConnectionStrings["connectRosie"].ToString();
-
+            
             using (SqlConnection conn = new SqlConnection(strConn))
             {
                 conn.Open();

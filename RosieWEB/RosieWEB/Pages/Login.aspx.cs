@@ -59,7 +59,7 @@ namespace RosieWEB.Pages
                     SqlDataReader rd = searchUser.ExecuteReader();
                     if (rd.HasRows)
                     {
-                        Session["corpId"] = rd.GetValue(1).ToString();
+                        Session["compId"] = rd.GetValue(1).ToString();
                         return true;
                     }
                 }

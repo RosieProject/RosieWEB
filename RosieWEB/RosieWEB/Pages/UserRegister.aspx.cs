@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Web;
 using System.Web.Services;
 
 namespace RosieWEB.Pages
@@ -10,28 +11,28 @@ namespace RosieWEB.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Session["compId"] = 1; //APAGAR ISSO
         }
 
+        //Cadastro do Usuario da Empresa
         [WebMethod]
-        public static bool CadastrarUsuario()
+        public static bool RegisterUser(string userName, string userPassword, string userEmail, string userType)
         {
             string strConn = ConfigurationManager.ConnectionStrings["connectRosie"].ToString();
 
             using (SqlConnection conn = new SqlConnection(strConn))
             {
                 conn.Open();
-                using (SqlCommand cpuTenQuery = new SqlCommand("SELECT TOP 10 Usage_Cpu FROM CpuData ORDER BY ID_cpu DESC", conn))
+                using (SqlCommand registerUser = new SqlCommand($"INSERT INTO Usuario VALUES ({HttpContext.Current.Session["compId"]}, '{userName}', '{userEmail}', '{userType}', '{userPassword}')", conn))
                 {
-                    List<double> data = new List<double>();
-                    SqlDataReader rd = cpuTenQuery.ExecuteReader();
-                    while (rd.Read())
+                    SqlDataReader rd = registerUser.ExecuteReader();
+                    if (rd.RecordsAffected > 0)
                     {
-                        data.Add((double)rd.GetValue(0));
+                        return true;
                     }
                 }
             }
-            return true;
+            return false;
         }
     }
 }

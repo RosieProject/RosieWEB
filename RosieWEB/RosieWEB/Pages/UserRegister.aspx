@@ -84,7 +84,7 @@
                         <div class="card">
                             <div class="content">
                                 <form runat="server">
-                                    <asp:ScriptManager runat="server" EnablePageMethods="true"></asp:ScriptManager>
+                                    <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true" />
                                     <div class="form-group">
                                         <label>Digite o Email</label>
                                         <input type="email" class="form-control" id="userEmail" placeholder="Exemplo: usuario@usuario.com" aria-label="Email do Usuário" style="border: 1px solid gray;">
@@ -97,14 +97,14 @@
 
                                     <div class="form-group">
                                         <label>Nome do Usuario <span><u>*Opcional*</u></span></label>
-                                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Exemplo: Paulo" style="border: 1px solid gray">
+                                        <input type="text" class="form-control" id="userName" placeholder="Exemplo: Paulo" style="border: 1px solid gray">
                                     </div>
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" id="userIsAdmin">
                                         <label class="form-check-label" for="exampleCheck1">Registrar Usuário como Administrador</label>
                                     </div>
 
-                                    <asp:Button runat="server" class="btn btn-primary" ID="btnRegistryClick" Text="Registrar" OnClientClick="registrateUser();return false" />
+                                    <asp:Button runat="server" class="btn btn-primary" ID="btnRegistryClick" Text="Registrar" OnClientClick="RegistrateUser();return false;" />
                                 </form>
                             </div>
                         </div>
@@ -128,6 +128,43 @@
 
 </body>
 
+<script>
+    function RegistrateUser() {
+
+        $userEmail = document.getElementById('userEmail')
+        $userPass = document.getElementById('userPassword')
+        $userName = document.getElementById('userName')
+        $userIsAdmin = document.getElementById('userIsAdmin')
+        var isAdmin = 'Normal'
+
+        if ($userIsAdmin.checked) {
+            isAdmin = 'Admin'
+        }
+
+        PageMethods.RegisterUser($userName.value, $userPass.value, $userEmail.value, isAdmin, responseSucess, responseError)
+
+
+        function responseSucess(data) {
+            console.log(data)
+            notificationStatusResponse($userName.value)
+        }
+
+        function responseError(error) {
+            console.log(error)
+        }
+    }
+
+    function notificationStatusResponse(user) {
+        $.notify({
+            message: `Usuário ${user} Cadastrado!`
+
+        }, {
+                type: 'success'
+            });
+    }
+
+</script>
+
 <!--   Core JS Files   -->
 <script src="assets/js/jquery.min.js" type="text/javascript"></script>
 <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
@@ -137,22 +174,5 @@
 
 <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
 <script src="assets/js/paper-dashboard.js"></script>
-
-<script>
-    function registrateUser() {
-        console.log('Funf')
-        notificationStatusResponse()
-    }
-
-    function notificationStatusResponse() {
-            $.notify({
-                message: "Usuário Cadastrado!"
-
-            }, {
-                    type: 'success'
-                });
-    }
-
-</script>
 
 </html>
