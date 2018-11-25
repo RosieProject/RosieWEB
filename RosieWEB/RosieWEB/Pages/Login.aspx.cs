@@ -1,5 +1,6 @@
 ﻿using Rosie;
 using System;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Web.Services;
 
@@ -19,9 +20,10 @@ namespace RosieWEB.Pages
         {
             Usuario.FazerLogin(TxtEmail.Text, Password.Text);
 
-            //  Response.Redirect("index.html");
+            Response.Redirect("index.html");
 
         }
+
         [WebMethod]
         public static void Iniciar(string userId, string userName, string userEmail)
         {
@@ -41,6 +43,27 @@ namespace RosieWEB.Pages
 
             }
 
+        }
+
+        //Trocar para Esse e Testar
+        [WebMethod]
+        public static bool SearchUser(string login, string senha)
+        {
+            string strConn = ConfigurationManager.ConnectionStrings["connectRosie"].ToString();
+
+            using (SqlConnection conn = new SqlConnection(strConn))
+            {
+                conn.Open();
+                using (SqlCommand searchUser = new SqlCommand($"SELECT u.ID_Usuario, e.Nome_Empresa, u.Nome_Usuario FROM Usuario AS u INNER JOIN Empresa AS e ON u.ID_EMPRESA = e.ID_EMPRESA WHERE u.Nome_Usuario = '{login}' AND u.Senha_Usuario = '{senha}'", conn))
+                {
+                    SqlDataReader rd = searchUser.ExecuteReader();
+                    if (rd.HasRows)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
     }
 }
