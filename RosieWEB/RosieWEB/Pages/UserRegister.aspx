@@ -70,7 +70,7 @@
                             <span class="icon-bar bar2"></span>
                             <span class="icon-bar bar3"></span>
                         </button>
-                        <a class="navbar-brand" href="#">Template</a>
+                        <a class="navbar-brand" href="#">Registrar Usuário</a>
                     </div>
                 </div>
             </nav>
@@ -79,6 +79,35 @@
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
+
+                        <%--Formulario--%>
+                        <div class="card">
+                            <div class="content">
+                                <form runat="server">
+                                    <asp:ScriptManager runat="server" EnablePageMethods="true"></asp:ScriptManager>
+                                    <div class="form-group">
+                                        <label>Digite o Email</label>
+                                        <input type="email" class="form-control" id="userEmail" placeholder="Exemplo: usuario@usuario.com" aria-label="Email do Usuário" style="border: 1px solid gray;">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Senha</label>
+                                        <input type="password" class="form-control" id="userPassword" placeholder="Exemplo: User@!2846" style="border: 1px solid gray">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Nome do Usuario <span><u>*Opcional*</u></span></label>
+                                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Exemplo: Paulo" style="border: 1px solid gray">
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="userIsAdmin">
+                                        <label class="form-check-label" for="exampleCheck1">Registrar Usuário como Administrador</label>
+                                    </div>
+
+                                    <asp:Button runat="server" class="btn btn-primary" ID="btnRegistryClick" Text="Registrar" OnClientClick="registrateUser();return false" />
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -86,15 +115,6 @@
 
             <footer class="footer">
                 <div class="container-fluid">
-                    <nav class="pull-left">
-                        <ul>
-
-                            <li>
-                                <a href="#">Home
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
                     <div class="copyright pull-right">
                         &copy;
                         <script>document.write(new Date().getFullYear())</script>
@@ -106,20 +126,33 @@
         </div>
     </div>
 
-
 </body>
 
 <!--   Core JS Files   -->
 <script src="assets/js/jquery.min.js" type="text/javascript"></script>
 <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 
-<!--  Checkbox, Radio & Switch Plugins -->
-<script src="assets/js/bootstrap-checkbox-radio.js"></script>
-
 <!--  Notifications Plugin    -->
 <script src="assets/js/bootstrap-notify.js"></script>
 
 <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
 <script src="assets/js/paper-dashboard.js"></script>
+
+<script>
+    function registrateUser() {
+        console.log('Funf')
+        notificationStatusResponse()
+    }
+
+    function notificationStatusResponse() {
+            $.notify({
+                message: "Usuário Cadastrado!"
+
+            }, {
+                    type: 'success'
+                });
+    }
+
+</script>
 
 </html>

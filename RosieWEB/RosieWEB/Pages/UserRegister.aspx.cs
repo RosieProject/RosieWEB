@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Web.Services;
 
 namespace RosieWEB.Pages
 {
@@ -12,6 +11,27 @@ namespace RosieWEB.Pages
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+
+        [WebMethod]
+        public static bool CadastrarUsuario()
+        {
+            string strConn = ConfigurationManager.ConnectionStrings["connectRosie"].ToString();
+
+            using (SqlConnection conn = new SqlConnection(strConn))
+            {
+                conn.Open();
+                using (SqlCommand cpuTenQuery = new SqlCommand("SELECT TOP 10 Usage_Cpu FROM CpuData ORDER BY ID_cpu DESC", conn))
+                {
+                    List<double> data = new List<double>();
+                    SqlDataReader rd = cpuTenQuery.ExecuteReader();
+                    while (rd.Read())
+                    {
+                        data.Add((double)rd.GetValue(0));
+                    }
+                }
+            }
+            return true;
         }
     }
 }
