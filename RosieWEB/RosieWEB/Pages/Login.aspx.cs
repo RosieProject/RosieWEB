@@ -47,7 +47,7 @@ namespace RosieWEB.Pages
 
         //Trocar para Esse e Testar
         [WebMethod]
-        public static bool SearchUser(string login, string senha)
+        public bool SearchUser(string login, string senha)
         {
             string strConn = ConfigurationManager.ConnectionStrings["connectRosie"].ToString();
 
@@ -59,6 +59,7 @@ namespace RosieWEB.Pages
                     SqlDataReader rd = searchUser.ExecuteReader();
                     if (rd.HasRows)
                     {
+                        Session["corpId"] = rd.GetValue(1).ToString();
                         return true;
                     }
                 }
