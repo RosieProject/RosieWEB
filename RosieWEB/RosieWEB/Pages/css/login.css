@@ -1,24 +1,99 @@
-﻿* {
+﻿body {
     margin: 0px;
     padding: 0px;
+    font-family: sans-serif;
+    background: url(/images/FundoLogin.PNG) no-repeat;
+    background-size: cover;
+}
+.content {
+    
+}
+.definicao {
+    color: #127486;
+    margin-bottom:2px;
+    font-size: 15px;
+
+}
+#TxtEmail{
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    width: 300px;
+    margin-bottom: 1px;
+}
+#Password {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    width: 300px;
+    margin-bottom: 1px;
 }
 
 .form {
     position: absolute;
-    left: 50%;
-    margin-left: -200px;
-    width: 300px;
-    height: 250px;
-    background-color: #2E8B57;
-    top: 50%;
+    left: 65%;
+    width: 350px;
+    height: 600px;
+    top: 40%;
     margin-top: -219px;
     border-radius: 0%;
+    background-color: rgba(0,0,0,0.80);
+    box-shadow: #127486;
+}
+#BtnLogin {
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #127486;
+    color: black;
+    font-size: 18px;
+    border-radius: 20px;
+    position: center;
+    margin-left: 45px;
+    margin-bottom: 20px;
+}
+#BtnLogin:hover {
+    background: #B9D9E5;
+    cursor: pointer;
+}
+#BtnCadastrar {
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: #B9D9E5;
+    background: transparent;
+    width: 150px;
+    margin-left: 35px;
+}
+.g-signin2{
+    margin-left: 25px;
+}
+#user-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    top: -50px;
+    margin-top: -50px;
+    box-shadow: 10px, 10px, 10px, #000000;
+    border-color: rgba(0,0,0,0.80);
+    border-width: 5px;
 }
 
 .center {
     text-align: center;
     margin-top: 20%;
     background-color: black;
+}
+.foto{
+    width: 400px;
+    height: 400px;
+    margin-left: 200px;
+    position: absolute;
+    top: 150px;
 }
 
 .log {
@@ -36,18 +111,18 @@
 
 .texto {
     margin-top: 2rem;
+    overflow: hidden;
 }
 
 .cd {
-    margin-top: 2rem;
-    text-align: center;
-    color: white;
+    margin-top: 50px;
+    font-size: 25px;
+    padding-bottom: 13px;
+    color: #127486;
 }
 
 .botao {
     float: left;
-    padding-left: 1rem;
-    margin-left: 2.5rem;
 }
 
 .teste {
