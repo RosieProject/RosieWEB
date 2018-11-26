@@ -26,7 +26,6 @@
     <!--  Fonts and icons     -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
-
 </head>
 
 <body>
@@ -38,7 +37,6 @@
                     <a href="Dashboard.aspx" class="simple-text" style="color: #127486">Rosie
                     </a>
                 </div>
-
                 <ul class="nav">
                     <li>
                         <a href="Dashboard.aspx">
@@ -49,7 +47,13 @@
                     <li>
                         <a href="Table.aspx">
                             <i class="ti-user" style="color: #127486"></i>
-                            <p style="color: #127486">Table</p>
+                            <p style="color: #127486">Computadores</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="UserRegister.aspx">
+                            <i class="ti-user" style="color: #127486"></i>
+                            <p style="color: #127486">Registrar Usuarios</p>
                         </a>
                     </li>
                 </ul>
@@ -117,6 +121,45 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        function addUser(element, USUARIO, QTDLINHAS) {
+            QTDLINHAS = 5 //ISSO VEM DO BANCO DE DADOS
+            var tr = document.createElement('TR')
+            for (var i = 0; i <= qtdRows; i++) {
+                var td = document.createElement('TD')
+                switch (i) {
+                    case 0:
+                        var text = document.createTextNode(ITEM.name)
+                        td.appendChild(text)
+                        tr.appendChild(td)
+                        break
+                    case 1:
+                        var text = document.createTextNode(ITEM.cpu)
+                        td.appendChild(text)
+                        tr.appendChild(td)
+                        break
+                    case 2:
+                        var text = document.createTextNode(memory)
+                        td.appendChild(text)
+                        tr.appendChild(td)
+                        break
+                    case 3:
+                        var text = document.createTextNode(disk)
+                        td.appendChild(text)
+                        tr.appendChild(td)
+                        break
+                    case 4:
+                        var circle = document.createElement('DIV')
+                        circle.setAttribute('style', 'width:20px; height:20px; background:' + state + '; border-radius:100%; margin: 0 auto')
+                        td.appendChild(circle)
+                        tr.appendChild(td)
+                        break
+                }
+            }
+            element.appendChild(tr)
+        }
+    </script>
 </body>
 
 <!--   Core JS Files   -->
