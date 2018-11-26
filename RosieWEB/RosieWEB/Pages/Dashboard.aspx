@@ -18,43 +18,42 @@
     <!--  Paper Dashboard core CSS    -->
     <link href="assets/css/paper-dashboard.css" rel="stylesheet" />
 
+    <!--  Fonts   -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
 </head>
 <body>
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true"></asp:ScriptManager>
         <div>
 
-            <asp:Button runat="server" Text="Start" OnClientClick="AtualizarDados();return false;" />
-            <asp:Button runat="server" Text="Stop" OnClientClick="Stop();return false;" />
-
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
 
             <div class="wrapper">
                 <div class="sidebar" data-background-color="white" data-active-color="danger">
-
-                    <!--
-		Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
-		Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
-	-->
-
                     <div class="sidebar-wrapper" style="background-color: #181A1C">
                         <div class="logo">
-                            <a href="http://www.creative-tim.com" class="simple-text" style="color: #127486">Rosie
+                            <a href="Dashboard.aspx" class="simple-text" style="color: #127486">Rosie
                             </a>
                         </div>
+
                         <ul class="nav">
-                            <li class="active">
-                                <a href="dashboard.html">
+                            <li>
+                                <a href="Dashboard.aspx">
                                     <i class="ti-panel" style="color: #127486"></i>
                                     <p style="color: #127486">Dashboard</p>
                                 </a>
                             </li>
-                        </ul>
-                        <ul class="nav">
-                            <li class="active">
-                                <a href="WebForm1.aspx">
-                                    <i class="ti-panel" style="color: #127486"></i>
-                                    <p style="color: #127486">Dashboard</p>
+                            <li>
+                                <a href="Table.aspx">
+                                    <i class="ti-user" style="color: #127486"></i>
+                                    <p style="color: #127486">Computadores</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="UserRegister.aspx">
+                                    <i class="ti-user" style="color: #127486"></i>
+                                    <p style="color: #127486">Registrar Usuarios</p>
                                 </a>
                             </li>
                         </ul>
@@ -80,18 +79,15 @@
                     <div class="content">
                         <div class="container-fluid">
 
-                            <asp:Button runat="server" Text="Start" OnClientClick="AtualizarDados();return false;" />
-                            <asp:Button runat="server" Text="Stop" OnClientClick="Stop();return false;" />
-
                             <div class="row">
-                                <div class="col-lg-3 col-sm-6">
+                                <div class="col-lg-4 col-sm-6">
                                     <div class="card">
                                         <div class="content">
                                             <div class="row">
                                                 <div class="col-xs-5">
                                                     <div class="icon-big icon-warning text-center">
                                                         <i class="ti-server">
-                                                            <img src="assets\img\CPU.png" /></i>
+                                                            <img <%--src="assets\img\CPU.png"--%> /></i>
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-7">
@@ -111,14 +107,14 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-sm-6">
+                                <div class="col-lg-4 col-sm-6">
                                     <div class="card">
                                         <div class="content">
                                             <div class="row">
                                                 <div class="col-xs-5">
                                                     <div class="icon-big icon-success text-center">
                                                         <i class="ti-wallet">
-                                                            <img src="assets\img\Disco.png" /></i>
+                                                            <img <%--src="assets\img\Disco.png"--%> /></i>
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-7">
@@ -137,14 +133,14 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-sm-6">
+                                <div class="col-lg-4 col-sm-6">
                                     <div class="card">
                                         <div class="content">
                                             <div class="row">
                                                 <div class="col-xs-5">
                                                     <div class="icon-big icon-danger text-center">
                                                         <i class="ti-pulse">
-                                                            <img src="assets\img\Memoria.png" /></i>
+                                                            <img <%--src="assets\img\Memoria.png"--%> /></i>
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-7">
@@ -165,7 +161,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-12">
                                     <div class="card">
                                         <div class="header">
                                             <h4 class="title">CPU</h4>
@@ -174,9 +170,6 @@
                                         <div class="content">
                                             <div class="Grafico">
                                                 <canvas data-chart="cpuChart"></canvas>
-                                                <script>
-
-                                                </script>
                                             </div>
                                             <div class="footer">
                                                 <hr />
@@ -206,7 +199,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="col-md-6">
                                     <div class="card">
                                         <div class="header">
@@ -226,11 +218,9 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
-
 
                     <footer class="footer">
                         <div class="container-fluid">
@@ -272,6 +262,15 @@
             },
             legend: {
                 onClick: function () { return }
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        callback: function (value, index, values) {
+                            return `${value}%`
+                        }
+                    }
+                }]
             }
         }
     })
@@ -299,7 +298,18 @@
                 yAxes: [{
                     ticks: {
                         callback: function (value, index, values) {
-                            return value + 'bytes';
+                            if (dataType === 'TB') {
+                                return `${Math.round(value)} TB`
+
+                            } else if (dataType === 'GB') {
+                                return `${Math.round(value)} GB`
+
+                            } else if (dataType === 'MB') {
+                                return `${Math.round(value)} MB`
+
+                            } else {
+                                return `${value} Bytes`
+                            }
                         }
                     }
                 }]
@@ -330,7 +340,18 @@
                 yAxes: [{
                     ticks: {
                         callback: function (value, index, values) {
-                            return value + 'bytes';
+                            if (dataType === 'TB') {
+                                return `${Math.round(value)} TB`
+
+                            } else if (dataType === 'GB') {
+                                return `${Math.round(value)} GB`
+
+                            } else if (dataType === 'MB') {
+                                return `${Math.round(value)} MB`
+
+                            } else {
+                                return `${value} Bytes`
+                            }
                         }
                     }
                 }]
@@ -363,7 +384,27 @@
         alert(result.statusText);
     }
 
+    var dataType;
     var y = 0
+
+    function roundBytesData(data) {
+        if (data >= 1000000000000) {
+            dataType = 'TB'
+            return Math.round(data / 1000000000000)
+
+        } else if (data >= 1000000000) {
+            dataType = 'GB'
+            return Math.round(data / 1000000000)
+
+        } else if (data >= 1000000) {
+            dataType = 'MB'
+            return Math.round(data / 1000000)
+
+        } else {
+            dataType = 'Bytes'
+            return data
+        }
+    }
 
     function updateDiskChart() {
         //Ao Iniciar o Gráfico na tela, pega os primeiros 10 Dados do Banco e Exibe no Grafico
@@ -371,8 +412,9 @@
             PageMethods.AtualizarDiskFirst(function (datas) {
                 datas.forEach(function (data) {
                     diskChart.data.labels.push(y++)
-                    diskChart.data.datasets[0].data.push(data)
+                    diskChart.data.datasets[0].data.push(roundBytesData(data))
                 })
+                diskChart.update()
             }, fnerrorcallback)
         }
         /*---*/
@@ -381,6 +423,7 @@
         /*---*/
         //Função de callback chamado pelo WebMethod acima, que atualiza os dados no grafico com o parametro de retorno do WebMethod do C#
         function attData(data) {
+            data = roundBytesData(data)
             var dataLength = diskChart.data.datasets[0].data.length
             var dataSetData = diskChart.data.datasets[0].data
             //Verifica se o dado pego do Banco de Dados não é igual aos ultimos 3 dados do gráfico (ou seja, confirma se o dado esta sendo atualizado)
@@ -390,7 +433,7 @@
                 //Verifica se o Eixo X do gráfico passou de 10 Itens, se sim, exclui o primeiro dado do grafico
                 if (diskChart.data.labels.length > 10) {
                     diskChart.data.labels.shift()
-                    diskChart.data.datasets[0].data.shift(1, )
+                    diskChart.data.datasets[0].data.shift(1)
                 }
                 /*---*/
                 //Atualiza o gráfico com os novos dados
@@ -405,16 +448,47 @@
         /*---*/
     }
 
+    function testeDisk(data, datas) {
+
+
+        datas.forEach(function (data) {
+            diskChart.data.labels.push(y++)
+            diskChart.data.datasets[0].data.push(roundBytesData(data))
+        })
+        diskChart.update()
+
+
+        data = roundBytesData(data)
+        console.log(data)
+        var dataLength = diskChart.data.datasets[0].data.length
+        var dataSetData = diskChart.data.datasets[0].data
+        //Verifica se o dado pego do Banco de Dados não é igual aos ultimos 3 dados do gráfico (ou seja, confirma se o dado esta sendo atualizado)
+        if (data !== dataSetData[dataLength - 1] || data !== dataSetData[dataLength - 2] || data !== dataSetData[dataLength - 3]) {
+            diskChart.data.datasets[0].data.push(data)
+            diskChart.data.labels.push(y++)
+            //Verifica se o Eixo X do gráfico passou de 10 Itens, se sim, exclui o primeiro dado do grafico
+            if (diskChart.data.labels.length > 10) {
+                diskChart.data.labels.shift()
+                diskChart.data.datasets[0].data.shift(1)
+            }
+            /*---*/
+            //Atualiza o gráfico com os novos dados
+            diskChart.update()
+            /*---*/
+        }
+    }
+
     var x = 0
 
     function updateCpuChart() {
         //Ao Iniciar o Gráfico na tela, pega os primeiros 10 Dados do Banco e Exibe no Grafico
-        if (y === 0) {
+        if (x === 0) {
             PageMethods.AtualizarCpuFirst(function (datas) {
                 datas.forEach(function (data) {
-                    cpuChart.data.labels.push(y++)
+                    cpuChart.data.labels.push(x++)
                     cpuChart.data.datasets[0].data.push(data)
                 })
+                cpuChart.update()
             }, fnerrorcallback)
         }
         /*---*/
@@ -428,11 +502,11 @@
             //Verifica se o dado pego do Banco de Dados não é igual aos ultimos 3 dados do gráfico (ou seja, confirma se o dado esta sendo atualizado)
             if (data !== dataSetData[dataLength - 1] || data !== dataSetData[dataLength - 2] || data !== dataSetData[dataLength - 3]) {
                 cpuChart.data.datasets[0].data.push(data)
-                cpuChart.data.labels.push(y++)
+                cpuChart.data.labels.push(x++)
                 //Verifica se o Eixo X do gráfico passou de 10 Itens, se sim, exclui o primeiro dado do grafico
                 if (cpuChart.data.labels.length > 10) {
                     cpuChart.data.labels.shift()
-                    cpuChart.data.datasets[0].data.shift(1, )
+                    cpuChart.data.datasets[0].data.shift(1)
                 }
                 /*---*/
                 //Atualiza o gráfico com os novos dados
@@ -455,8 +529,9 @@
             PageMethods.AtualizarMemoryFirst(function (datas) {
                 datas.forEach(function (data) {
                     memoryChart.data.labels.push(z++)
-                    memoryChart.data.datasets[0].data.push(data)
+                    memoryChart.data.datasets[0].data.push(roundBytesData(data))
                 })
+                memoryChart.update()
             }, fnerrorcallback)
         }
         /*---*/
@@ -465,6 +540,7 @@
         /*---*/
         //Função de callback chamado pelo WebMethod acima, que atualiza os dados no grafico com o parametro de retorno do WebMethod do C#
         function attData(data) {
+            data = roundBytesData(data)
             var dataLength = memoryChart.data.datasets[0].data.length
             var dataSetData = memoryChart.data.datasets[0].data
             //Verifica se o dado pego do Banco de Dados não é igual aos ultimos 3 dados do gráfico (ou seja, confirma se o dado esta sendo atualizado)
@@ -474,7 +550,7 @@
                 //Verifica se o Eixo X do gráfico passou de 10 Itens, se sim, exclui o primeiro dado do grafico
                 if (memoryChart.data.labels.length > 10) {
                     memoryChart.data.labels.shift()
-                    memoryChart.data.datasets[0].data.shift(1, )
+                    memoryChart.data.datasets[0].data.shift(1)
                 }
                 /*---*/
                 //Atualiza o gráfico com os novos dados
@@ -500,32 +576,25 @@
 <!--  Checkbox, Radio & Switch Plugins -->
 <script src="assets/js/bootstrap-checkbox-radio.js"></script>
 
-<!--  Charts Plugin REMOVER-->
-<script src="assets/js/chartist.min.js"></script>
-
 <!--  Notifications Plugin    -->
 <script src="assets/js/bootstrap-notify.js"></script>
 
 <!-- Paper Dashboard Core javascript and methods for Demo purpose REMOVER-->
 <script src="assets/js/paper-dashboard.js"></script>
 
-<!-- Paper Dashboard DEMO methods, don't include it in your project! REMOVER-->
-<script src="assets/js/demo.js"></script>
 
 <script type="text/javascript">
-    	$(document).ready(function(){
+    $(document).ready(function () {
 
-        	demo.initChartist();
+        $.notify({
+            icon: 'ti-gift',
+            message: "Bem-vindo ao Dashboard <b>Rosie</b>."
 
-        	$.notify({
-            	icon: 'ti-gift',
-            	message: "Bem-vindo ao Dashboard <b>Rosie</b>."
-
-            },{
+        }, {
                 type: 'success',
                 timer: 4000
             });
 
-    	});
+    });
 </script>
 </html>
