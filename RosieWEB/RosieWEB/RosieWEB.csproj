@@ -166,9 +166,11 @@
     <Content Include="Pages\php\newslatter.txt" />
     <Content Include="Pages\php\newsletter.php" />
     <Content Include="Pages\Table.aspx" />
+    <Content Include="Pages\UserRegister.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\User.cs" />
     <Compile Include="Pages\Cadastro.aspx.cs">
       <DependentUpon>Cadastro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -204,6 +206,13 @@
     </Compile>
     <Compile Include="Pages\Table.aspx.designer.cs">
       <DependentUpon>Table.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UserRegister.aspx.cs">
+      <DependentUpon>UserRegister.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\UserRegister.aspx.designer.cs">
+      <DependentUpon>UserRegister.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

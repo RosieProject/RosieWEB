@@ -29,7 +29,8 @@
 </head>
 
 <body>
-
+    <form runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true"></asp:ScriptManager>
     <div class="wrapper">
         <div class="sidebar" data-background-color="white" data-active-color="danger">
             <div class="sidebar-wrapper" style="background-color: #181A1C">
@@ -112,6 +113,7 @@
             </div>
         </div>
     </div>
+        </form>
     <footer class="footer">
         <div class="container-fluid">
             <div class="copyright pull-right">
@@ -123,7 +125,16 @@
     </footer>
 
     <script>
-        function addUser(element, USUARIO, QTDLINHAS) {
+        var users
+        getUsers()
+        function getUsers() {
+            PageMethods.SearchUser(function (datas) {
+                users = datas
+                console.log(users)
+            }, /*Error Function*/)
+        }
+
+        /*function addUser(element, USUARIO, QTDLINHAS) {
             QTDLINHAS = 5 //ISSO VEM DO BANCO DE DADOS
             var tr = document.createElement('TR')
             for (var i = 0; i <= qtdRows; i++) {
@@ -158,7 +169,7 @@
                 }
             }
             element.appendChild(tr)
-        }
+        }*/
     </script>
 </body>
 
