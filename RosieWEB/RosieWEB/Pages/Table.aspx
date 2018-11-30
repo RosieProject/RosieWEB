@@ -30,90 +30,76 @@
 
 <body>
     <form runat="server">
-    <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true"></asp:ScriptManager>
-    <div class="wrapper">
-        <div class="sidebar" data-background-color="white" data-active-color="danger">
-            <div class="sidebar-wrapper" style="background-color: #181A1C">
-                <div class="logo">
-                    <a href="Dashboard.aspx" class="simple-text" style="color: #127486">Rosie
-                    </a>
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true"></asp:ScriptManager>
+        <div class="wrapper">
+            <div class="sidebar" data-background-color="white" data-active-color="danger">
+                <div class="sidebar-wrapper" style="background-color: #181A1C">
+                    <div class="logo">
+                        <a href="Dashboard.aspx" class="simple-text" style="color: #127486">Rosie
+                        </a>
+                    </div>
+                    <ul class="nav">
+                        <li>
+                            <a href="Dashboard.aspx">
+                                <i class="ti-panel" style="color: #127486"></i>
+                                <p style="color: #127486">Dashboard</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="Table.aspx">
+                                <i class="ti-user" style="color: #127486"></i>
+                                <p style="color: #127486">Computadores</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="UserRegister.aspx">
+                                <i class="ti-user" style="color: #127486"></i>
+                                <p style="color: #127486">Registrar Usuarios</p>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-                <ul class="nav">
-                    <li>
-                        <a href="Dashboard.aspx">
-                            <i class="ti-panel" style="color: #127486"></i>
-                            <p style="color: #127486">Dashboard</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="Table.aspx">
-                            <i class="ti-user" style="color: #127486"></i>
-                            <p style="color: #127486">Computadores</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="UserRegister.aspx">
-                            <i class="ti-user" style="color: #127486"></i>
-                            <p style="color: #127486">Registrar Usuarios</p>
-                        </a>
-                    </li>
-                </ul>
             </div>
-        </div>
 
-        <div class="main-panel">
-            <nav class="navbar navbar-default">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar bar1"></span>
-                            <span class="icon-bar bar2"></span>
-                            <span class="icon-bar bar3"></span>
-                        </button>
-                        <a class="navbar-brand" href="#">Table List</a>
+            <div class="main-panel">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar bar1"></span>
+                                <span class="icon-bar bar2"></span>
+                                <span class="icon-bar bar3"></span>
+                            </button>
+                            <a class="navbar-brand" href="#">Table List</a>
+                        </div>
                     </div>
-                </div>
-            </nav>
-            <div class="col-md-12">
-                <div class="card card-plain">
-                    <div class="header">
-                        <h4 class="title">Lista de Computadores</h4>
-                        <p class="category">Usuários</p>
-                    </div>
-                    <div class="content table-responsive table-full-width">
-                        <table class="table table-hover">
-                            <thead>
-                                <th>Usuario</th>
-                                <th>CPU</th>
-                                <th>Memoria</th>
-                                <th>Disco</th>
-                                <th>Estado</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Dakota Rice</td>
-                                    <td>$36,738</td>
-                                    <td>Niger</td>
-                                    <td>Oud-Turnhout</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Minerva Hooper</td>
-                                    <td>$23,789</td>
-                                    <td>Curaçao</td>
-                                    <td>Sinaai-Waas</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                </nav>
+                <div class="col-md-12">
+                    <div class="card card-plain">
+                        <div class="header">
+                            <h4 class="title">Lista de Computadores</h4>
+                            <p class="category">Usuários</p>
+                        </div>
+                        <div class="content table-responsive table-full-width">
+                            <table class="table table-hover">
+                                <thead>
+                                    <th>Usuario</th>
+                                    <th>CPU</th>
+                                    <th>Memoria</th>
+                                    <th>Disco</th>
+                                    <th>Estado</th>
+                                </thead>
+                                <tbody data-table="tbody">
+                                </tbody>
+                            </table>
 
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-        </form>
+    </form>
     <footer class="footer">
         <div class="container-fluid">
             <div class="copyright pull-right">
@@ -125,51 +111,47 @@
     </footer>
 
     <script>
-        var users
+        const $tableBody = document.querySelector('[data-table="tbody"]')
+
         getUsers()
         function getUsers() {
             PageMethods.SearchUser(function (datas) {
-                users = datas
+                var users = datas
                 console.log(users)
+                console.log(JSON.parse(users[0]).userName)
+                addUser($tableBody, users, users.length)
             }, /*Error Function*/)
         }
 
-        /*function addUser(element, USUARIO, QTDLINHAS) {
-            QTDLINHAS = 5 //ISSO VEM DO BANCO DE DADOS
+        function addUser(element, users, rowsLenght) {
+            for (var i = 0; i < rowsLenght; i++) {
             var tr = document.createElement('TR')
-            for (var i = 0; i <= qtdRows; i++) {
-                var td = document.createElement('TD')
-                switch (i) {
-                    case 0:
-                        var text = document.createTextNode(ITEM.name)
-                        td.appendChild(text)
-                        tr.appendChild(td)
-                        break
-                    case 1:
-                        var text = document.createTextNode(ITEM.cpu)
-                        td.appendChild(text)
-                        tr.appendChild(td)
-                        break
-                    case 2:
-                        var text = document.createTextNode(memory)
-                        td.appendChild(text)
-                        tr.appendChild(td)
-                        break
-                    case 3:
-                        var text = document.createTextNode(disk)
-                        td.appendChild(text)
-                        tr.appendChild(td)
-                        break
-                    case 4:
-                        var circle = document.createElement('DIV')
-                        circle.setAttribute('style', 'width:20px; height:20px; background:' + state + '; border-radius:100%; margin: 0 auto')
-                        td.appendChild(circle)
-                        tr.appendChild(td)
-                        break
-                }
+            var tdName = document.createElement('TD')
+            var tdCpu = document.createElement('TD')
+            var tdMemory = document.createElement('TD')
+            var tdDisk = document.createElement('TD')
+            var tdState = document.createElement('TD')
+                var text = document.createTextNode(JSON.parse(users[i]).userName)
+                tdName.appendChild(text)
+                tr.appendChild(tdName)
+                var text = document.createTextNode(JSON.parse(users[i]).userCpu)
+                tdCpu.appendChild(text)
+                tr.appendChild(tdCpu)
+                var text = document.createTextNode(JSON.parse(users[i]).userMemory)
+                tdMemory.appendChild(text)
+                tr.appendChild(tdMemory)
+                var text = document.createTextNode(JSON.parse(users[i]).userDisk)
+                tdDisk.appendChild(text)
+                tr.appendChild(tdDisk)
+                var circle = document.createElement('DIV')
+                circle.setAttribute('style', 'width:20px; height:20px; background:' + 'green' + '; border-radius:100%; margin: 0 auto')
+                tdState.appendChild(circle)
+                tr.appendChild(tdState)
+                element.appendChild(tr)
             }
-            element.appendChild(tr)
-        }*/
+            
+        }
+
     </script>
 </body>
 

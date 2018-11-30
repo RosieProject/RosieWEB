@@ -9,8 +9,7 @@ namespace RosieWEB.Model
     {
         public string userName { get; set; }
         public double userCpu { get; set; }
-        public int userDisk { get; set; }
-        public int userMemory { get; set; }
-        public string userStatus { get; set; }
+        public long userDisk { get; set; }
+        public long userMemory { get; set; }
     }
 }
