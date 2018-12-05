@@ -92,6 +92,7 @@
     <Content Include="Pages\css\animate.css" />
     <Content Include="Pages\css\bootstrap-responsive.css" />
     <Content Include="Pages\css\bootstrap.css" />
+    <Content Include="Pages\css\cadastro.css" />
     <Content Include="Pages\css\estilos.css" />
     <Content Include="Pages\css\jquery.bxslider.css" />
     <Content Include="Pages\css\jquery.cslider.css" />
