@@ -23,20 +23,23 @@
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
 </head>
 <body>
-    <form id="form1" runat="server">
+
+    <form id="form1" runat="server"> <%--Verificar a Necessidade desse cara--%>
+
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true"></asp:ScriptManager>
-        <div>
 
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
+        <div> <%--Verificar a Necessidade desse cara--%>
 
+            <%--A Pagína Inteira--%>
             <div class="wrapper">
+                <%--Barra de Navegação Lateral--%>
                 <div class="sidebar" data-background-color="white" data-active-color="danger">
                     <div class="sidebar-wrapper" style="background-color: #181A1C">
                         <div class="logo">
                             <a href="Dashboard.aspx" class="simple-text" style="color: #127486">Rosie
                             </a>
                         </div>
-
+                        <%--Itens da Barra de Navegação--%>
                         <ul class="nav">
                             <li>
                                 <a href="Dashboard.aspx">
@@ -59,8 +62,9 @@
                         </ul>
                     </div>
                 </div>
-
+                <%--Conteúdo Central da Página--%>
                 <div class="main-panel">
+                    <%--Barra de Navegação--%>
                     <nav class="navbar navbar-default">
                         <div class="container-fluid">
                             <div class="navbar-header">
@@ -74,11 +78,10 @@
                             </div>
                         </div>
                     </nav>
-
-
+                    <%--Conteúdo Main da Página--%>
                     <div class="content">
                         <div class="container-fluid">
-
+                            <%--Primeira Linha de Conteudo da Página--%>
                             <div class="row">
                                 <div class="col-lg-4 col-sm-6">
                                     <div class="card">
@@ -160,8 +163,9 @@
                                     </div>
                                 </div>
                             </div>
+                            <%--Segunda Linha de Conteúdo da Página--%>
                             <div class="row">
-                                <div class="col-12">
+                                <div class="col-md-4 col-xm-12">
                                     <div class="card">
                                         <div class="header">
                                             <h4 class="title">CPU</h4>
@@ -180,7 +184,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="card">
                                         <div class="header">
                                             <h4 class="title">Disco</h4>
@@ -199,7 +203,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="card">
                                         <div class="header">
                                             <h4 class="title">Memoria</h4>
@@ -219,9 +223,173 @@
                                     </div>
                                 </div>
                             </div>
+                            <%--Terceira Linha de Conteúdo da Página--%>
+                            <div class="row">
+                                <div class="col-lg-4 col-sm-6">
+                                    <div class="card">
+                                        <div class="content">
+                                            <div class="row">
+                                                <div class="col-xs-5">
+                                                    <div class="icon-big icon-warning text-center">
+                                                        <i class="ti-server">
+                                                            <img <%--src="assets\img\CPU.png"--%> /></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-7">
+                                                    <div class="numbers">
+                                                        <p>Cpu Usage</p>
+                                                        <label data-dados="cpu" id="CPU">0</label><br />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="footer">
+                                                <hr />
+                                                <div class="stats">
+                                                    <i class="ti-reload"></i>Updated now
+                                   
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-6">
+                                    <div class="card">
+                                        <div class="content">
+                                            <div class="row">
+                                                <div class="col-xs-5">
+                                                    <div class="icon-big icon-success text-center">
+                                                        <i class="ti-wallet">
+                                                            <img <%--src="assets\img\Disco.png"--%> /></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-7">
+                                                    <div class="numbers">
+                                                        <p>Disk Usage</p>
+                                                        <label data-dados="disk">0</label><br />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="footer">
+                                                <hr />
+                                                <div class="stats">
+                                                    <i class="ti-reload"></i>Updated now
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-6">
+                                    <div class="card">
+                                        <div class="content">
+                                            <div class="row">
+                                                <div class="col-xs-5">
+                                                    <div class="icon-big icon-danger text-center">
+                                                        <i class="ti-pulse">
+                                                            <img <%--src="assets\img\Memoria.png"--%> /></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-7">
+                                                    <div class="numbers">
+                                                        <p>Memory Usage</p>
+                                                        <label data-dados="memory">0</label><br />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="footer">
+                                                <hr />
+                                                <div class="stats">
+                                                    <i class="ti-reload"></i>Updated now
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <%--Quarta Linha de Conteúdo da Página--%>
+                            <div class="row">
+                                <div class="col-lg-4 col-sm-6">
+                                    <div class="card">
+                                        <div class="content">
+                                            <div class="row">
+                                                <div class="col-xs-5">
+                                                    <div class="icon-big icon-warning text-center">
+                                                        <i class="ti-server">
+                                                            <img <%--src="assets\img\CPU.png"--%> /></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-7">
+                                                    <div class="numbers">
+                                                        <p>Cpu Usage</p>
+                                                        <label data-dados="cpu" id="CPU">0</label><br />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="footer">
+                                                <hr />
+                                                <div class="stats">
+                                                    <i class="ti-reload"></i>Updated now
+                                   
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-6">
+                                    <div class="card">
+                                        <div class="content">
+                                            <div class="row">
+                                                <div class="col-xs-5">
+                                                    <div class="icon-big icon-success text-center">
+                                                        <i class="ti-wallet">
+                                                            <img <%--src="assets\img\Disco.png"--%> /></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-7">
+                                                    <div class="numbers">
+                                                        <p>Disk Usage</p>
+                                                        <label data-dados="disk">0</label><br />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="footer">
+                                                <hr />
+                                                <div class="stats">
+                                                    <i class="ti-reload"></i>Updated now
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-6">
+                                    <div class="card">
+                                        <div class="content">
+                                            <div class="row">
+                                                <div class="col-xs-5">
+                                                    <div class="icon-big icon-danger text-center">
+                                                        <i class="ti-pulse">
+                                                            <img <%--src="assets\img\Memoria.png"--%> /></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-7">
+                                                    <div class="numbers">
+                                                        <p>Memory Usage</p>
+                                                        <label data-dados="memory">0</label><br />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="footer">
+                                                <hr />
+                                                <div class="stats">
+                                                    <i class="ti-reload"></i>Updated now
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
+                    <%--Rodapé da Página--%>
                     <footer class="footer">
                         <div class="container-fluid">
                             <div class="copyright pull-right">
@@ -231,14 +399,15 @@
                             </div>
                         </div>
                     </footer>
-
                 </div>
             </div>
-            <!--end-->
-        </div>
+
+        </div> <%--Verificar a Necessidade desse cara--%>
     </form>
 </body>
 
+<%--Colocar esses caras em outro lugar--%>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
 <script>
     var $cpu = document.querySelector("[data-dados=cpu]") || undefined
     var $disk = document.querySelector("[data-dados=disk]") || undefined
@@ -568,13 +737,11 @@
     updateDiskChart()
     updateCpuChart()
 </script>
+<%--Colocar esses caras em outro lugar--%>
 
 <!--   Core JS Files   -->
 <script src="assets/js/jquery.min.js" type="text/javascript"></script>
 <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
-
-<!--  Checkbox, Radio & Switch Plugins -->
-<script src="assets/js/bootstrap-checkbox-radio.js"></script>
 
 <!--  Notifications Plugin    -->
 <script src="assets/js/bootstrap-notify.js"></script>
@@ -582,7 +749,7 @@
 <!-- Paper Dashboard Core javascript and methods for Demo purpose REMOVER-->
 <script src="assets/js/paper-dashboard.js"></script>
 
-
+<%--Trocar esse cara--%>
 <script type="text/javascript">
     $(document).ready(function () {
 
@@ -597,4 +764,5 @@
 
     });
 </script>
+
 </html>
