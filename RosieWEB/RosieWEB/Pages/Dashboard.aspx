@@ -24,11 +24,13 @@
 </head>
 <body>
 
-    <form id="form1" runat="server"> <%--Verificar a Necessidade desse cara--%>
+    <form id="form1" runat="server">
+        <%--Verificar a Necessidade desse cara--%>
 
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true"></asp:ScriptManager>
 
-        <div> <%--Verificar a Necessidade desse cara--%>
+        <div>
+            <%--Verificar a Necessidade desse cara--%>
 
             <%--A Pagína Inteira--%>
             <div class="wrapper">
@@ -105,6 +107,7 @@
                                                 <div class="stats">
                                                     <i class="ti-reload"></i>Updated now
                                    
+                                               
                                                 </div>
                                             </div>
                                         </div>
@@ -131,6 +134,7 @@
                                                 <hr />
                                                 <div class="stats">
                                                     <i class="ti-reload"></i>Updated now
+                                               
                                                 </div>
                                             </div>
                                         </div>
@@ -157,6 +161,7 @@
                                                 <hr />
                                                 <div class="stats">
                                                     <i class="ti-reload"></i>Updated now
+                                               
                                                 </div>
                                             </div>
                                         </div>
@@ -165,7 +170,7 @@
                             </div>
                             <%--Segunda Linha de Conteúdo da Página--%>
                             <div class="row">
-                                <div class="col-md-4 col-xm-12">
+                                <div class="col-md-12">
                                     <div class="card">
                                         <div class="header">
                                             <h4 class="title">CPU</h4>
@@ -173,18 +178,19 @@
                                         </div>
                                         <div class="content">
                                             <div class="Grafico">
-                                                <canvas data-chart="cpuChart"></canvas>
+                                                <canvas data-chart="cpuChart" style="height: 30vh"></canvas>
                                             </div>
                                             <div class="footer">
                                                 <hr />
                                                 <div class="stats">
                                                     <i class="ti-timer"></i>Tempo real
+                                               
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="card">
                                         <div class="header">
                                             <h4 class="title">Disco</h4>
@@ -198,12 +204,13 @@
                                                 <hr>
                                                 <div class="stats">
                                                     <i class="ti-timer"></i>Tempo real
+                                               
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="card">
                                         <div class="header">
                                             <h4 class="title">Memoria</h4>
@@ -217,6 +224,47 @@
                                                 <hr>
                                                 <div class="stats">
                                                     <i class="ti-timer"></i>Tempo real
+                                               
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <div class="header">
+                                            <h4 class="title">DiskTESTE</h4>
+                                            <p class="category">Last Campaign Performance</p>
+                                        </div>
+                                        <div class="content">
+                                            <div class="Grafico">
+                                                <canvas data-chart="diskDogChart"></canvas>
+                                            </div>
+                                            <div class="footer">
+                                                <hr>
+                                                <div class="stats">
+                                                    <i class="ti-timer"></i>Tempo real
+                                               
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <div class="header">
+                                            <h4 class="title">MemoriaTESTE</h4>
+                                            <p class="category">Last Campaign Performance</p>
+                                        </div>
+                                        <div class="content">
+                                            <div class="Grafico">
+                                                <canvas data-chart="memoryDogChart"></canvas>
+                                            </div>
+                                            <div class="footer">
+                                                <hr>
+                                                <div class="stats">
+                                                    <i class="ti-timer"></i>Tempo real
+                                               
                                                 </div>
                                             </div>
                                         </div>
@@ -247,6 +295,7 @@
                                                 <div class="stats">
                                                     <i class="ti-reload"></i>Updated now
                                    
+                                               
                                                 </div>
                                             </div>
                                         </div>
@@ -273,6 +322,7 @@
                                                 <hr />
                                                 <div class="stats">
                                                     <i class="ti-reload"></i>Updated now
+                                               
                                                 </div>
                                             </div>
                                         </div>
@@ -299,6 +349,7 @@
                                                 <hr />
                                                 <div class="stats">
                                                     <i class="ti-reload"></i>Updated now
+                                               
                                                 </div>
                                             </div>
                                         </div>
@@ -329,6 +380,7 @@
                                                 <div class="stats">
                                                     <i class="ti-reload"></i>Updated now
                                    
+                                               
                                                 </div>
                                             </div>
                                         </div>
@@ -355,6 +407,7 @@
                                                 <hr />
                                                 <div class="stats">
                                                     <i class="ti-reload"></i>Updated now
+                                               
                                                 </div>
                                             </div>
                                         </div>
@@ -381,6 +434,7 @@
                                                 <hr />
                                                 <div class="stats">
                                                     <i class="ti-reload"></i>Updated now
+                                               
                                                 </div>
                                             </div>
                                         </div>
@@ -394,6 +448,7 @@
                         <div class="container-fluid">
                             <div class="copyright pull-right">
                                 &copy;
+                               
                                 <script>document.write(new Date().getFullYear())</script>
                                 , made with <i class="fa fa-heart heart"></i>by <a href="http://www.creative-tim.com">Creative Tim</a>
                             </div>
@@ -402,12 +457,41 @@
                 </div>
             </div>
 
-        </div> <%--Verificar a Necessidade desse cara--%>
+        </div>
+        <%--Verificar a Necessidade desse cara--%>
     </form>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
+<script>
+    var ctxMemoryDogChart = document.querySelector('[data-chart="memoryDogChart"]').getContext('2d')
+    var memoryDogChart = new Chart(ctxMemoryDogChart, {
+        type: 'doughnut',
+        data: {
+            labels: ['Total', 'Usado', 'Disponivel'],
+            datasets: [{
+                data: [20, 30],
+                backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"]
+            }]
+        },
+        options: {}
+    })
+
+    var ctxDiskDogChart = document.querySelector('[data-chart="diskDogChart"]').getContext('2d')
+    var diskDogChart = new Chart(ctxDiskDogChart, {
+        type: 'doughnut',
+        data: {
+            labels: ['Total', 'Usado', 'Disponivel'],
+            datasets: [{
+                data: [20, 30],
+                backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"]
+            }]
+        },
+        options: {}
+    })
+
+</script>
 
 <%--Colocar esses caras em outro lugar--%>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
 <script>
     var $cpu = document.querySelector("[data-dados=cpu]") || undefined
     var $disk = document.querySelector("[data-dados=disk]") || undefined
@@ -440,7 +524,8 @@
                         }
                     }
                 }]
-            }
+            },
+            maintainAspectRatio: false
         }
     })
 
@@ -615,36 +700,6 @@
             /*--*/
         }
         /*---*/
-    }
-
-    function testeDisk(data, datas) {
-
-
-        datas.forEach(function (data) {
-            diskChart.data.labels.push(y++)
-            diskChart.data.datasets[0].data.push(roundBytesData(data))
-        })
-        diskChart.update()
-
-
-        data = roundBytesData(data)
-        console.log(data)
-        var dataLength = diskChart.data.datasets[0].data.length
-        var dataSetData = diskChart.data.datasets[0].data
-        //Verifica se o dado pego do Banco de Dados não é igual aos ultimos 3 dados do gráfico (ou seja, confirma se o dado esta sendo atualizado)
-        if (data !== dataSetData[dataLength - 1] || data !== dataSetData[dataLength - 2] || data !== dataSetData[dataLength - 3]) {
-            diskChart.data.datasets[0].data.push(data)
-            diskChart.data.labels.push(y++)
-            //Verifica se o Eixo X do gráfico passou de 10 Itens, se sim, exclui o primeiro dado do grafico
-            if (diskChart.data.labels.length > 10) {
-                diskChart.data.labels.shift()
-                diskChart.data.datasets[0].data.shift(1)
-            }
-            /*---*/
-            //Atualiza o gráfico com os novos dados
-            diskChart.update()
-            /*---*/
-        }
     }
 
     var x = 0
