@@ -19,6 +19,8 @@
                 <div class="content">
                     <p class="cd">CADASTRO</p>
                     <div class="text">
+                        <asp:TextBox runat="server" placeholder="Digite o nome da sua empresa" ID="TxtEmpresa" CssClass="caixas" /><br />
+                        <br />
                         <asp:TextBox runat="server" placeholder="Digite seu primeiro e último nome" ID="TxtNome" CssClass="caixas" /><br />
                         <br />
                         <asp:TextBox runat="server" placeholder="Digite seu email" ID="TxtEmail" CssClass="caixas" /><br />
