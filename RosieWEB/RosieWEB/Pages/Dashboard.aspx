@@ -21,6 +21,10 @@
     <!--  Fonts   -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+
+    <%--    CSS Rosie   --%>
+    <link href="css/Dashboard.css" rel="stylesheet" type="text/css" />
+
 </head>
 <body>
 
@@ -76,7 +80,7 @@
                                     <span class="icon-bar bar2"></span>
                                     <span class="icon-bar bar3"></span>
                                 </button>
-                                <a class="navbar-brand" href="#">Dashboard</a>
+                                <a class="navbar-brand" href="#">[Nome do Usuario Selecionado]</a>
                             </div>
                         </div>
                     </nav>
@@ -85,83 +89,52 @@
                         <div class="container-fluid">
                             <%--Primeira Linha de Conteudo da Página--%>
                             <div class="row">
-                                <div class="col-lg-4 col-sm-6">
+                                <div class="col-lg-4 col-sm-4">
                                     <div class="card">
                                         <div class="content">
                                             <div class="row">
-                                                <div class="col-xs-5">
-                                                    <div class="icon-big icon-warning text-center">
-                                                        <i class="ti-server">
-                                                            <img <%--src="assets\img\CPU.png"--%> /></i>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-7">
-                                                    <div class="numbers">
-                                                        <p>Cpu Usage</p>
-                                                        <label data-dados="cpu" id="CPU">0</label><br />
-                                                    </div>
+                                                <div class="col-md-10">
+                                                    <p>Uso de CPU: <span data-dados="cpuUnique">0</span></p>
                                                 </div>
                                             </div>
                                             <div class="footer">
                                                 <hr />
                                                 <div class="stats">
                                                     <i class="ti-reload"></i>Updated now
-                                   
-                                               
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-sm-6">
+                                <div class="col-lg-4 col-sm-4">
                                     <div class="card">
                                         <div class="content">
                                             <div class="row">
-                                                <div class="col-xs-5">
-                                                    <div class="icon-big icon-success text-center">
-                                                        <i class="ti-wallet">
-                                                            <img <%--src="assets\img\Disco.png"--%> /></i>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-7">
-                                                    <div class="numbers">
-                                                        <p>Disk Usage</p>
-                                                        <label data-dados="disk">0</label><br />
-                                                    </div>
+                                                <div class="col-md-10">
+                                                    <p>Uso de Disco: <span data-dados="diskUnique">0</span></p>
                                                 </div>
                                             </div>
                                             <div class="footer">
                                                 <hr />
                                                 <div class="stats">
                                                     <i class="ti-reload"></i>Updated now
-                                               
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-sm-6">
+                                <div class="col-lg-4 col-sm-4">
                                     <div class="card">
                                         <div class="content">
                                             <div class="row">
-                                                <div class="col-xs-5">
-                                                    <div class="icon-big icon-danger text-center">
-                                                        <i class="ti-pulse">
-                                                            <img <%--src="assets\img\Memoria.png"--%> /></i>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-7">
-                                                    <div class="numbers">
-                                                        <p>Memory Usage</p>
-                                                        <label data-dados="memory">0</label><br />
-                                                    </div>
+                                                <div class="col-md-10">
+                                                    <p>Uso de Memória: <span data-dados="memoryUnique">0</span></p>
                                                 </div>
                                             </div>
                                             <div class="footer">
                                                 <hr />
                                                 <div class="stats">
                                                     <i class="ti-reload"></i>Updated now
-                                               
                                                 </div>
                                             </div>
                                         </div>
@@ -173,8 +146,8 @@
                                 <div class="col-md-12">
                                     <div class="card">
                                         <div class="header">
-                                            <h4 class="title">CPU</h4>
-                                            <p class="category">Last Campaign Performance</p>
+                                            <h4 class="title">Uso da CPU</h4>
+                                            <p class="category">a cada 5 segundos</p>
                                         </div>
                                         <div class="content">
                                             <div class="Grafico">
@@ -190,7 +163,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <%--<div class="col-md-6">
                                     <div class="card">
                                         <div class="header">
                                             <h4 class="title">Disco</h4>
@@ -229,7 +202,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div>--%>
                                 <div class="col-md-6">
                                     <div class="card">
                                         <div class="header">
@@ -238,7 +211,7 @@
                                         </div>
                                         <div class="content">
                                             <div class="Grafico">
-                                                <canvas data-chart="diskDogChart"></canvas>
+                                                <canvas data-chart="diskDogChart" style="height: 40vh"></canvas>
                                             </div>
                                             <div class="footer">
                                                 <hr>
@@ -258,7 +231,7 @@
                                         </div>
                                         <div class="content">
                                             <div class="Grafico">
-                                                <canvas data-chart="memoryDogChart"></canvas>
+                                                <canvas data-chart="memoryDogChart" style="height: 40vh"></canvas>
                                             </div>
                                             <div class="footer">
                                                 <hr>
@@ -273,83 +246,115 @@
                             </div>
                             <%--Terceira Linha de Conteúdo da Página--%>
                             <div class="row">
-                                <div class="col-lg-4 col-sm-6">
+                                <%-------------------------------------------INFORMAÇÕES DA CPU----------------------------------------------%>
+                                <div class="col-md-4">
                                     <div class="card">
                                         <div class="content">
                                             <div class="row">
-                                                <div class="col-xs-5">
-                                                    <div class="icon-big icon-warning text-center">
-                                                        <i class="ti-server">
-                                                            <img <%--src="assets\img\CPU.png"--%> /></i>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-7">
-                                                    <div class="numbers">
-                                                        <p>Cpu Usage</p>
-                                                        <label data-dados="cpu" id="CPU">0</label><br />
-                                                    </div>
+                                                <div class="col-md-12">
+                                                    <h3>Informações da CPU</h3>
+                                                    <table class="table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>CPU</th>
+                                                                <td>1</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Tempo Ativo</th>
+                                                                <td>John</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Qtd Processadores Lógicos</th>
+                                                                <td>Carter</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Qtd Processadores Lógicos</th>
+                                                                <td>johncarter@mail.com</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
                                                 </div>
                                             </div>
                                             <div class="footer">
                                                 <hr />
                                                 <div class="stats">
                                                     <i class="ti-reload"></i>Updated now
-                                   
-                                               
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-sm-6">
+                                <%-------------------------------------------INFORMAÇÕES DA DISCO----------------------------------------------%>
+                                <div class="col-md-4">
                                     <div class="card">
                                         <div class="content">
                                             <div class="row">
-                                                <div class="col-xs-5">
-                                                    <div class="icon-big icon-success text-center">
-                                                        <i class="ti-wallet">
-                                                            <img <%--src="assets\img\Disco.png"--%> /></i>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-7">
-                                                    <div class="numbers">
-                                                        <p>Disk Usage</p>
-                                                        <label data-dados="disk">0</label><br />
-                                                    </div>
+                                                <div class="col-md-12">
+                                                    <h3>Informações da Disco</h3>
+                                                    <table class="table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>Row</th>
+                                                                <td>1</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>First Name</th>
+                                                                <td>John</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Last Name</th>
+                                                                <td>Carter</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Email</th>
+                                                                <td>johncarter@mail.com</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
                                                 </div>
                                             </div>
                                             <div class="footer">
                                                 <hr />
                                                 <div class="stats">
                                                     <i class="ti-reload"></i>Updated now
-                                               
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-sm-6">
+                                <%-------------------------------------------INFORMAÇÕES DA MEMÓRIA----------------------------------------------%>
+                                <div class="col-md-4">
                                     <div class="card">
                                         <div class="content">
                                             <div class="row">
-                                                <div class="col-xs-5">
-                                                    <div class="icon-big icon-danger text-center">
-                                                        <i class="ti-pulse">
-                                                            <img <%--src="assets\img\Memoria.png"--%> /></i>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-7">
-                                                    <div class="numbers">
-                                                        <p>Memory Usage</p>
-                                                        <label data-dados="memory">0</label><br />
-                                                    </div>
+                                                <div class="col-md-12">
+                                                    <h3>Informações da Memória</h3>
+                                                    <table class="table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>Row</th>
+                                                                <td>1</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>First Name</th>
+                                                                <td>John</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Last Name</th>
+                                                                <td>Carter</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Email</th>
+                                                                <td>johncarter@mail.com</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
                                                 </div>
                                             </div>
                                             <div class="footer">
                                                 <hr />
                                                 <div class="stats">
                                                     <i class="ti-reload"></i>Updated now
-                                               
                                                 </div>
                                             </div>
                                         </div>
@@ -470,10 +475,12 @@
             labels: ['Total', 'Usado', 'Disponivel'],
             datasets: [{
                 data: [20, 30],
-                backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"]
+                backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"]
             }]
         },
-        options: {}
+        options: {
+            maintainAspectRatio: false
+        }
     })
 
     var ctxDiskDogChart = document.querySelector('[data-chart="diskDogChart"]').getContext('2d')
@@ -483,10 +490,12 @@
             labels: ['Total', 'Usado', 'Disponivel'],
             datasets: [{
                 data: [20, 30],
-                backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"]
+                backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"]
             }]
         },
-        options: {}
+        options: {
+            maintainAspectRatio: false
+        }
     })
 
 </script>
@@ -529,89 +538,89 @@
         }
     })
 
-    var ctxDiskChart = document.querySelector('[data-chart="diskChart"]').getContext('2d')
-    var diskChart = new Chart(ctxDiskChart, {
-        type: 'line',
-        data: {
-            labels: [],
-            datasets: [{
-                label: 'DiskUsage',
-                backgroundColor: 'rgba(33, 255, 84, 30%)',
-                borderColor: 'rgb(40, 40, 40)',
-                data: []
-            }]
-        },
-        options: {
-            animation: {
-                duration: 500
-            },
-            legend: {
-                onClick: function () { return }
-            },
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        callback: function (value, index, values) {
-                            if (dataType === 'TB') {
-                                return `${Math.round(value)} TB`
+    //var ctxDiskChart = document.querySelector('[data-chart="diskChart"]').getContext('2d')
+    //var diskChart = new Chart(ctxDiskChart, {
+    //    type: 'line',
+    //    data: {
+    //        labels: [],
+    //        datasets: [{
+    //            label: 'DiskUsage',
+    //            backgroundColor: 'rgba(33, 255, 84, 30%)',
+    //            borderColor: 'rgb(40, 40, 40)',
+    //            data: []
+    //        }]
+    //    },
+    //    options: {
+    //        animation: {
+    //            duration: 500
+    //        },
+    //        legend: {
+    //            onClick: function () { return }
+    //        },
+    //        scales: {
+    //            yAxes: [{
+    //                ticks: {
+    //                    callback: function (value, index, values) {
+    //                        if (dataType === 'TB') {
+    //                            return `${Math.round(value)} TB`
 
-                            } else if (dataType === 'GB') {
-                                return `${Math.round(value)} GB`
+    //                        } else if (dataType === 'GB') {
+    //                            return `${Math.round(value)} GB`
 
-                            } else if (dataType === 'MB') {
-                                return `${Math.round(value)} MB`
+    //                        } else if (dataType === 'MB') {
+    //                            return `${Math.round(value)} MB`
 
-                            } else {
-                                return `${value} Bytes`
-                            }
-                        }
-                    }
-                }]
-            }
-        }
-    })
+    //                        } else {
+    //                            return `${value} Bytes`
+    //                        }
+    //                    }
+    //                }
+    //            }]
+    //        }
+    //    }
+    //})
 
-    var ctxMemoryChart = document.querySelector('[data-chart="memoryChart"]').getContext('2d')
-    var memoryChart = new Chart(ctxMemoryChart, {
-        type: 'line',
-        data: {
-            labels: [],
-            datasets: [{
-                label: 'MemoryUsage',
-                backgroundColor: 'rgba(106, 250, 252, 30%)',
-                borderColor: 'rgb(40, 40, 40)',
-                data: []
-            }]
-        },
-        options: {
-            animation: {
-                duration: 500
-            },
-            legend: {
-                onClick: function () { return }
-            },
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        callback: function (value, index, values) {
-                            if (dataType === 'TB') {
-                                return `${Math.round(value)} TB`
+    //var ctxMemoryChart = document.querySelector('[data-chart="memoryChart"]').getContext('2d')
+    //var memoryChart = new Chart(ctxMemoryChart, {
+    //    type: 'line',
+    //    data: {
+    //        labels: [],
+    //        datasets: [{
+    //            label: 'MemoryUsage',
+    //            backgroundColor: 'rgba(106, 250, 252, 30%)',
+    //            borderColor: 'rgb(40, 40, 40)',
+    //            data: []
+    //        }]
+    //    },
+    //    options: {
+    //        animation: {
+    //            duration: 500
+    //        },
+    //        legend: {
+    //            onClick: function () { return }
+    //        },
+    //        scales: {
+    //            yAxes: [{
+    //                ticks: {
+    //                    callback: function (value, index, values) {
+    //                        if (dataType === 'TB') {
+    //                            return `${Math.round(value)} TB`
 
-                            } else if (dataType === 'GB') {
-                                return `${Math.round(value)} GB`
+    //                        } else if (dataType === 'GB') {
+    //                            return `${Math.round(value)} GB`
 
-                            } else if (dataType === 'MB') {
-                                return `${Math.round(value)} MB`
+    //                        } else if (dataType === 'MB') {
+    //                            return `${Math.round(value)} MB`
 
-                            } else {
-                                return `${value} Bytes`
-                            }
-                        }
-                    }
-                }]
-            }
-        }
-    })
+    //                        } else {
+    //                            return `${value} Bytes`
+    //                        }
+    //                    }
+    //                }
+    //            }]
+    //        }
+    //    }
+    //})
 
     var loopCpu;
 
@@ -739,7 +748,7 @@
             }
             /*---*/
             //Invoca um loop da função asíncronamente a cada 3 segundos
-            setTimeout(updateCpuChart, 3000)
+            setTimeout(updateCpuChart, 5000)
             /*--*/
         }
         /*---*/
