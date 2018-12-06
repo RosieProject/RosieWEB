@@ -114,23 +114,21 @@
         const $tableBody = document.querySelector('[data-table="tbody"]')
 
         getUsers()
+        
         function getUsers() {
             PageMethods.SearchUser(function (datas) {
-                var users = datas
-                console.log(users)
-                console.log(JSON.parse(users[0]).userName)
-                addUser($tableBody, users, users.length)
+                addUser($tableBody, datas, datas.length)
             }, /*Error Function*/)
         }
 
         function addUser(element, users, rowsLenght) {
             for (var i = 0; i < rowsLenght; i++) {
-            var tr = document.createElement('TR')
-            var tdName = document.createElement('TD')
-            var tdCpu = document.createElement('TD')
-            var tdMemory = document.createElement('TD')
-            var tdDisk = document.createElement('TD')
-            var tdState = document.createElement('TD')
+                var tr = document.createElement('TR')
+                var tdName = document.createElement('TD')
+                var tdCpu = document.createElement('TD')
+                var tdMemory = document.createElement('TD')
+                var tdDisk = document.createElement('TD')
+                var tdState = document.createElement('TD')
                 var text = document.createTextNode(JSON.parse(users[i]).userName)
                 tdName.appendChild(text)
                 tr.appendChild(tdName)
@@ -149,7 +147,26 @@
                 tr.appendChild(tdState)
                 element.appendChild(tr)
             }
-            
+            addRowClickHandler(users)
+        }
+
+        function addRowClickHandler(users) {
+            var rows = $tableBody.getElementsByTagName('TR');
+            console.log(users)
+            /*rows.forEach(function (row, rowIndex) {
+                row.onclick = function (event) { alert(row + ' !') }
+            })*/
+            for (i = 0; i < rows.length; i++) {
+                var row = rows[i];
+                console.log(row)
+                console.log(JSON.parse(users[i]).userComputer)
+                row.onclick = function () {
+                    console.log(JSON.parse(users[i]).userComputer)
+                    PageMethods.SaveComputer(function (data) { console.log('dado')})
+                    //window.location.replace('Dashboard.aspx');
+                };
+            }
+            //PageMethods.SaveComputer()
         }
 
     </script>
