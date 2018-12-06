@@ -129,7 +129,7 @@
                             <%--Segunda Linha de Conteúdo da Página--%>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="card">
+                                    <div class="card" style="border: 2px solid rgba(33, 33, 33, 40%)">
                                         <div class="header">
                                             <h4 class="title">Uso da CPU</h4>
                                             <p class="category">a cada 5 segundos</p>
@@ -182,7 +182,7 @@
                                     </div>
                                 </div>--%>
                                 <div class="col-md-6">
-                                    <div class="card">
+                                    <div class="card" style="border: 2px solid rgba(33, 33, 33, 40%)">
                                         <div class="header">
                                             <h4 class="title">DiskTESTE</h4>
                                             <p class="category">Last Campaign Performance</p>
@@ -195,7 +195,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="card">
+                                    <div class="card" style="border: 2px solid rgba(33, 33, 33, 40%)">
                                         <div class="header">
                                             <h4 class="title">MemoriaTESTE</h4>
                                             <p class="category">Last Campaign Performance</p>
@@ -210,103 +210,73 @@
                             </div>
                             <%--Terceira Linha de Conteúdo da Página--%>
                             <div class="row">
+                                <%-------------------------------------------INFORMAÇÕES DO OS----------------------------------------------%>
+                                <div class="col-md-6">
+                                    <div class="card info-card">
+                                        <div class="content">
+                                            <div class="row">
+                                                <h3 class="info-H3">Informações do Sistema Operacional</h3>
+                                                <div class="content table-responsive table-full-width">
+                                                    <table class="table table-hover">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>Sistema Operacional</th>
+                                                                <td>[SISTEMA OPERACIONAL]</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Bytes do Sistema</th>
+                                                                <td>[BYTES]</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Qtd de Processos</th>
+                                                                <td>[QTD DE PROCESSOS]</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Qtd de Threads</th>
+                                                                <td>[QTD DE THREADS]</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Versão do Sistema</th>
+                                                                <td>[Versão]</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Fabricante</th>
+                                                                <td>[Fabricante]</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <%-------------------------------------------INFORMAÇÕES DA CPU----------------------------------------------%>
-                                <div class="col-md-4">
-                                    <div class="card">
+                                <div class="col-md-6">
+                                    <div class="card info-card">
                                         <div class="content">
                                             <div class="row">
-                                                <div class="col-md-12">
-                                                    <h3>Informações da CPU</h3>
-                                                    <div class="content table-responsive table-full-width">
-                                                        <table class="table table-hover">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <th>CPU</th>
-                                                                    <td>[NOME DA CPU]</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Tempo Ativo</th>
-                                                                    <td>[TEMPO ATIVO DA CPU]</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Qtd Processadores Lógicos</th>
-                                                                    <td>[QTD DE PROCESSADORES LÓGICOS]</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Qtd Processadores Lógicos</th>
-                                                                    <td>[QTD DE PROCESSADORES FÍSICOS]</td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <%-------------------------------------------INFORMAÇÕES DA MEMÓRIA----------------------------------------------%>
-                                <div class="col-md-4">
-                                    <div class="card">
-                                        <div class="content">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <h3>Informações do Sistema Operacional</h3>
-                                                    <div class="content table-responsive table-full-width">
-                                                        <table class="table table-hover">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <th>Sistema Operacional</th>
-                                                                    <td>[SISTEMA OPERACIONAL]</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Bytes do Sistema</th>
-                                                                    <td>[BYTES]</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Qtd de Processos</th>
-                                                                    <td>[QTD DE PROCESSOS]</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Qtd de Threads</th>
-                                                                    <td>[QTD DE THREADS]</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Versão do Sistema</th>
-                                                                    <td>[Versão]</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Fabricante</th>
-                                                                    <td>[Fabricante]</td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <%-------------------------------------------INFORMAÇÕES DA DISCO----------------------------------------------%>
-                                <div class="col-md-4">
-                                    <div class="card">
-                                        <div class="content">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <h3>Informações da Disco</h3>
-                                                    <div class="content table-responsive table-full-width">
-                                                        <table class="table table-hover">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <th>Partições</th>
-                                                                    <td>[PARTIÇÃO DOS DISCOS]</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Tipo</th>
-                                                                    <td>[TIPO DO DISCO]</td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
+                                                <h3 class="info-H3">Informações da CPU</h3>
+                                                <div class="content table-responsive table-full-width">
+                                                    <table class="table table-hover">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>CPU</th>
+                                                                <td>[NOME DA CPU]</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Tempo Ativo</th>
+                                                                <td>[TEMPO ATIVO DA CPU]</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Qtd Processadores Lógicos</th>
+                                                                <td>[QTD PROCESSADORES LÓGICOS]</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Qtd Processadores Lógicos</th>
+                                                                <td>[QTD PROCESSADORES FÍSICOS]</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
                                                 </div>
                                             </div>
                                         </div>
