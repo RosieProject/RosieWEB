@@ -49,7 +49,7 @@ namespace RosieWEB.Pages
         }
 
         [WebMethod]
-        public static string SaveComputer(string idComputer)
+        public static string SaveComputer(int idComputer)
         {
             return (HttpContext.Current.Session["ID_PC"] = idComputer).ToString();
         }
