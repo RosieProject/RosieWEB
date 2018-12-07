@@ -114,23 +114,21 @@
         const $tableBody = document.querySelector('[data-table="tbody"]')
 
         getUsers()
+
         function getUsers() {
             PageMethods.SearchUser(function (datas) {
-                var users = datas
-                console.log(users)
-                console.log(JSON.parse(users[0]).userName)
-                addUser($tableBody, users, users.length)
+                addUser($tableBody, datas, datas.length)
             }, /*Error Function*/)
         }
 
         function addUser(element, users, rowsLenght) {
             for (var i = 0; i < rowsLenght; i++) {
-            var tr = document.createElement('TR')
-            var tdName = document.createElement('TD')
-            var tdCpu = document.createElement('TD')
-            var tdMemory = document.createElement('TD')
-            var tdDisk = document.createElement('TD')
-            var tdState = document.createElement('TD')
+                var tr = document.createElement('TR')
+                var tdName = document.createElement('TD')
+                var tdCpu = document.createElement('TD')
+                var tdMemory = document.createElement('TD')
+                var tdDisk = document.createElement('TD')
+                var tdState = document.createElement('TD')
                 var text = document.createTextNode(JSON.parse(users[i]).userName)
                 tdName.appendChild(text)
                 tr.appendChild(tdName)
@@ -147,9 +145,26 @@
                 circle.setAttribute('style', 'width:20px; height:20px; background:' + 'green' + '; border-radius:100%; margin: 0 auto')
                 tdState.appendChild(circle)
                 tr.appendChild(tdState)
+
+                var idPC = JSON.parse(users[i]).userComputer
+                tr.value = idPC
+
                 element.appendChild(tr)
             }
-            
+            addRowClickHandler()
+        }
+
+        function addRowClickHandler() {
+            var rows = $tableBody.getElementsByTagName('TR');
+
+            for (i = 0; i < rows.length; i++) {
+                var row = rows[i];
+                var att = document.createAttribute('onclick')
+                att.value = 'PageMethods.SaveComputer(this.value, function (data) { console.log(data)})'
+                console.log(row)
+                console.log(row.value)
+                row.setAttributeNode(att)
+            }
         }
 
     </script>
