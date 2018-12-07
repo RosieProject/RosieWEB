@@ -92,6 +92,7 @@
     <Content Include="Pages\css\animate.css" />
     <Content Include="Pages\css\bootstrap-responsive.css" />
     <Content Include="Pages\css\bootstrap.css" />
+    <Content Include="Pages\css\Dashboard.css" />
     <Content Include="Pages\css\estilos.css" />
     <Content Include="Pages\css\jquery.bxslider.css" />
     <Content Include="Pages\css\jquery.cslider.css" />
@@ -170,7 +171,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\User.cs" />
+    <Compile Include="Model\UserComputerData.cs" />
+    <Compile Include="Model\UserStatus.cs" />
     <Compile Include="Pages\Cadastro.aspx.cs">
       <DependentUpon>Cadastro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

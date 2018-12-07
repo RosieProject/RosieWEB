@@ -114,7 +114,6 @@
         const $tableBody = document.querySelector('[data-table="tbody"]')
 
         getUsers()
-        
         function getUsers() {
             PageMethods.SearchUser(function (datas) {
                 addUser($tableBody, datas, datas.length)
@@ -145,6 +144,10 @@
                 circle.setAttribute('style', 'width:20px; height:20px; background:' + 'green' + '; border-radius:100%; margin: 0 auto')
                 tdState.appendChild(circle)
                 tr.appendChild(tdState)
+
+                var idPC = JSON.parse(users[i]).userComputer
+                tr.value = idPC
+
                 element.appendChild(tr)
             }
             addRowClickHandler(users)
