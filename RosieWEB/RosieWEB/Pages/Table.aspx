@@ -114,7 +114,7 @@
         const $tableBody = document.querySelector('[data-table="tbody"]')
 
         getUsers()
-        
+
         function getUsers() {
             PageMethods.SearchUser(function (datas) {
                 addUser($tableBody, datas, datas.length)
@@ -145,28 +145,26 @@
                 circle.setAttribute('style', 'width:20px; height:20px; background:' + 'green' + '; border-radius:100%; margin: 0 auto')
                 tdState.appendChild(circle)
                 tr.appendChild(tdState)
+
+                var idPC = JSON.parse(users[i]).userComputer
+                tr.value = idPC
+
                 element.appendChild(tr)
             }
-            addRowClickHandler(users)
+            addRowClickHandler()
         }
 
-        function addRowClickHandler(users) {
+        function addRowClickHandler() {
             var rows = $tableBody.getElementsByTagName('TR');
-            console.log(users)
-            /*rows.forEach(function (row, rowIndex) {
-                row.onclick = function (event) { alert(row + ' !') }
-            })*/
+
             for (i = 0; i < rows.length; i++) {
                 var row = rows[i];
+                var att = document.createAttribute('onclick')
+                att.value = 'PageMethods.SaveComputer(this.value, function (data) { console.log(data)})'
                 console.log(row)
-                console.log(JSON.parse(users[i]).userComputer)
-                row.onclick = function () {
-                    console.log(JSON.parse(users[i]).userComputer)
-                    PageMethods.SaveComputer(function (data) { console.log('dado')})
-                    //window.location.replace('Dashboard.aspx');
-                };
+                console.log(row.value)
+                row.setAttributeNode(att)
             }
-            //PageMethods.SaveComputer()
         }
 
     </script>
