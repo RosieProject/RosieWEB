@@ -6,37 +6,42 @@
 <head runat="server">
     <link href="css/cadastro.css" rel="stylesheet" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="google-signin-scope" content="" />
+<%--<meta name="google-signin-scope" content="" />
     <meta name="google-signin-client_id" content="621914680772-cmod185olq6efdnmf5l89mdem9sv28cd.apps.googleusercontent.com" />
-    <script src="https://apis.google.com/js/platform.js" async="" defer=""></script>
+    <script src="https://apis.google.com/js/platform.js" async="" defer=""></script>--%>
     <title>Cadastre-se</title>
 </head>
 <body>
     <form id="form1" runat="server">
+        <asp:ScriptManager runat="server" ID="scriptManager1" EnablePageMethods="true"></asp:ScriptManager>
         <div class="centro">
             <div class="formulario">
                 <img id="user-photo" src="https://mariovalney.com/wp-content/uploads/2015/06/user-anonimo.jpg" />
                 <div class="content">
                     <p class="cd">CADASTRO</p>
                     <div class="text">
-                        <asp:TextBox runat="server" placeholder="Digite o nome da sua empresa" ID="TxtEmpresa" CssClass="caixas" /><br />
+                        <asp:TextBox runat="server" placeholder="Digite o nome da sua empresa" ID="TxtEmpresa" CssClass="caixas" ForeColor="White"/><br />
                         <br />
-                        <asp:TextBox runat="server" placeholder="Digite seu primeiro e último nome" ID="TxtNome" CssClass="caixas" /><br />
+                        <asp:TextBox runat="server" placeholder="Digite seu primeiro e último nome" ID="TxtNome" CssClass="caixas" ForeColor="White"/><br />
                         <br />
-                        <asp:TextBox runat="server" placeholder="Digite seu email" ID="TxtEmail" CssClass="caixas" /><br />
+                        <asp:TextBox runat="server" placeholder="Digite seu email" ID="TxtEmail" CssClass="caixas" ForeColor="White"/><br />
                         <br />
-                        <asp:TextBox runat="server" placeholder="Digite uma senha..." TextMode="Password" ID="TxtSenha" CssClass="caixas" /><br />
+                        <asp:TextBox runat="server" placeholder="Digite uma senha..." TextMode="Password" ID="TxtSenha" CssClass="caixas" ForeColor="White"/><br />
                         <br />
-                        <asp:TextBox runat="server" placeholder="Confirme sua senha..." TextMode="Password" ID="TxtConfSenha" CssClass="caixas" /><br />
+                        <asp:TextBox runat="server" placeholder="Confirme sua senha..." TextMode="Password" ID="TxtConfSenha" CssClass="caixas" ForeColor="White"/><br />
                         <br />
                         <div class="btn">
-                            <asp:Button Text="    Salvar    " runat="server" ID="btnCadastro" CssClass="alinhamento" OnClick="btnCadastro_Click" />
+                            <asp:Button Text="    Salvar    " runat="server" ID="btnCadastro" CssClass="alinhamento" ForeColor="White"/>
                         </div>
                     </div>
-                    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" data-width="300" data-height="50" data-longtitle="true" data-lang="pt-BR"></div>
+                    <%--<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" data-width="300" data-height="50" data-longtitle="true" data-lang="pt-BR"></div>--%>
                 </div>
             </div>
         </div>
     </form>
 </body>
+
+    <%--Script da Pagina--%>
+<script src="js/Cadastro.js"></script>
+
 </html>
