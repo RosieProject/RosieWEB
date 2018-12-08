@@ -4,17 +4,16 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <link rel="stylesheet" type="text/css" href="css/login.css" />
+    
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="google-signin-scope" content="" />
+    <%--<meta name="google-signin-scope" content="" />
     <meta name="google-signin-client_id" content="621914680772-cmod185olq6efdnmf5l89mdem9sv28cd.apps.googleusercontent.com" />
-    <script src="https://apis.google.com/js/platform.js" async="" defer=""></script>
+    <script src="https://apis.google.com/js/platform.js" async="" defer=""></script>--%>
     <title>Login</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"/>
-
+    <link rel="stylesheet" type="text/css" href="css/NovoLogin.css" />
 </head>
 
-<body>
+<body style="background: url(images/FundoLogin1.png) no-repeat">
     <form id="form1" runat="server">
         <a href="index.html">
             <img class="foto" src="images/Slider01.png"/>
@@ -22,24 +21,24 @@
         <asp:ScriptManager runat="server" EnablePageMethods="true"></asp:ScriptManager>
         <div class="center">
             <div class="form">
-                <img id="user-photo" src="https://mariovalney.com/wp-content/uploads/2015/06/user-anonimo.jpg" />
+                <img id="user-photo" src="https://mariovalney.com/wp-content/uploads/2015/06/user-anonimo.jpg" class="user-photo"/>
                 <div class="content">
                     <p class="cd">LOGIN</p>
                     <div class="texto">
                         <div class="labels">
                             <p class="definicao">E-mail</p>
-                            <asp:TextBox runat="server" placeholder="" ID="TxtEmail" CssClass="log" />
+                            <asp:TextBox runat="server" placeholder="" ID="TxtEmail" CssClass="log TxtEmail" />
                             <p class="definicao">Senha</p>
-                            <asp:TextBox runat="server" TextMode="Password" placeholder="" ID="Password" CssClass="log" /><br />
+                            <asp:TextBox runat="server" TextMode="Password" placeholder="" ID="Password" CssClass="log Password" /><br />
                             <br />
                         </div>
 
                         <div class="botao">
-                            <asp:Button Text="Entrar" runat="server" ID="BtnLogin" CssClass="teste" OnClick="Loginteste" />
+                            <asp:Button Text="Entrar" runat="server" ID="BtnLogin" CssClass="teste BtnLogin" OnClick="Loginteste" />
                             <br />
                             <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" data-width="300" data-height="50" data-longtitle="true" data-lang="pt-BR"></div>
                             <br />
-                            <asp:Button Text="Ainda não é cadastrado ?" runat="server" ID="BtnCadastrar" OnClick="BtnCadastrar_Click" class="teste" />
+                            <asp:Button Text="Ainda não é cadastrado ?" runat="server" ID="BtnCadastrar" OnClick="BtnCadastrar_Click" class="teste BtnCadastrar" />
 
                         </div>
                     </div>

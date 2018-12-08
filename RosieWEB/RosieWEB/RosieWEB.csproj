@@ -97,7 +97,7 @@
     <Content Include="Pages\css\estilos.css" />
     <Content Include="Pages\css\jquery.bxslider.css" />
     <Content Include="Pages\css\jquery.cslider.css" />
-    <Content Include="Pages\css\login.css" />
+    <Content Include="Pages\css\NovoLogin.css" />
     <Content Include="Pages\css\pluton-ie7.css" />
     <Content Include="Pages\css\pluton.css" />
     <Content Include="Pages\css\style.css" />
@@ -117,6 +117,10 @@
     <Content Include="Pages\images\clients\ClientLogo05.png" />
     <Content Include="Pages\images\clients\ClientLogo06.png" />
     <Content Include="Pages\images\fs.spinner.gif" />
+    <Content Include="Pages\images\FundoCadastro.png" />
+    <Content Include="Pages\images\FundoCadastro2.png" />
+    <Content Include="Pages\images\FundoLogin.png" />
+    <Content Include="Pages\images\FundoLogin1.png" />
     <Content Include="Pages\images\iBook.png" />
     <Content Include="Pages\images\ico\apple-touch-icon-114.png" />
     <Content Include="Pages\images\ico\apple-touch-icon-144.png" />
