@@ -1,0 +1,185 @@
+﻿body {
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+    background: url(../images/FundoCadastro2.png) no-repeat;
+    background-size: cover;
+}
+
+.definicao {
+    color: #127486;
+    margin-bottom: 2px;
+    font-size: 15px;
+}
+
+#TxtEmail {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    width: 300px;
+    margin-bottom: 1px;
+}
+
+#TxtEmpresa {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    width: 300px;
+    margin-bottom: 1px;
+}
+
+#TxtNome {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    width: 300px;
+    margin-bottom: 1px;
+}
+
+#TxtSenha {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    width: 300px;
+    margin-bottom: 1px;
+}
+
+#TxtConfSenha {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    width: 300px;
+    margin-bottom: 1px;
+}
+
+.formulario {
+    position: absolute;
+    left: 40%;
+    width: 350px;
+    height: 650px;
+    top: 40%;
+    margin-top: -219px;
+    border-radius: 0%;
+    background-color: rgba(0,0,0,0.80);
+    box-shadow: #127486;
+}
+
+#btnCadastro {
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #127486;
+    color: black;
+    font-size: 18px;
+    border-radius: 20px;
+    position: center;
+    margin-bottom: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+    #btnCadastro:hover {
+        background: #B9D9E5;
+        cursor: pointer;
+    }
+
+#BtnCadastrar {
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: #B9D9E5;
+    background: transparent;
+    width: 150px;
+    margin-left: 35px;
+}
+
+.g-signin2 {
+    margin-left: 25px;
+}
+
+#user-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    top: -50px;
+    margin-top: -50px;
+    box-shadow: 10px, 10px, 10px, #000000;
+    border-color: rgba(0,0,0,0.80);
+    border-width: 5px;
+}
+
+.centro {
+    text-align: center;
+    margin-top: 20%;
+    background-color: black;
+}
+
+.foto {
+    width: 400px;
+    height: 400px;
+    margin-left: 200px;
+    position: absolute;
+    top: 150px;
+}
+
+.log {
+    width: 60%;
+    height: 30px;
+    font-size: 12px;
+    font-family: Arial;
+    background-color: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-width: 1px;
+    border-color: white;
+}
+
+.text {
+    margin-top: 2rem;
+    overflow: hidden;
+}
+
+.cd {
+    margin-top: 50px;
+    font-size: 25px;
+    padding-bottom: 13px;
+    color: #127486;
+}
+
+.botao {
+    float: left;
+}
+
+.teste {
+    background-color: white;
+    border: 0px;
+    width: 90px;
+    height: 20px;
+}
+
+::-webkit-input-placeholder {
+    color: white;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    color: white;
+}
+
+::-moz-placeholder { /* Firefox 19+ */
+    color: white;
+}
+
+:-ms-input-placeholder {
+    color: white;
+}

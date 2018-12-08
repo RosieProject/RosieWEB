@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <link href="css/login.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="css/login.css" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="google-signin-scope" content="" />
     <meta name="google-signin-client_id" content="621914680772-cmod185olq6efdnmf5l89mdem9sv28cd.apps.googleusercontent.com" />
@@ -43,14 +43,9 @@
 
                         </div>
                     </div>
-
-
-
-
                 </div>
             </div>
         </div>
-
 
         <div class="user">
 

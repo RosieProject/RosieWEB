@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Web;
+using System.Web.Script.Serialization;
 using System.Web.Services;
+using RosieWEB.Model;
 
 namespace RosieWEB
 {
@@ -123,5 +126,30 @@ namespace RosieWEB
                 }
             }
         }
+
+        /*[WebMethod]
+        public static List<string> AtualizarDados()
+        {
+            string strConn = ConfigurationManager.ConnectionStrings["connectRosie"].ToString();
+
+            using (SqlConnection conn = new SqlConnection(strConn))
+            {
+                conn.Open();
+                using (SqlCommand searchUser = new SqlCommand($"SELECT Empresa, Usuario, Disk, Memory, Cpu FROM UserComputerData WHERE Empresa = {Http  Context.Current.Session["ID_EMPRESA"]}", conn))
+                {
+                    JavaScriptSerializer serialize = new JavaScriptSerializer();
+                    List<string> usersList = new List<string>();
+                    SqlDataReader rd = searchUser.ExecuteReader();
+                    while (rd.Read())
+                    {
+                        UserComputerData user = new UserComputerData();
+                        user.userName = rd.GetString(1);
+
+                        usersList.Add(serialize.Serialize(user));
+                    }
+                    return usersList;
+                }
+            }
+        }*/
     }
 }
