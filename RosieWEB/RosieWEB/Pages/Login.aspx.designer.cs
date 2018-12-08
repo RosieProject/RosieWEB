@@ -7,7 +7,7 @@
 // </gerado automaticamente>
 //------------------------------------------------------------------------------
 
-namespace RosieWEB.Pages {
+namespace Rosie {
     
     
     public partial class Login {
