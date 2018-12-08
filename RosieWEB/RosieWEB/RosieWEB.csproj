@@ -153,6 +153,7 @@
     <Content Include="Pages\images\Team3.png" />
     <Content Include="Pages\js\app.js" />
     <Content Include="Pages\js\bootstrap.js" />
+    <Content Include="Pages\js\Cadastro.js" />
     <Content Include="Pages\js\jquery.bxslider.js" />
     <Content Include="Pages\js\jquery.cslider.js" />
     <Content Include="Pages\js\jquery.inview.js" />

@@ -22,6 +22,24 @@ namespace RosieWEB.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// Controle scriptManager1.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager scriptManager1;
+        
+        /// <summary>
+        /// Controle TxtEmpresa.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtEmpresa;
+        
+        /// <summary>
         /// Controle TxtNome.
         /// </summary>
         /// <remarks>
