@@ -1,6 +1,7 @@
 ﻿using Rosie;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -16,26 +17,31 @@ namespace RosieWEB.Pages
         {
 
         }
-        
+
+        //Trocar para Esse e Testar
         [WebMethod]
-        public static void Iniciar(string userId, string userName, string userEmail)
+        public static bool SearchUser(string email, string senha)
         {
+            string strConn = ConfigurationManager.ConnectionStrings["connectRosie"].ToString();
 
-            SqlConnection conexao = new SqlConnection("Server=tcp:luizcarlos.database.windows.net,1433;Initial Catalog=Meu_Primeiro_banco_de_dados;Persist Security Info=False;User ID=luizca95;Password=Monforte1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-
-
-            using (conexao)
+            using (SqlConnection conn = new SqlConnection(strConn))
             {
-                conexao.Open();
-                SqlCommand comando = conexao.CreateCommand();
-                comando.CommandText = $"insert into google (userID, userName, userEmail) values ('{userId}', '{userName}','{userEmail}')";
-
-
-
-                comando.ExecuteNonQuery();
-
+                conn.Open();
+                using (SqlCommand searchUser = new SqlCommand($"SELECT ID_Usuario, ID_Empresa, Email_Usuario, Senha_Usuario FROM Usuario WHERE Email_Usuario = '{email}' AND Senha_Usuario = '{senha}'", conn))
+                {
+                    SqlDataReader rd = searchUser.ExecuteReader();
+                    if (rd.HasRows)
+                    {
+                        HttpContext.Current.Session["compId"] = rd.GetValue(1);
+                        HttpContext.Current.Session["usrLoggedId"] = rd.GetValue(0);
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
             }
-
         }
     }
 }

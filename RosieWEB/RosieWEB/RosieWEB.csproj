@@ -165,6 +165,7 @@
     <Content Include="Pages\js\jquery.js" />
     <Content Include="Pages\js\jquery.mixitup.js" />
     <Content Include="Pages\js\jquery.placeholder.js" />
+    <Content Include="Pages\js\Login.js" />
     <Content Include="Pages\js\modernizr.custom.js" />
     <Content Include="Pages\js\respond.min.js" />
     <Content Include="Pages\Login.aspx" />
