@@ -1,14 +1,14 @@
-﻿using System;
+﻿using Rosie;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Rosie;
-using System.Web.Services;
-using System.Data.SqlClient;
 
-namespace Rosie
+namespace RosieWEB.Pages
 {
     public partial class Login : System.Web.UI.Page
     {
@@ -16,17 +16,7 @@ namespace Rosie
         {
 
         }
-        protected void BtnCadastrar_Click(object sender, EventArgs e)
-        {
-            //Response.Redirect("Cadastro.aspx");
-        }
-        protected void Loginteste(object sender, EventArgs e)
-        {
-            Usuario.FazerLogin(TxtEmail.Text, Password.Text);
-
-            //  Response.Redirect("index.html");
-
-        }
+        
         [WebMethod]
         public static void Iniciar(string userId, string userName, string userEmail)
         {
@@ -47,7 +37,5 @@ namespace Rosie
             }
 
         }
-
     }
-
 }
