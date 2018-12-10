@@ -30,7 +30,7 @@ namespace RosieWEB.Pages
                 using (SqlCommand searchUser = new SqlCommand($"SELECT ID_Usuario, ID_Empresa, Email_Usuario, Senha_Usuario FROM Usuario WHERE Email_Usuario = '{email}' AND Senha_Usuario = '{senha}'", conn))
                 {
                     SqlDataReader rd = searchUser.ExecuteReader();
-                    if (rd.HasRows)
+                    if (rd.Read())
                     {
                         HttpContext.Current.Session["compId"] = rd.GetValue(1);
                         HttpContext.Current.Session["usrLoggedId"] = rd.GetValue(0);
