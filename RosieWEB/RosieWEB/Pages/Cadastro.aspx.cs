@@ -56,6 +56,12 @@ namespace RosieWEB.Pages
                     $"VALUES ('{adminName}', '{adminEmail}', '{adminPassword}', 'Admin', {corpId})", conn)) {
                     HttpContext.Current.Session["ID_User"] = registerAdmin.ExecuteScalar();
                 }
+                using (SqlCommand registerPC = new SqlCommand($"INSERT INTO Computador (PC_Nome, ID_Usuario) " +
+                    $"OUTPUT INSERTED.ID_PC" +
+                    $"VALUES ('{adminName}', {HttpContext.Current.Session["ID_User"]})", conn))
+                {
+                    HttpContext.Current.Session["ID_PC"] = registerPC.ExecuteScalar();
+                }
             }
             return "Sucesso";
         }
