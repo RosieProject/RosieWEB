@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using Rosie;
-using System.Web.Services;
+using System.Configuration;
 using System.Data.SqlClient;
+using System.Web;
+using System.Web.Services;
 
-namespace Rosie
+namespace RosieWEB.Pages
 {
     public partial class Login : System.Web.UI.Page
     {
@@ -16,38 +12,33 @@ namespace Rosie
         {
 
         }
-        protected void BtnCadastrar_Click(object sender, EventArgs e)
-        {
-            //Response.Redirect("Cadastro.aspx");
-        }
-        protected void Loginteste(object sender, EventArgs e)
-        {
-            Usuario.FazerLogin(TxtEmail.Text, Password.Text);
 
-            //  Response.Redirect("index.html");
-
-        }
+        //Trocar para Esse e Testar
         [WebMethod]
-        public static void Iniciar(string userId, string userName, string userEmail)
+        public static bool SearchUser(string email, string senha)
         {
+            string strConn = ConfigurationManager.ConnectionStrings["connectRosie"].ToString();
 
-            SqlConnection conexao = new SqlConnection("Server=tcp:luizcarlos.database.windows.net,1433;Initial Catalog=Meu_Primeiro_banco_de_dados;Persist Security Info=False;User ID=luizca95;Password=Monforte1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-
-
-            using (conexao)
+            using (SqlConnection conn = new SqlConnection(strConn))
             {
-                conexao.Open();
-                SqlCommand comando = conexao.CreateCommand();
-                comando.CommandText = $"insert into google (userID, userName, userEmail) values ('{userId}', '{userName}','{userEmail}')";
+                conn.Open();
+                using (SqlCommand searchUser = new SqlCommand($"SELECT ID_Usuario, ID_Empresa, Nome_Usuario Email_Usuario, Senha_Usuario FROM Usuario WHERE Email_Usuario = '{email}' AND Senha_Usuario = '{senha}'", conn))
+                {
+                    SqlDataReader rd = searchUser.ExecuteReader();
+                    if (rd.Read())
+                    {
+                        HttpContext.Current.Session["userID"] = rd.GetValue(0);
+                        HttpContext.Current.Session["compID"] = rd.GetValue(1);
+                        HttpContext.Current.Session["userName"] = rd.GetValue(2);
 
-
-
-                comando.ExecuteNonQuery();
-
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
             }
-
         }
-
     }
-
 }
