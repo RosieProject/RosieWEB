@@ -1,113 +1,98 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Rosie.Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="RosieWEB.Pages.Login" %>
 
 <!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <link rel="stylesheet" type="text/css" href="css/login.css" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="google-signin-scope" content="" />
-    <meta name="google-signin-client_id" content="621914680772-cmod185olq6efdnmf5l89mdem9sv28cd.apps.googleusercontent.com" />
-    <script src="https://apis.google.com/js/platform.js" async="" defer=""></script>
-    <title>Login</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"/>
-
+<html lang="en">
+<head>
+    <title>Login V10</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="Login/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="Login/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="Login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="Login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="Login/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="Login/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="Login/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="Login/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="Login/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="Login/css/util.css">
+    <link rel="stylesheet" type="text/css" href="Login/css/main.css">
+    <!--===============================================================================================-->
+    <!-- Bootstrap core CSS     -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 </head>
+<body class="bg">
 
-<body>
-    <form id="form1" runat="server">
-        <a href="index.html">
-            <img class="foto" src="images/Slider01.png"/>
-        </a>
-        <asp:ScriptManager runat="server" EnablePageMethods="true"></asp:ScriptManager>
-        <div class="center">
-            <div class="form">
-                <img id="user-photo" src="https://mariovalney.com/wp-content/uploads/2015/06/user-anonimo.jpg" />
-                <div class="content">
-                    <p class="cd">LOGIN</p>
-                    <div class="texto">
-                        <div class="labels">
-                            <p class="definicao">E-mail</p>
-                            <asp:TextBox runat="server" placeholder="" ID="TxtEmail" CssClass="log" />
-                            <p class="definicao">Senha</p>
-                            <asp:TextBox runat="server" TextMode="Password" placeholder="" ID="Password" CssClass="log" /><br />
-                            <br />
-                        </div>
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100 p-t-50 p-b-90">
+                <form runat="server" class="login100-form validate-form flex-sb flex-w">
+                    <asp:ScriptManager runat="server" ID="scriptManager1" EnablePageMethods="true"></asp:ScriptManager>
+                    <span class="login100-form-title p-b-51">Login
+                    </span>
 
-                        <div class="botao">
-                            <asp:Button Text="Entrar" runat="server" ID="BtnLogin" CssClass="teste" OnClick="Loginteste" />
-                            <br />
-                            <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" data-width="300" data-height="50" data-longtitle="true" data-lang="pt-BR"></div>
-                            <br />
-                            <asp:Button Text="Ainda não é cadastrado ?" runat="server" ID="BtnCadastrar" OnClick="BtnCadastrar_Click" class="teste" />
 
+                    <div class="wrap-input100 validate-input m-b-16" data-validate="Preencha o Campo">
+                        <input class="input100" type="text" name="E-Mail" placeholder="E-Mail" data-login="email">
+                        <span class="focus-input100"></span>
+                    </div>
+
+
+                    <div class="wrap-input100 validate-input m-b-16" data-validate="Preencha o Campo">
+                        <input class="input100" type="password" name="Senha" placeholder="Senha" data-login="senha">
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="flex-sb-m w-full p-t-3 p-b-24" style="margin-left:10px">
+                        <div class="contact100-form-checkbox">
+                            <a href="#" class="txt1" data-cadastro="cadastre">Registre-se</a>
                         </div>
                     </div>
-                </div>
+
+                    <div class="container-login100-form-btn m-t-17">
+                        <button class="login100-form-btn" data-login="login">
+                            Entrar
+                        </button>
+                    </div>
+
+                </form>
             </div>
         </div>
-
-        <div class="user">
-
-            <p id="user-email"></p>
-        </div>
-        <asp:Label ID="userID" runat="server" Text=""></asp:Label>
-        <asp:Label ID="userName" runat="server" Text=""></asp:Label>
-        <asp:Label ID="userEmail" runat="server" Text=""></asp:Label>
-    </form>
-    <script>
-
-        function signOut() {
-            var auth2 = gapi.auth2.getAuthInstance();
-            auth2.signOut().then(function () {
-                window.location.href = "login.aspx"
-            });
-        }
-
-        function onSignIn(response) {
-            // Conseguindo as informações do seu usuário:
-            var perfil = response.getBasicProfile();
-
-            // Conseguindo o ID do Usuário
-            var userID = perfil.getId();
-
-            // Conseguindo o Nome do Usuário
-            var userName = perfil.getName();
-
-            // Conseguindo o E-mail do Usuário
-            var userEmail = perfil.getEmail();
-
-            // Conseguindo a URL da Foto do Perfil
-            var userPicture = perfil.getImageUrl();
-
-            document.getElementById('user-photo').src = userPicture;
-            document.getElementById('user-name').innerText = userName;
-            document.getElementById('user-email').innerText = userEmail;
+    </div>
 
 
-            document.getElementById("userID").innerHTML = userID;
-            document.getElementById("userName").innerHTML = userName;
-            document.getElementById("userEmail").innerHTML = userEmail;
+    <div id="dropDownSelect1"></div>
+    <%--    Login Logic    --%>
+    <script src="js/Login.js" type="text/javascript"></script>
+    <!--   Core JS Files   -->
+    <script src="assets/js/jquery.min.js" type="text/javascript"></script>
+    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <!--===============================================================================================-->
+    <script src="Login/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="Login/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="Login/vendor/bootstrap/js/popper.js"></script>
+    <script src="Login/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="Login/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="Login/vendor/daterangepicker/moment.min.js"></script>
+    <script src="Login/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="Login/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="Login/js/main.js"></script>
 
-            // Recebendo o TOKEN que você usará nas demais requisições à API:
-            var LoR = response.getAuthResponse().id_token;
-            console.log("~ le Tolkien: " + LoR);
-            if (LoR !== null) {
-
-                //Vai fazer o botão clica sozinho
-                console.log('oi')
-                cadastraBanco()
-                //window.location.href = "GOOGLE.aspx"
-
-            }
-
-        };
-        //Função que o botão chama pra chamar o mesmo metodo só que no c#
-        function cadastraBanco() {
-            console.log('oi')
-            PageMethods.Iniciar(document.getElementById("userID").innerHTML, document.getElementById("userName").innerHTML, document.getElementById("userEmail").innerHTML);
-        }
-
-    </script>
 </body>
 </html>

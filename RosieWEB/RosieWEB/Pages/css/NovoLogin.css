@@ -2,19 +2,16 @@
     margin: 0px;
     padding: 0px;
     font-family: sans-serif;
-    background: url(/images/FundoLogin.PNG) no-repeat;
     background-size: cover;
 }
-.content {
-    
-}
+
 .definicao {
     color: #127486;
-    margin-bottom:2px;
+    margin-bottom: 2px;
     font-size: 15px;
-
 }
-#TxtEmail{
+
+.TxtEmail {
     border: none;
     border-bottom: 1px solid #fff;
     background: transparent;
@@ -23,7 +20,8 @@
     width: 300px;
     margin-bottom: 1px;
 }
-#Password {
+
+.Password {
     border: none;
     border-bottom: 1px solid #fff;
     background: transparent;
@@ -44,7 +42,8 @@
     background-color: rgba(0,0,0,0.80);
     box-shadow: #127486;
 }
-#BtnLogin {
+
+.BtnLogin {
     border: none;
     outline: none;
     height: 40px;
@@ -56,11 +55,13 @@
     margin-left: 45px;
     margin-bottom: 20px;
 }
-#BtnLogin:hover {
-    background: #B9D9E5;
-    cursor: pointer;
-}
-#BtnCadastrar {
+
+    .BtnLogin:hover {
+        background: #B9D9E5;
+        cursor: pointer;
+    }
+
+.BtnCadastrar {
     text-decoration: none;
     font-size: 12px;
     line-height: 20px;
@@ -69,10 +70,12 @@
     width: 150px;
     margin-left: 35px;
 }
-.g-signin2{
+
+.g-signin2 {
     margin-left: 25px;
 }
-#user-photo {
+
+.user-photo {
     width: 150px;
     height: 150px;
     border-radius: 50%;
@@ -88,7 +91,8 @@
     margin-top: 20%;
     background-color: black;
 }
-.foto{
+
+.foto {
     width: 400px;
     height: 400px;
     margin-left: 200px;
