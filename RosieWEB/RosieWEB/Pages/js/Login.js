@@ -5,21 +5,16 @@
     const $login = doc.querySelector('[data-login="login"]')
     const $cadastro = doc.querySelector('[data-cadastro="cadastre"]')
 
-    console.log($email)
-    console.log($senha)
-    console.log($login)
-    console.log($cadastro)
-
     const searchUser = () => {
         PageMethods.SearchUser($email.value, $senha.value, loginResponse, loginError)
         return false;
     }
 
     const loginResponse = (response) => {
-        console.log(response)
+        win.location.href = '../Pages/Dashboard.aspx'
     }
     const loginError = (error) => {
-        console.log(error)
+        alert('Ocorreu um erro na requisição' + error)
     }
 
     $login.onclick = () => {
