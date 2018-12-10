@@ -11,7 +11,12 @@
     }
 
     const loginResponse = (response) => {
-        win.location.href = '../Pages/Dashboard.aspx'
+        if (response) {
+            win.location.href = '../Pages/Dashboard.aspx'
+        } else {
+            alert('Usuário não cadastrado')
+        }
+        
     }
     const loginError = (error) => {
         alert('Ocorreu um erro na requisição' + error)

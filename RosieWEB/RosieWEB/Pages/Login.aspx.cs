@@ -1,13 +1,8 @@
-﻿using Rosie;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Web;
 using System.Web.Services;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace RosieWEB.Pages
 {
@@ -27,13 +22,15 @@ namespace RosieWEB.Pages
             using (SqlConnection conn = new SqlConnection(strConn))
             {
                 conn.Open();
-                using (SqlCommand searchUser = new SqlCommand($"SELECT ID_Usuario, ID_Empresa, Email_Usuario, Senha_Usuario FROM Usuario WHERE Email_Usuario = '{email}' AND Senha_Usuario = '{senha}'", conn))
+                using (SqlCommand searchUser = new SqlCommand($"SELECT ID_Usuario, ID_Empresa, Nome_Usuario Email_Usuario, Senha_Usuario FROM Usuario WHERE Email_Usuario = '{email}' AND Senha_Usuario = '{senha}'", conn))
                 {
                     SqlDataReader rd = searchUser.ExecuteReader();
                     if (rd.Read())
                     {
-                        HttpContext.Current.Session["compId"] = rd.GetValue(1);
-                        HttpContext.Current.Session["usrLoggedId"] = rd.GetValue(0);
+                        HttpContext.Current.Session["userID"] = rd.GetValue(0);
+                        HttpContext.Current.Session["compID"] = rd.GetValue(1);
+                        HttpContext.Current.Session["userName"] = rd.GetValue(2);
+
                         return true;
                     }
                     else
