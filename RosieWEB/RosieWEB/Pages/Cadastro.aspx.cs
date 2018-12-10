@@ -16,7 +16,7 @@ namespace RosieWEB.Pages
 
         //Verifica se o Usuario já existe
         [WebMethod]
-        public static string SearchAdminUser(string compName, string compEmail, string adminName, string adminEmail, string adminPassword)
+        public static string SearchAdminUser(string compName, string adminName, string adminEmail, string adminPassword, string adminPassword2)
         {
             string strConn = ConfigurationManager.ConnectionStrings["connectRosie"].ToString();
 
@@ -32,14 +32,14 @@ namespace RosieWEB.Pages
                     }
                     else
                     {
-                        return RegisterCorpAdmin(compName, compEmail, adminName, adminEmail, adminPassword);
+                        return RegisterCorpAdmin(compName, adminName, adminEmail, adminPassword);
                     }
                 }
             }
         }
 
         //Cadastro da Empresa e Usuario Admin Principal
-        private static string RegisterCorpAdmin(string compName, string compEmail, string adminName, string adminEmail, string adminPassword)
+        private static string RegisterCorpAdmin(string compName, string adminName, string adminEmail, string adminPassword)
         {
             string strConn = ConfigurationManager.ConnectionStrings["connectRosie"].ToString();
 
@@ -47,7 +47,7 @@ namespace RosieWEB.Pages
             {
                 int corpId;
                 conn.Open();
-                using (SqlCommand registerCorp = new SqlCommand($"INSERT INTO Empresa OUTPUT INSERTED.ID_Empresa VALUES ('{compName}', '{compEmail}')", conn))
+                using (SqlCommand registerCorp = new SqlCommand($"INSERT INTO Empresa OUTPUT INSERTED.ID_Empresa VALUES ('{compName}', '{adminEmail}')", conn))
                 {
                     corpId = (int)registerCorp.ExecuteScalar();
                 }
