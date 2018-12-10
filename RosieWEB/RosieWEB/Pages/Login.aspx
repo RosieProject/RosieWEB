@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="RosieWEB.Pages.Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Rosie.Login" %>
 
 <!DOCTYPE html>
 
@@ -10,42 +10,50 @@
     <meta name="google-signin-client_id" content="621914680772-cmod185olq6efdnmf5l89mdem9sv28cd.apps.googleusercontent.com" />
     <script src="https://apis.google.com/js/platform.js" async="" defer=""></script>
     <title>Login</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"/>
 
 </head>
 
 <body>
     <form id="form1" runat="server">
+        <a href="index.html">
+            <img class="foto" src="images/Slider01.png"/>
+        </a>
         <asp:ScriptManager runat="server" EnablePageMethods="true"></asp:ScriptManager>
-        <center>
-        <div class="container">
-            <div class="conteudo">
-            <div id="LoginImg">
-                <p class="cd">LOGIN</p>
+        <div class="center">
+            <div class="form">
                 <img id="user-photo" src="https://mariovalney.com/wp-content/uploads/2015/06/user-anonimo.jpg" />
-            </div>
+                <div class="content">
+                    <p class="cd">LOGIN</p>
+                    <div class="texto">
+                        <div class="labels">
+                            <p class="definicao">E-mail</p>
+                            <asp:TextBox runat="server" placeholder="" ID="TxtEmail" CssClass="log" />
+                            <p class="definicao">Senha</p>
+                            <asp:TextBox runat="server" TextMode="Password" placeholder="" ID="Password" CssClass="log" /><br />
+                            <br />
+                        </div>
 
-                <div class="texto">
+                        <div class="botao">
+                            <asp:Button Text="Entrar" runat="server" ID="BtnLogin" CssClass="teste" OnClick="Loginteste" />
+                            <br />
+                            <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" data-width="300" data-height="50" data-longtitle="true" data-lang="pt-BR"></div>
+                            <br />
+                            <asp:Button Text="Ainda não é cadastrado ?" runat="server" ID="BtnCadastrar" OnClick="BtnCadastrar_Click" class="teste" />
 
-                   <h2>e-mail</h2>
-                    <asp:TextBox runat="server" placeholder="Digite seu email..." ID="TxtEmail" CssClass="log" />
-                    <h2>senha</h2>
-                    <asp:TextBox runat="server" placeholder="Digite sua senha" ID="Password" CssClass="log" /><br />
-                    <br />
-
-                    <div class="botao">
-                        <asp:Button Text="LOGIN" runat="server" ID="BtnLogin" CssClass="teste" OnClick="Loginteste" />
-                        <asp:Button Text="CADASTRAR" runat="server" ID="BtnCadastrar" OnClick="BtnCadastrar_Click" class="teste" />
-                        <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" data-width="300" data-height="50" data-longtitle="true" data-lang="pt-BR"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
+        <div class="user">
+
+            <p id="user-email"></p>
+        </div>
         <asp:Label ID="userID" runat="server" Text=""></asp:Label>
         <asp:Label ID="userName" runat="server" Text=""></asp:Label>
         <asp:Label ID="userEmail" runat="server" Text=""></asp:Label>
-        </center>
-
     </form>
     <script>
 

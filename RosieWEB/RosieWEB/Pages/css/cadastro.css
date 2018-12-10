@@ -2,28 +2,17 @@
     margin: 0px;
     padding: 0px;
     font-family: sans-serif;
-    background: url(/images/FundoLogin.PNG) no-repeat;
+    background: url(../images/FundoCadastro2.png) no-repeat;
     background-size: cover;
 }
-.content {
-    
-}
+
 .definicao {
     color: #127486;
-    margin-bottom:2px;
+    margin-bottom: 2px;
     font-size: 15px;
+}
 
-}
-#TxtEmail{
-    border: none;
-    border-bottom: 1px solid #fff;
-    background: transparent;
-    outline: none;
-    height: 40px;
-    width: 300px;
-    margin-bottom: 1px;
-}
-#Password {
+#TxtEmail {
     border: none;
     border-bottom: 1px solid #fff;
     background: transparent;
@@ -33,18 +22,59 @@
     margin-bottom: 1px;
 }
 
-.form {
+#TxtEmpresa {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    width: 300px;
+    margin-bottom: 1px;
+}
+
+#TxtNome {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    width: 300px;
+    margin-bottom: 1px;
+}
+
+#TxtSenha {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    width: 300px;
+    margin-bottom: 1px;
+}
+
+#TxtConfSenha {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    width: 300px;
+    margin-bottom: 1px;
+}
+
+.formulario {
     position: absolute;
-    left: 65%;
+    left: 40%;
     width: 350px;
-    height: 600px;
+    height: 650px;
     top: 40%;
     margin-top: -219px;
     border-radius: 0%;
     background-color: rgba(0,0,0,0.80);
     box-shadow: #127486;
 }
-#BtnLogin {
+
+#btnCadastro {
     border: none;
     outline: none;
     height: 40px;
@@ -53,13 +83,16 @@
     font-size: 18px;
     border-radius: 20px;
     position: center;
-    margin-left: 45px;
     margin-bottom: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
-#BtnLogin:hover {
-    background: #B9D9E5;
-    cursor: pointer;
-}
+
+    #btnCadastro:hover {
+        background: #B9D9E5;
+        cursor: pointer;
+    }
+
 #BtnCadastrar {
     text-decoration: none;
     font-size: 12px;
@@ -69,9 +102,11 @@
     width: 150px;
     margin-left: 35px;
 }
-.g-signin2{
+
+.g-signin2 {
     margin-left: 25px;
 }
+
 #user-photo {
     width: 150px;
     height: 150px;
@@ -83,12 +118,13 @@
     border-width: 5px;
 }
 
-.center {
+.centro {
     text-align: center;
     margin-top: 20%;
     background-color: black;
 }
-.foto{
+
+.foto {
     width: 400px;
     height: 400px;
     margin-left: 200px;
@@ -109,7 +145,7 @@
     border-color: white;
 }
 
-.texto {
+.text {
     margin-top: 2rem;
     overflow: hidden;
 }
