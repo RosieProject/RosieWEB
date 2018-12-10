@@ -76,8 +76,7 @@
 
     $btnSalvar.onclick = () => {
         if (isTextBoxesValid()) {
-            PageMethods.SearchAdminUser($textEmpresa.value, $textNome.value,
-                $textEmail.value, $textSenha.value, $textConfSenha.value,
+            PageMethods.SearchAdminUser($textEmpresa.value, $textNome.value, $textEmail.value, $textSenha.value, $textConfSenha.value,
                 registerResponse,
                 registerError)
         }
