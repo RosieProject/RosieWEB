@@ -11,9 +11,13 @@ namespace RosieWEB
 {
     public partial class Dashboard : System.Web.UI.Page
     {
+        static RosieDataResponse dataResponse;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             Session["ID_PC"] = 2;
+
+            dataResponse = new RosieDataResponse();
         }
 
         [WebMethod]
@@ -53,6 +57,31 @@ namespace RosieWEB
                     firstDatas.Add(serialize.Serialize(cpuChart));
 
                     return firstDatas;
+                }
+            }
+        }
+        [WebMethod]
+        public static List<string> GetChartsData()
+        {
+            List<string> datas = new List<string>();
+            string strConn = ConfigurationManager.ConnectionStrings["connectRosie"].ToString();
+
+            using (SqlConnection conn = new SqlConnection(strConn))
+            {
+                conn.Open();
+                using (SqlCommand cpuFirstDatasQuery = new SqlCommand($"SELECT TOP 10 Usage_Cpu FROM CpuData WHERE ID_PC = {HttpContext.Current.Session["ID_PC"]} ORDER BY ID_Cpu ASC", conn))
+                {
+                    JavaScriptSerializer serialize = new JavaScriptSerializer();
+                    CpuChart cpuChart = new CpuChart();
+                    SqlDataReader rd = cpuFirstDatasQuery.ExecuteReader();
+                    while (rd.Read())
+                    {
+                        dataResponse
+                    }
+
+                    datas.Add(serialize.Serialize(cpuChart));
+
+                    return datas;
                 }
             }
         }
