@@ -136,7 +136,7 @@
                                         </div>
                                         <div class="content">
                                             <div class="Grafico">
-                                                <canvas data-chart="cpuChart" style="height: 30vh"></canvas>
+                                                <canvas data-chart="cpuLineChart" style="height: 30vh"></canvas>
                                             </div>
                                         </div>
                                     </div>
@@ -302,160 +302,12 @@
     </form>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
-<script>
-    var ctxMemoryDogChart = document.querySelector('[data-chart="memoryDogChart"]').getContext('2d')
-    var memoryDogChart = new Chart(ctxMemoryDogChart, {
-        type: 'doughnut',
-        data: {
-            labels: ['Total', 'Usado', 'Disponivel'],
-            datasets: [{
-                data: [20, 30],
-                backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"]
-            }]
-        },
-        options: {
-            maintainAspectRatio: false
-        }
-    })
-
-    var ctxDiskDogChart = document.querySelector('[data-chart="diskDogChart"]').getContext('2d')
-    var diskDogChart = new Chart(ctxDiskDogChart, {
-        type: 'doughnut',
-        data: {
-            labels: ['Total', 'Usado', 'Disponivel'],
-            datasets: [{
-                data: [20, 30],
-                backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"]
-            }]
-        },
-        options: {
-            maintainAspectRatio: false
-        }
-    })
-
-</script>
-
+<script src="js/Dashboard.js"></script>
 <%--Colocar esses caras em outro lugar--%>
 <script>
     var $cpu = document.querySelector("[data-dados=cpu]") || undefined
     var $disk = document.querySelector("[data-dados=disk]") || undefined
     var $memory = document.querySelector("[data-dados=memory]") || undefined
-
-    var ctxCpuChart = document.querySelector('[data-chart="cpuChart"]').getContext('2d')
-    var cpuChart = new Chart(ctxCpuChart, {
-        type: 'line',
-        data: {
-            labels: [],
-            datasets: [{
-                label: 'CpuUsage',
-                backgroundColor: 'rgba(221, 66, 76, 30%)',
-                borderColor: 'rgb(40, 40, 40)',
-                data: []
-            }]
-        },
-        options: {
-            animation: {
-                duration: 500
-            },
-            legend: {
-                onClick: function () { return }
-            },
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        callback: function (value, index, values) {
-                            return `${value}%`
-                        }
-                    }
-                }]
-            },
-            maintainAspectRatio: false
-        }
-    })
-
-    //var ctxDiskChart = document.querySelector('[data-chart="diskChart"]').getContext('2d')
-    //var diskChart = new Chart(ctxDiskChart, {
-    //    type: 'line',
-    //    data: {
-    //        labels: [],
-    //        datasets: [{
-    //            label: 'DiskUsage',
-    //            backgroundColor: 'rgba(33, 255, 84, 30%)',
-    //            borderColor: 'rgb(40, 40, 40)',
-    //            data: []
-    //        }]
-    //    },
-    //    options: {
-    //        animation: {
-    //            duration: 500
-    //        },
-    //        legend: {
-    //            onClick: function () { return }
-    //        },
-    //        scales: {
-    //            yAxes: [{
-    //                ticks: {
-    //                    callback: function (value, index, values) {
-    //                        if (dataType === 'TB') {
-    //                            return `${Math.round(value)} TB`
-
-    //                        } else if (dataType === 'GB') {
-    //                            return `${Math.round(value)} GB`
-
-    //                        } else if (dataType === 'MB') {
-    //                            return `${Math.round(value)} MB`
-
-    //                        } else {
-    //                            return `${value} Bytes`
-    //                        }
-    //                    }
-    //                }
-    //            }]
-    //        }
-    //    }
-    //})
-
-    //var ctxMemoryChart = document.querySelector('[data-chart="memoryChart"]').getContext('2d')
-    //var memoryChart = new Chart(ctxMemoryChart, {
-    //    type: 'line',
-    //    data: {
-    //        labels: [],
-    //        datasets: [{
-    //            label: 'MemoryUsage',
-    //            backgroundColor: 'rgba(106, 250, 252, 30%)',
-    //            borderColor: 'rgb(40, 40, 40)',
-    //            data: []
-    //        }]
-    //    },
-    //    options: {
-    //        animation: {
-    //            duration: 500
-    //        },
-    //        legend: {
-    //            onClick: function () { return }
-    //        },
-    //        scales: {
-    //            yAxes: [{
-    //                ticks: {
-    //                    callback: function (value, index, values) {
-    //                        if (dataType === 'TB') {
-    //                            return `${Math.round(value)} TB`
-
-    //                        } else if (dataType === 'GB') {
-    //                            return `${Math.round(value)} GB`
-
-    //                        } else if (dataType === 'MB') {
-    //                            return `${Math.round(value)} MB`
-
-    //                        } else {
-    //                            return `${value} Bytes`
-    //                        }
-    //                    }
-    //                }
-    //            }]
-    //        }
-    //    }
-    //})
 
     var loopCpu;
 
