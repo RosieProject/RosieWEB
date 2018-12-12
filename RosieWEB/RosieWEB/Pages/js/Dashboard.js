@@ -1,6 +1,22 @@
 ﻿(function (doc, win) {
+    /*-------------------------------PAGE/DATA ELEMENTS-------------------------------*/
+    const $lblOSFamily = doc.querySelector('[data-os-labels="osFamily"]')
+    const $lblOSBitness = doc.querySelector('[data-os-labels="osBitness"]')
+    const $lblOSProcesses = doc.querySelector('[data-os-labels="osProcesses"]')
+    const $lblOSThreads = doc.querySelector('[data-os-labels="osThreads"]')
+    const $lblOSVersion = doc.querySelector('[data-os-labels="osVersion"]')
+    const $lblOSManufacturer = doc.querySelector('[data-os-labels="osManufacturer"]')
 
-    /*-------------------------------CHART COMPONENTS------------------------------*/
+    const $lblCPUName = doc.querySelector('[data-cpu-labels="cpuName"]')
+    const $lblCPUUpTime = doc.querySelector('[data-cpu-labels="cpuUpTime"]')
+    const $lblCPULogical = doc.querySelector('[data-cpu-labels="cpuLogical"]')
+    const $lblCPUPhysical = doc.querySelector('[data-cpu-labels="cpuPhysical"]')
+
+    const $lblCpuUsage = doc.querySelector('[data-dados="cpuUnique"]')
+    const $lblDiskUsage = doc.querySelector('[data-dados="diskUnique"]')
+    const $lblMemoryUsage = doc.querySelector('[data-dados="memoryUnique"]')
+
+    /*-------------------------------CHART ELEMENTS------------------------------*/
     const $ctxCpuLineChart = doc.querySelector('[data-chart="cpuLineChart"]').getContext('2d')
     const $ctxMemoryDogChart = doc.querySelector('[data-chart="memoryDogChart"]').getContext('2d')
     const $ctxDiskDogChart = doc.querySelector('[data-chart="diskDogChart"]').getContext('2d')
@@ -85,14 +101,19 @@
         }
     }
     var diskChart = new Chart($ctxDiskDogChart, diskDogChartDesign)
-    
+
     /*---------------------------CHARTS FIRST POPULATE LOGIC---------------------------*/
     const FirstChartDatas = () => {
         PageMethods.FirstChartDatas(FirstChartDatasResponse)
     }
 
     const FirstChartDatasResponse = (response) => {
-        JSON.parse(response[0]).CpuDatas.forEach(function (data) {
+        const datas = JSON.parse(response[0]).CpuDatas
+        PopulateCpuChart(datas)
+    }
+
+    const PopulateCpuChart = (datas) => {
+        datas.forEach(function (data) {
             cpuChartLabels.push(cpuChartData.length)
             cpuChartData.push(data)
         })
@@ -104,22 +125,6 @@
     }
 
     /*----------------------------------DATA QUERY LOGIC--------------------------------*/
-    const $lblOSFamily = doc.querySelector('[data-os-labels="osFamily"]')
-    const $lblOSBitness = doc.querySelector('[data-os-labels="osBitness"]')
-    const $lblOSProcesses = doc.querySelector('[data-os-labels="osProcesses"]')
-    const $lblOSThreads = doc.querySelector('[data-os-labels="osThreads"]')
-    const $lblOSVersion = doc.querySelector('[data-os-labels="osVersion"]')
-    const $lblOSManufacturer = doc.querySelector('[data-os-labels="osManufacturer"]')
-
-    const $lblCPUName = doc.querySelector('[data-cpu-labels="cpuName"]')
-    const $lblCPUUpTime = doc.querySelector('[data-cpu-labels="cpuUpTime"]')
-    const $lblCPULogical = doc.querySelector('[data-cpu-labels="cpuLogical"]')
-    const $lblCPUPhysical = doc.querySelector('[data-cpu-labels="cpuPhysical"]')
-
-    const $lblCpuUsage = doc.querySelector('[data-dados="cpuUnique"]')
-    const $lblDiskUsage = doc.querySelector('[data-dados="diskUnique"]')
-    const $lblMemoryUsage = doc.querySelector('[data-dados="memoryUnique"]')
-
     const RosieDataQuery = () => {
         PageMethods.GetRosieData(RosieDataResponse)
     }
@@ -127,6 +132,10 @@
     const RosieDataResponse = (response) => {
         const rosieData = JSON.parse(response[0])
 
+        PageUpdateElements(rosieData)
+    }
+
+    const PageUpdateElements = (rosieData) => {
         $lblOSFamily.innerHTML = rosieData.OsSystem
         $lblOSBitness.innerHTML = rosieData.OsBitness
         $lblOSProcesses.innerHTML = rosieData.OsProcessCount
@@ -140,8 +149,8 @@
         $lblCPUPhysical.innerHTML = rosieData.CpuPhysicalCount
 
         $lblCpuUsage.innerHTML = rosieData.CpuUsage
-        $lblDiskUsage.innerHTML = rosieData.DiskTotal - rosieData.DiskUsable
-        $lblMemoryUsage.innerHTML = rosieData.MemoryTotal - rosieData.MemoryUsable
+        $lblDiskUsage.innerHTML = bytesToSize(rosieData.DiskTotal - rosieData.DiskUsable)
+        $lblMemoryUsage.innerHTML = bytesToSize(rosieData.MemoryTotal - rosieData.MemoryUsable)
     }
 
     /*--------------------------------HELPERS-------------------------------------*/
