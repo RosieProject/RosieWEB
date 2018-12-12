@@ -136,7 +136,7 @@
                                         </div>
                                         <div class="content">
                                             <div class="Grafico">
-                                                <canvas data-chart="cpuChart" style="height: 30vh"></canvas>
+                                                <canvas data-chart="cpuLineChart" style="height: 30vh"></canvas>
                                             </div>
                                         </div>
                                     </div>
@@ -184,7 +184,7 @@
                                 <div class="col-md-6">
                                     <div class="card" style="border: 2px solid rgba(33, 33, 33, 40%)">
                                         <div class="header">
-                                            <h4 class="title">DiskTESTE</h4>
+                                            <h4 class="title">Uso de Disco</h4>
                                             <p class="category">Last Campaign Performance</p>
                                         </div>
                                         <div class="content">
@@ -197,7 +197,7 @@
                                 <div class="col-md-6">
                                     <div class="card" style="border: 2px solid rgba(33, 33, 33, 40%)">
                                         <div class="header">
-                                            <h4 class="title">MemoriaTESTE</h4>
+                                            <h4 class="title">Uso de Memoria</h4>
                                             <p class="category">Last Campaign Performance</p>
                                         </div>
                                         <div class="content">
@@ -221,27 +221,27 @@
                                                         <tbody>
                                                             <tr>
                                                                 <th>Sistema Operacional</th>
-                                                                <td>[SISTEMA OPERACIONAL]</td>
+                                                                <td data-os-labels="osFamily">[SISTEMA OPERACIONAL]</td>
                                                             </tr>
                                                             <tr>
                                                                 <th>Bytes do Sistema</th>
-                                                                <td>[BYTES]</td>
+                                                                <td data-os-labels="osBitness">[BYTES]</td>
                                                             </tr>
                                                             <tr>
                                                                 <th>Qtd de Processos</th>
-                                                                <td>[QTD DE PROCESSOS]</td>
+                                                                <td data-os-labels="osProcesses">[QTD DE PROCESSOS]</td>
                                                             </tr>
                                                             <tr>
                                                                 <th>Qtd de Threads</th>
-                                                                <td>[QTD DE THREADS]</td>
+                                                                <td data-os-labels="osThreads">[QTD DE THREADS]</td>
                                                             </tr>
                                                             <tr>
                                                                 <th>Versão do Sistema</th>
-                                                                <td>[Versão]</td>
+                                                                <td data-os-labels="osVersion">[Versão]</td>
                                                             </tr>
                                                             <tr>
                                                                 <th>Fabricante</th>
-                                                                <td>[Fabricante]</td>
+                                                                <td data-os-labels="osManufacturer">[Fabricante]</td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -261,19 +261,19 @@
                                                         <tbody>
                                                             <tr>
                                                                 <th>CPU</th>
-                                                                <td>[NOME DA CPU]</td>
+                                                                <td data-cpu-labels="cpuName">[NOME DA CPU]</td>
                                                             </tr>
                                                             <tr>
                                                                 <th>Tempo Ativo</th>
-                                                                <td>[TEMPO ATIVO DA CPU]</td>
+                                                                <td data-cpu-labels="cpuUpTime">[TEMPO ATIVO DA CPU]</td>
                                                             </tr>
                                                             <tr>
                                                                 <th>Qtd Processadores Lógicos</th>
-                                                                <td>[QTD PROCESSADORES LÓGICOS]</td>
+                                                                <td data-cpu-labels="cpuLogical">[QTD PROCESSADORES LÓGICOS]</td>
                                                             </tr>
                                                             <tr>
                                                                 <th>Qtd Processadores Lógicos</th>
-                                                                <td>[QTD PROCESSADORES FÍSICOS]</td>
+                                                                <td data-cpu-labels="cpuPhysical">[QTD PROCESSADORES FÍSICOS]</td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -302,189 +302,9 @@
     </form>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
-<script>
-    var ctxMemoryDogChart = document.querySelector('[data-chart="memoryDogChart"]').getContext('2d')
-    var memoryDogChart = new Chart(ctxMemoryDogChart, {
-        type: 'doughnut',
-        data: {
-            labels: ['Total', 'Usado', 'Disponivel'],
-            datasets: [{
-                data: [20, 30],
-                backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"]
-            }]
-        },
-        options: {
-            maintainAspectRatio: false
-        }
-    })
-
-    var ctxDiskDogChart = document.querySelector('[data-chart="diskDogChart"]').getContext('2d')
-    var diskDogChart = new Chart(ctxDiskDogChart, {
-        type: 'doughnut',
-        data: {
-            labels: ['Total', 'Usado', 'Disponivel'],
-            datasets: [{
-                data: [20, 30],
-                backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"]
-            }]
-        },
-        options: {
-            maintainAspectRatio: false
-        }
-    })
-
-</script>
-
+<script src="js/Dashboard.js"></script>
 <%--Colocar esses caras em outro lugar--%>
-<script>
-    var $cpu = document.querySelector("[data-dados=cpu]") || undefined
-    var $disk = document.querySelector("[data-dados=disk]") || undefined
-    var $memory = document.querySelector("[data-dados=memory]") || undefined
-
-    var ctxCpuChart = document.querySelector('[data-chart="cpuChart"]').getContext('2d')
-    var cpuChart = new Chart(ctxCpuChart, {
-        type: 'line',
-        data: {
-            labels: [],
-            datasets: [{
-                label: 'CpuUsage',
-                backgroundColor: 'rgba(221, 66, 76, 30%)',
-                borderColor: 'rgb(40, 40, 40)',
-                data: []
-            }]
-        },
-        options: {
-            animation: {
-                duration: 500
-            },
-            legend: {
-                onClick: function () { return }
-            },
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        callback: function (value, index, values) {
-                            return `${value}%`
-                        }
-                    }
-                }]
-            },
-            maintainAspectRatio: false
-        }
-    })
-
-    //var ctxDiskChart = document.querySelector('[data-chart="diskChart"]').getContext('2d')
-    //var diskChart = new Chart(ctxDiskChart, {
-    //    type: 'line',
-    //    data: {
-    //        labels: [],
-    //        datasets: [{
-    //            label: 'DiskUsage',
-    //            backgroundColor: 'rgba(33, 255, 84, 30%)',
-    //            borderColor: 'rgb(40, 40, 40)',
-    //            data: []
-    //        }]
-    //    },
-    //    options: {
-    //        animation: {
-    //            duration: 500
-    //        },
-    //        legend: {
-    //            onClick: function () { return }
-    //        },
-    //        scales: {
-    //            yAxes: [{
-    //                ticks: {
-    //                    callback: function (value, index, values) {
-    //                        if (dataType === 'TB') {
-    //                            return `${Math.round(value)} TB`
-
-    //                        } else if (dataType === 'GB') {
-    //                            return `${Math.round(value)} GB`
-
-    //                        } else if (dataType === 'MB') {
-    //                            return `${Math.round(value)} MB`
-
-    //                        } else {
-    //                            return `${value} Bytes`
-    //                        }
-    //                    }
-    //                }
-    //            }]
-    //        }
-    //    }
-    //})
-
-    //var ctxMemoryChart = document.querySelector('[data-chart="memoryChart"]').getContext('2d')
-    //var memoryChart = new Chart(ctxMemoryChart, {
-    //    type: 'line',
-    //    data: {
-    //        labels: [],
-    //        datasets: [{
-    //            label: 'MemoryUsage',
-    //            backgroundColor: 'rgba(106, 250, 252, 30%)',
-    //            borderColor: 'rgb(40, 40, 40)',
-    //            data: []
-    //        }]
-    //    },
-    //    options: {
-    //        animation: {
-    //            duration: 500
-    //        },
-    //        legend: {
-    //            onClick: function () { return }
-    //        },
-    //        scales: {
-    //            yAxes: [{
-    //                ticks: {
-    //                    callback: function (value, index, values) {
-    //                        if (dataType === 'TB') {
-    //                            return `${Math.round(value)} TB`
-
-    //                        } else if (dataType === 'GB') {
-    //                            return `${Math.round(value)} GB`
-
-    //                        } else if (dataType === 'MB') {
-    //                            return `${Math.round(value)} MB`
-
-    //                        } else {
-    //                            return `${value} Bytes`
-    //                        }
-    //                    }
-    //                }
-    //            }]
-    //        }
-    //    }
-    //})
-
-    var loopCpu;
-
-    function AtualizaCpu() {
-        PageMethods.AtualizarCpu(function (data) { $cpu.innerHTML = data }, fnerrorcallback)
-        loopCpu = setTimeout(AtualizaCpu, 2000)
-    }
-
-    var loopDisk;
-
-    function AtualizaDisk() {
-        PageMethods.AtualizarDisco(function (data) { $disk.innerHTML = data }, fnerrorcallback)
-        loopDisk = setTimeout(AtualizaDisk, 2000)
-    }
-
-    var loopMemory
-
-    function AtualizaMemory() {
-        PageMethods.AtualizarMemoria(function (data) { $memory.innerHTML = data }, fnerrorcallback)
-        loopMemory = setTimeout(AtualizaMemory, 2000)
-    }
-
-    function fnerrorcallback(result) {
-        alert(result.statusText);
-    }
-
-    var dataType;
-    var y = 0
-
+<%--<script>
     function roundBytesData(data) {
         if (data >= 1000000000000) {
             dataType = 'TB'
@@ -502,48 +322,6 @@
             dataType = 'Bytes'
             return data
         }
-    }
-
-    function updateDiskChart() {
-        //Ao Iniciar o Gráfico na tela, pega os primeiros 10 Dados do Banco e Exibe no Grafico
-        if (y === 0) {
-            PageMethods.AtualizarDiskFirst(function (datas) {
-                datas.forEach(function (data) {
-                    diskChart.data.labels.push(y++)
-                    diskChart.data.datasets[0].data.push(roundBytesData(data))
-                })
-                diskChart.update()
-            }, fnerrorcallback)
-        }
-        /*---*/
-        //Inicia a Atualização dos dados do grafico com uma função de callback (onSucess) do WebMethod do C#
-        PageMethods.AtualizarDisk(attData, fnerrorcallback)
-        /*---*/
-        //Função de callback chamado pelo WebMethod acima, que atualiza os dados no grafico com o parametro de retorno do WebMethod do C#
-        function attData(data) {
-            data = roundBytesData(data)
-            var dataLength = diskChart.data.datasets[0].data.length
-            var dataSetData = diskChart.data.datasets[0].data
-            //Verifica se o dado pego do Banco de Dados não é igual aos ultimos 3 dados do gráfico (ou seja, confirma se o dado esta sendo atualizado)
-            if (data !== dataSetData[dataLength - 1] || data !== dataSetData[dataLength - 2] || data !== dataSetData[dataLength - 3]) {
-                diskChart.data.datasets[0].data.push(data)
-                diskChart.data.labels.push(y++)
-                //Verifica se o Eixo X do gráfico passou de 10 Itens, se sim, exclui o primeiro dado do grafico
-                if (diskChart.data.labels.length > 10) {
-                    diskChart.data.labels.shift()
-                    diskChart.data.datasets[0].data.shift(1)
-                }
-                /*---*/
-                //Atualiza o gráfico com os novos dados
-                diskChart.update()
-                /*---*/
-            }
-            /*---*/
-            //Invoca um loop da função asíncronamente a cada 3 segundos
-            setTimeout(updateDiskChart, 3000)
-            /*--*/
-        }
-        /*---*/
     }
 
     var x = 0
@@ -588,54 +366,7 @@
         }
         /*---*/
     }
-
-    var z = 0
-
-    function updateMemoryChart() {
-        //Ao Iniciar o Gráfico na tela, pega os primeiros 10 Dados do Banco e Exibe no Grafico
-        if (z === 0) {
-            PageMethods.AtualizarMemoryFirst(function (datas) {
-                datas.forEach(function (data) {
-                    memoryChart.data.labels.push(z++)
-                    memoryChart.data.datasets[0].data.push(roundBytesData(data))
-                })
-                memoryChart.update()
-            }, fnerrorcallback)
-        }
-        /*---*/
-        //Inicia a Atualização dos dados do grafico com uma função de callback (onSucess) do WebMethod do C#
-        PageMethods.AtualizarMemory(attData, fnerrorcallback)
-        /*---*/
-        //Função de callback chamado pelo WebMethod acima, que atualiza os dados no grafico com o parametro de retorno do WebMethod do C#
-        function attData(data) {
-            data = roundBytesData(data)
-            var dataLength = memoryChart.data.datasets[0].data.length
-            var dataSetData = memoryChart.data.datasets[0].data
-            //Verifica se o dado pego do Banco de Dados não é igual aos ultimos 3 dados do gráfico (ou seja, confirma se o dado esta sendo atualizado)
-            if (data !== dataSetData[dataLength - 1] || data !== dataSetData[dataLength - 2] || data !== dataSetData[dataLength - 3]) {
-                memoryChart.data.datasets[0].data.push(data)
-                memoryChart.data.labels.push(z++)
-                //Verifica se o Eixo X do gráfico passou de 10 Itens, se sim, exclui o primeiro dado do grafico
-                if (memoryChart.data.labels.length > 10) {
-                    memoryChart.data.labels.shift()
-                    memoryChart.data.datasets[0].data.shift(1)
-                }
-                /*---*/
-                //Atualiza o gráfico com os novos dados
-                memoryChart.update()
-                /*---*/
-            }
-            /*---*/
-            //Invoca um loop da função asíncronamente a cada 3 segundos
-            setTimeout(updateMemoryChart, 3000)
-            /*--*/
-        }
-        /*---*/
-    }
-    updateMemoryChart()
-    updateDiskChart()
-    updateCpuChart()
-</script>
+</script>--%>
 <%--Colocar esses caras em outro lugar--%>
 
 <!--   Core JS Files   -->
