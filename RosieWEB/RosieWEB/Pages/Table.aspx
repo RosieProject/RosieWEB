@@ -138,7 +138,7 @@
                 var text = document.createTextNode(JSON.parse(users[i]).userName)
                 tdName.appendChild(text)
                 tr.appendChild(tdName)
-                var text = document.createTextNode(JSON.parse(users[i]).userCpu)
+                var text = document.createTextNode(Math.round(JSON.parse(users[i]).userCpu) + '%')
                 tdCpu.appendChild(text)
                 tr.appendChild(tdCpu)
                 var text = document.createTextNode(bytesToSize(JSON.parse(users[i]).userMemory))
@@ -165,7 +165,7 @@
             for (i = 0; i < rows.length; i++) {
                 var row = rows[i];
                 var att = document.createAttribute('onclick')
-                att.value = 'PageMethods.SaveComputer(this.value, function (data) { window.location.href="../Pages/Dashboard"})'
+                att.value = "PageMethods.SaveComputer(this.value, function (data) { window.location.href = '../Pages/Dashboard.aspx'})"
                 console.log(row)
                 console.log(row.value)
                 row.setAttributeNode(att)

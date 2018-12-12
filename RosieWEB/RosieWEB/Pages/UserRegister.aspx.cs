@@ -11,7 +11,7 @@ namespace RosieWEB.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["compId"] = 1; //APAGAR ISSO
+            
         }
 
         //Cadastro do Usuario da Empresa

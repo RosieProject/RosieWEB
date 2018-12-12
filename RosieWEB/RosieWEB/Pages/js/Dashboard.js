@@ -213,7 +213,7 @@
         $lblCPULogical.innerHTML = rosieData.CpuLogicalCount
         $lblCPUPhysical.innerHTML = rosieData.CpuPhysicalCount
 
-        $lblCpuUsage.innerHTML = rosieData.CpuUsage
+        $lblCpuUsage.innerHTML = Math.round(rosieData.CpuUsage) + '%'
         $lblDiskUsage.innerHTML = bytesToSize(rosieData.DiskTotal - rosieData.DiskUsable)
         $lblMemoryUsage.innerHTML = bytesToSize(rosieData.MemoryTotal - rosieData.MemoryUsable)
     }

@@ -16,7 +16,7 @@ namespace RosieWEB.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["ID_EMPRESA"] = 2;
+            
         }
 
         [WebMethod]
@@ -27,7 +27,7 @@ namespace RosieWEB.Pages
             using (SqlConnection conn = new SqlConnection(strConn))
             {
                 conn.Open();
-                using (SqlCommand searchUser = new SqlCommand($"SELECT Empresa, Usuario, DiskTotal, DiskUsable, MemoryTotal, MemoryUsable, CpuUsage, PC FROM UserComputerData WHERE Empresa = {HttpContext.Current.Session["ID_EMPRESA"]}", conn))
+                using (SqlCommand searchUser = new SqlCommand($"SELECT Empresa, Usuario, DiskTotal, DiskUsable, MemoryTotal, MemoryUsable, CpuUsage, PC FROM UserComputerData WHERE Empresa = {HttpContext.Current.Session["compID"]}", conn))
                 {
                     JavaScriptSerializer serialize = new JavaScriptSerializer();
                     List<string> usersList = new List<string>();
