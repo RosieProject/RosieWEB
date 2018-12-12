@@ -184,7 +184,7 @@
                                 <div class="col-md-6">
                                     <div class="card" style="border: 2px solid rgba(33, 33, 33, 40%)">
                                         <div class="header">
-                                            <h4 class="title">DiskTESTE</h4>
+                                            <h4 class="title">Uso de Disco</h4>
                                             <p class="category">Last Campaign Performance</p>
                                         </div>
                                         <div class="content">
@@ -197,7 +197,7 @@
                                 <div class="col-md-6">
                                     <div class="card" style="border: 2px solid rgba(33, 33, 33, 40%)">
                                         <div class="header">
-                                            <h4 class="title">MemoriaTESTE</h4>
+                                            <h4 class="title">Uso de Memoria</h4>
                                             <p class="category">Last Campaign Performance</p>
                                         </div>
                                         <div class="content">

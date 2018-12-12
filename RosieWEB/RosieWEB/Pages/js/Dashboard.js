@@ -1,6 +1,5 @@
 ﻿(function (doc, win) {
 
-
     /*-------------------------------CHART COMPONENTS------------------------------*/
     const $ctxCpuLineChart = doc.querySelector('[data-chart="cpuLineChart"]').getContext('2d')
     const $ctxMemoryDogChart = doc.querySelector('[data-chart="memoryDogChart"]').getContext('2d')
@@ -38,6 +37,8 @@
         }
     }
     var cpuChart = new Chart($ctxCpuLineChart, cpuLineChartDesign)
+    const cpuChartLabels = cpuChart.data.labels
+    const cpuChartData = cpuChart.data.datasets[0].data
 
     const memoryDogChartDesign = {
         type: 'doughnut',
@@ -45,11 +46,19 @@
             labels: ['Total', 'Usado', 'Disponivel'],
             datasets: [{
                 data: [20, 30],
-                backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"]
+                backgroundColor: ["#212121", "#8e5ea2"]
             }]
         },
         options: {
-            maintainAspectRatio: false
+            maintainAspectRatio: false,
+            elements: {
+                center: {
+                    text: '50% Usado',
+                    color: '#FF6384', // Default is #000000
+                    fontStyle: 'Arial', // Default is Arial
+                    sidePadding: 20 // Defualt is 20 (as a percentage)
+                }
+            }
         }
     }
     var memoryChart = new Chart($ctxMemoryDogChart, memoryDogChartDesign)
@@ -60,11 +69,19 @@
             labels: ['Total', 'Usado', 'Disponivel'],
             datasets: [{
                 data: [20, 30],
-                backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"]
+                backgroundColor: ["#212121", "#8e5ea2"]
             }]
         },
         options: {
-            maintainAspectRatio: false
+            maintainAspectRatio: false,
+            elements: {
+                center: {
+                    text: '50% Usado',
+                    color: '#FF6384', // Default is #000000
+                    fontStyle: 'Arial', // Default is Arial
+                    sidePadding: 20 // Defualt is 20 (as a percentage)
+                }
+            }
         }
     }
     var diskChart = new Chart($ctxDiskDogChart, diskDogChartDesign)
@@ -75,10 +92,10 @@
     }
 
     const FirstChartDatasResponse = (response) => {
-        /*JSON.parse(response[0]).CpuDatas.forEach(function (data) {
-            cpuChart.data.labels.push(y++)
-            cpuChart.data.datasets[0].data.push(data)
-        })*/
+        JSON.parse(response[0]).CpuDatas.forEach(function (data) {
+            cpuChartLabels.push(cpuChartData.length)
+            cpuChartData.push(data)
+        })
         cpuChart.update()
     }
 
@@ -127,7 +144,57 @@
         $lblMemoryUsage.innerHTML = rosieData.MemoryTotal - rosieData.MemoryUsable
     }
 
-    /*------------------------------PAGE LOAD LOGIG-------------------------------*/
+    /*--------------------------------HELPERS-------------------------------------*/
+    //Change Metrics
+    function bytesToSize(bytes) {
+        var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB']
+        if (bytes == 0) return '0 Byte'
+        var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)))
+        return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i]
+    }
+    //Chart Inside Text Config
+    Chart.pluginService.register({
+        beforeDraw: function (chart) {
+            if (chart.config.options.elements.center) {
+                //Get ctx from string
+                var ctx = chart.chart.ctx;
+
+                //Get options from the center object in options
+                var centerConfig = chart.config.options.elements.center;
+                var fontStyle = centerConfig.fontStyle || 'Arial';
+                var txt = centerConfig.text;
+                var color = centerConfig.color || '#000';
+                var sidePadding = centerConfig.sidePadding || 20;
+                var sidePaddingCalculated = (sidePadding / 100) * (chart.innerRadius * 2)
+                //Start with a base font of 30px
+                ctx.font = "30px " + fontStyle;
+
+                //Get the width of the string and also the width of the element minus 10 to give it 5px side padding
+                var stringWidth = ctx.measureText(txt).width;
+                var elementWidth = (chart.innerRadius * 2) - sidePaddingCalculated;
+
+                // Find out how much the font can grow in width.
+                var widthRatio = elementWidth / stringWidth;
+                var newFontSize = Math.floor(30 * widthRatio);
+                var elementHeight = (chart.innerRadius * 2);
+
+                // Pick a new font size so it will not be larger than the height of label.
+                var fontSizeToUse = Math.min(newFontSize, elementHeight);
+
+                //Set font settings to draw it correctly.
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                var centerX = ((chart.chartArea.left + chart.chartArea.right) / 2);
+                var centerY = ((chart.chartArea.top + chart.chartArea.bottom) / 2);
+                ctx.font = fontSizeToUse + "px " + fontStyle;
+                ctx.fillStyle = color;
+
+                //Draw text in center
+                ctx.fillText(txt, centerX, centerY);
+            }
+        }
+    });
+    /*------------------------------PAGE LOAD LOGIC-------------------------------*/
     const OnLoadFunctions = () => {
         FirstChartDatas()
         RosieDataQuery()

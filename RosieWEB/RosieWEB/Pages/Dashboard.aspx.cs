@@ -13,7 +13,7 @@ namespace RosieWEB
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Session["ID_PC"] = 2;
+            Session["ID_PC"] = 2;
         }
 
         [WebMethod]
