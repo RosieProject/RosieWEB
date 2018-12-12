@@ -11,20 +11,16 @@ namespace RosieWEB
 {
     public partial class Dashboard : System.Web.UI.Page
     {
-        static RosieDataResponse dataResponse;
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["ID_PC"] = 2;
-
-            dataResponse = new RosieDataResponse();
+            //Session["ID_PC"] = 2;
         }
 
         [WebMethod]
         public static double AtualizarCpu()
         {
             string strConn = ConfigurationManager.ConnectionStrings["connectRosie"].ToString();
-            
+
             using (SqlConnection conn = new SqlConnection(strConn))
             {
                 conn.Open();
@@ -61,7 +57,7 @@ namespace RosieWEB
             }
         }
         [WebMethod]
-        public static List<string> GetChartsData()
+        public static List<string> GetRosieData()
         {
             List<string> datas = new List<string>();
             string strConn = ConfigurationManager.ConnectionStrings["connectRosie"].ToString();
@@ -69,17 +65,31 @@ namespace RosieWEB
             using (SqlConnection conn = new SqlConnection(strConn))
             {
                 conn.Open();
-                using (SqlCommand cpuFirstDatasQuery = new SqlCommand($"SELECT TOP 10 Usage_Cpu FROM CpuData WHERE ID_PC = {HttpContext.Current.Session["ID_PC"]} ORDER BY ID_Cpu ASC", conn))
+                using (SqlCommand cpuFirstDatasQuery = new SqlCommand($"SELECT TOP 1 CpuUsage, CpuName, CpuTime, CpuLogical, CpuPhysical, DiskTotal, DiskUsable, MemoryTotal, MemoryUsable, OSFamily, OSBitness, OSProcesses, OSThreads, OSVersion, OSManufacturer FROM ComputerData WHERE Computer = {HttpContext.Current.Session["ID_PC"]}", conn))
                 {
                     JavaScriptSerializer serialize = new JavaScriptSerializer();
-                    CpuChart cpuChart = new CpuChart();
+                    RosieDataResponse dataResponse = new RosieDataResponse();
                     SqlDataReader rd = cpuFirstDatasQuery.ExecuteReader();
-                    while (rd.Read())
+                    if (rd.Read())
                     {
-                        dataResponse
+                        dataResponse.CpuUsage = rd.GetDouble(0);
+                        dataResponse.CpuName = rd.GetString(1);
+                        dataResponse.CpuUpTime = rd.GetInt32(2);
+                        dataResponse.CpuLogicalCount = rd.GetInt32(3);
+                        dataResponse.CpuPhysicalCount = rd.GetInt32(4);
+                        dataResponse.DiskTotal = rd.GetInt64(5);
+                        dataResponse.DiskUsable = rd.GetInt64(6);
+                        dataResponse.MemoryTotal = rd.GetInt64(7);
+                        dataResponse.MemoryUsable = rd.GetInt64(8);
+                        dataResponse.OsSystem = rd.GetString(9);
+                        dataResponse.OsBitness = rd.GetInt32(10);
+                        dataResponse.OsProcessCount = rd.GetInt32(11);
+                        dataResponse.OsThreadCount = rd.GetInt32(12);
+                        dataResponse.OsVersion = rd.GetString(13);
+                        dataResponse.OsManufacturer = rd.GetString(14);
                     }
 
-                    datas.Add(serialize.Serialize(cpuChart));
+                    datas.Add(serialize.Serialize(dataResponse));
 
                     return datas;
                 }

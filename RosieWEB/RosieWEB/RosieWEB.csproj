@@ -225,6 +225,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\CpuChart.cs" />
+    <Compile Include="Model\RosieDataResponse.cs" />
     <Compile Include="Model\UserComputerData.cs" />
     <Compile Include="Model\UserStatus.cs" />
     <Compile Include="Pages\Cadastro.aspx.cs">

@@ -221,27 +221,27 @@
                                                         <tbody>
                                                             <tr>
                                                                 <th>Sistema Operacional</th>
-                                                                <td>[SISTEMA OPERACIONAL]</td>
+                                                                <td data-os-labels="osFamily">[SISTEMA OPERACIONAL]</td>
                                                             </tr>
                                                             <tr>
                                                                 <th>Bytes do Sistema</th>
-                                                                <td>[BYTES]</td>
+                                                                <td data-os-labels="osBitness">[BYTES]</td>
                                                             </tr>
                                                             <tr>
                                                                 <th>Qtd de Processos</th>
-                                                                <td>[QTD DE PROCESSOS]</td>
+                                                                <td data-os-labels="osProcesses">[QTD DE PROCESSOS]</td>
                                                             </tr>
                                                             <tr>
                                                                 <th>Qtd de Threads</th>
-                                                                <td>[QTD DE THREADS]</td>
+                                                                <td data-os-labels="osThreads">[QTD DE THREADS]</td>
                                                             </tr>
                                                             <tr>
                                                                 <th>Versão do Sistema</th>
-                                                                <td>[Versão]</td>
+                                                                <td data-os-labels="osVersion">[Versão]</td>
                                                             </tr>
                                                             <tr>
                                                                 <th>Fabricante</th>
-                                                                <td>[Fabricante]</td>
+                                                                <td data-os-labels="osManufacturer">[Fabricante]</td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -261,19 +261,19 @@
                                                         <tbody>
                                                             <tr>
                                                                 <th>CPU</th>
-                                                                <td>[NOME DA CPU]</td>
+                                                                <td data-cpu-labels="cpuName">[NOME DA CPU]</td>
                                                             </tr>
                                                             <tr>
                                                                 <th>Tempo Ativo</th>
-                                                                <td>[TEMPO ATIVO DA CPU]</td>
+                                                                <td data-cpu-labels="cpuUpTime">[TEMPO ATIVO DA CPU]</td>
                                                             </tr>
                                                             <tr>
                                                                 <th>Qtd Processadores Lógicos</th>
-                                                                <td>[QTD PROCESSADORES LÓGICOS]</td>
+                                                                <td data-cpu-labels="cpuLogical">[QTD PROCESSADORES LÓGICOS]</td>
                                                             </tr>
                                                             <tr>
                                                                 <th>Qtd Processadores Lógicos</th>
-                                                                <td>[QTD PROCESSADORES FÍSICOS]</td>
+                                                                <td data-cpu-labels="cpuPhysical">[QTD PROCESSADORES FÍSICOS]</td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -304,7 +304,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
 <script src="js/Dashboard.js"></script>
 <%--Colocar esses caras em outro lugar--%>
-<script>
+<%--<script>
     var $cpu = document.querySelector("[data-dados=cpu]") || undefined
     var $disk = document.querySelector("[data-dados=disk]") || undefined
     var $memory = document.querySelector("[data-dados=memory]") || undefined
@@ -487,7 +487,7 @@
     updateMemoryChart()
     updateDiskChart()
     updateCpuChart()
-</script>
+</script>--%>
 <%--Colocar esses caras em outro lugar--%>
 
 <!--   Core JS Files   -->
