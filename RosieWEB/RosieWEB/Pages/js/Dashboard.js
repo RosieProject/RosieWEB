@@ -152,14 +152,32 @@
 
     const RosieDataResponse = (response) => {
         const rosieData = JSON.parse(response[0])
-
+        console.log(rosieData)
         PageUpdateElements(rosieData)
         MemoryDogChartUpdate(rosieData)
         DiskDogChartUpdate(rosieData)
+        CpuLineChartUpdate(rosieData)
     }
 
     const RosieDataError = (error) => {
         alert('Houve um erro na requisição' + error)
+    }
+
+    const CpuLineChartUpdate = (rosieData) => {
+        //Função de callback chamado pelo WebMethod acima, que atualiza os dados no grafico com o parametro de retorno do WebMethod do C#
+        var dataLength = cpuChart.data.datasets[0].data.length
+        var dataSetData = cpuChart.data.datasets[0].data
+        //Verifica se o dado pego do Banco de Dados não é igual aos ultimos 3 dados do gráfico (ou seja, confirma se o dado esta sendo atualizado)
+        if (rosieData.CpuUsage !== dataSetData[dataLength - 1] || rosieData.CpuUsage !== dataSetData[dataLength - 2] || rosieData.CpuUsage !== dataSetData[dataLength - 3]) {
+            cpuChart.data.datasets[0].data.push(rosieData.CpuUsage)
+            cpuChart.data.labels.push(dataLength++)
+            //Verifica se o Eixo X do gráfico passou de 10 Itens, se sim, exclui o primeiro dado do grafico
+            if (cpuChart.data.labels.length > 10) {
+                cpuChart.data.labels.shift()
+                cpuChart.data.datasets[0].data.shift(1)
+            }
+            cpuChart.update()
+        }
     }
 
     const MemoryDogChartUpdate = (rosieData) => {

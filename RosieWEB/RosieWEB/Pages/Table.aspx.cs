@@ -16,7 +16,7 @@ namespace RosieWEB.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["ID_EMPRESA"] = 1;
+            Session["ID_EMPRESA"] = 2;
         }
 
         [WebMethod]
@@ -27,7 +27,7 @@ namespace RosieWEB.Pages
             using (SqlConnection conn = new SqlConnection(strConn))
             {
                 conn.Open();
-                using (SqlCommand searchUser = new SqlCommand($"SELECT Empresa, Usuario, DiskUsage, MemoryUsage, CpuUsage, PC FROM UserComputerData WHERE Empresa = {HttpContext.Current.Session["ID_EMPRESA"]}", conn))
+                using (SqlCommand searchUser = new SqlCommand($"SELECT Empresa, Usuario, DiskTotal, DiskUsable, MemoryTotal, MemoryUsable, CpuUsage, PC FROM UserComputerData WHERE Empresa = {HttpContext.Current.Session["ID_EMPRESA"]}", conn))
                 {
                     JavaScriptSerializer serialize = new JavaScriptSerializer();
                     List<string> usersList = new List<string>();
@@ -36,10 +36,10 @@ namespace RosieWEB.Pages
                     {
                         UserStatus user = new UserStatus();
                         user.userName = rd.GetString(1);
-                        user.userDisk = rd.GetInt64(2);
-                        user.userMemory = rd.GetInt64(3);
-                        user.userCpu = rd.GetDouble(4);
-                        user.userComputer = rd.GetInt32(5);
+                        user.userDisk = rd.GetInt64(2) - rd.GetInt64(3);
+                        user.userMemory = rd.GetInt64(4) - rd.GetInt64(5);
+                        user.userCpu = rd.GetDouble(6);
+                        user.userComputer = rd.GetInt32(7);
 
                         usersList.Add(serialize.Serialize(user));
                     }

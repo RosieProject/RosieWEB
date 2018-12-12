@@ -12,7 +12,7 @@
 
     const loginResponse = (response) => {
         if (response) {
-            win.location.href = '../Pages/Dashboard.aspx'
+            win.location.href = '../Pages/UserRegister.aspx'
         } else {
             alert('Usuário não cadastrado')
         }

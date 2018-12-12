@@ -120,6 +120,13 @@
             }, /*Error Function*/)
         }
 
+        const bytesToSize = (bytes) => {
+            var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB']
+            if (bytes == 0) return '0 Byte'
+            var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)))
+            return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i]
+        }
+
         function addUser(element, users, rowsLenght) {
             for (var i = 0; i < rowsLenght; i++) {
                 var tr = document.createElement('TR')
@@ -134,10 +141,10 @@
                 var text = document.createTextNode(JSON.parse(users[i]).userCpu)
                 tdCpu.appendChild(text)
                 tr.appendChild(tdCpu)
-                var text = document.createTextNode(JSON.parse(users[i]).userMemory)
+                var text = document.createTextNode(bytesToSize(JSON.parse(users[i]).userMemory))
                 tdMemory.appendChild(text)
                 tr.appendChild(tdMemory)
-                var text = document.createTextNode(JSON.parse(users[i]).userDisk)
+                var text = document.createTextNode(bytesToSize(JSON.parse(users[i]).userDisk))
                 tdDisk.appendChild(text)
                 tr.appendChild(tdDisk)
                 var circle = document.createElement('DIV')
@@ -153,23 +160,16 @@
             addRowClickHandler(users)
         }
 
-        function addRowClickHandler(users) {
+        function addRowClickHandler() {
             var rows = $tableBody.getElementsByTagName('TR');
-            console.log(users)
-            /*rows.forEach(function (row, rowIndex) {
-                row.onclick = function (event) { alert(row + ' !') }
-            })*/
             for (i = 0; i < rows.length; i++) {
                 var row = rows[i];
+                var att = document.createAttribute('onclick')
+                att.value = 'PageMethods.SaveComputer(this.value, function (data) { window.location.href="../Pages/Dashboard"})'
                 console.log(row)
-                console.log(JSON.parse(users[i]).userComputer)
-                row.onclick = function () {
-                    console.log(JSON.parse(users[i]).userComputer)
-                    PageMethods.SaveComputer(function (data) { console.log('dado')})
-                    //window.location.replace('Dashboard.aspx');
-                };
+                console.log(row.value)
+                row.setAttributeNode(att)
             }
-            //PageMethods.SaveComputer()
         }
 
     </script>
