@@ -28,7 +28,7 @@
             labels: [],
             datasets: [{
                 label: 'CpuUsage',
-                backgroundColor: 'rgba(221, 66, 76, 30%)',
+                backgroundColor: 'rgba(244, 67, 54, 55%)',
                 borderColor: 'rgb(40, 40, 40)',
                 data: []
             }]
@@ -59,48 +59,66 @@
     const memoryDogChartDesign = {
         type: 'doughnut',
         data: {
-            labels: ['Total', 'Usado', 'Disponivel'],
+            labels: ['Disponivel', 'Usado'],
             datasets: [{
-                data: [20, 30],
-                backgroundColor: ["#212121", "#8e5ea2"]
+                data: [1, 1],
+                backgroundColor: ["rgba(76, 175, 80, 50%)", "rgba(33, 33, 33, 100%)"],
+                hoverBackgroundColor: ["rgba(76, 175, 80, 90%)", "rgba(33, 33, 33, 90%)"],
+                borderWidth: [5, 5],
+                hoverBorderColor: ["rgba(76, 175, 80, 30%)", "rgba(33, 33, 33, 50%)"]
             }]
         },
         options: {
             maintainAspectRatio: false,
             elements: {
                 center: {
-                    text: '50% Usado',
-                    color: '#FF6384', // Default is #000000
+                    text: '',
+                    color: '#212121', // Default is #000000
                     fontStyle: 'Arial', // Default is Arial
                     sidePadding: 20 // Defualt is 20 (as a percentage)
                 }
+            },
+            responsive: true,
+            legend: {
+                onClick: (e) => e.stopPropagation()
             }
         }
     }
-    var memoryChart = new Chart($ctxMemoryDogChart, memoryDogChartDesign)
+    const memoryChart = new Chart($ctxMemoryDogChart, memoryDogChartDesign)
+    const memoryChartDatasets = memoryChart.data.datasets[0]
+    const memoryChartInText = memoryChart.options.elements.center
 
     const diskDogChartDesign = {
         type: 'doughnut',
         data: {
-            labels: ['Total', 'Usado', 'Disponivel'],
+            labels: ['Disponivel', 'Usado'],
             datasets: [{
-                data: [20, 30],
-                backgroundColor: ["#212121", "#8e5ea2"]
+                data: [1, 1],
+                backgroundColor: ["rgba(3, 169, 244, 50%)", "rgba(33, 33, 33, 100%)"],
+                hoverBackgroundColor: ["rgba(3, 169, 244, 90%)", "rgba(33, 33, 33, 90%)"],
+                borderWidth: [5, 5],
+                hoverBorderColor: ["rgba(3, 169, 244, 30%)", "rgba(33, 33, 33, 50%)"]
             }]
         },
         options: {
             maintainAspectRatio: false,
             elements: {
                 center: {
-                    text: '50% Usado',
-                    color: '#FF6384', // Default is #000000
+                    text: '',
+                    color: '#212121', // Default is #000000
                     fontStyle: 'Arial', // Default is Arial
                     sidePadding: 20 // Defualt is 20 (as a percentage)
                 }
+            },
+            responsive: true,
+            legend: {
+                onClick: (e) => e.stopPropagation()
             }
         }
     }
-    var diskChart = new Chart($ctxDiskDogChart, diskDogChartDesign)
+    const diskChart = new Chart($ctxDiskDogChart, diskDogChartDesign)
+    const diskChartDatasets = diskChart.data.datasets[0]
+    const diskChartInText = diskChart.options.elements.center
 
     /*---------------------------CHARTS FIRST POPULATE LOGIC---------------------------*/
     const FirstChartDatas = () => {
@@ -125,14 +143,43 @@
     }
 
     /*----------------------------------DATA QUERY LOGIC--------------------------------*/
+    var loopRosieDataQuery
+
     const RosieDataQuery = () => {
-        PageMethods.GetRosieData(RosieDataResponse)
+        PageMethods.GetRosieData(RosieDataResponse, RosieDataError)
+        loopRosieDataQuery = setTimeout(RosieDataQuery, 5000)
     }
 
     const RosieDataResponse = (response) => {
         const rosieData = JSON.parse(response[0])
 
         PageUpdateElements(rosieData)
+        MemoryDogChartUpdate(rosieData)
+        DiskDogChartUpdate(rosieData)
+    }
+
+    const RosieDataError = (error) => {
+        alert('Houve um erro na requisição' + error)
+    }
+
+    const MemoryDogChartUpdate = (rosieData) => {
+        const memoryTotal = bytesFormat(rosieData.MemoryTotal)
+        const memoryUsable = bytesFormat(rosieData.MemoryUsable)
+
+        memoryChartDatasets.data[0] = rosieData.MemoryUsable
+        memoryChartDatasets.data[1] = rosieData.MemoryTotal - rosieData.MemoryUsable
+        memoryChartInText.text = Math.round((memoryTotal - memoryUsable) / memoryTotal * 100) + '% Usado'
+        memoryChart.update()
+    }
+
+    const DiskDogChartUpdate = (rosieData) => {
+        const diskTotal = bytesFormat(rosieData.DiskTotal)
+        const diskUsable = bytesFormat(rosieData.DiskUsable)
+
+        diskChartDatasets.data[0] = rosieData.DiskUsable
+        diskChartDatasets.data[1] = rosieData.DiskTotal - rosieData.DiskUsable
+        diskChartInText.text = Math.round((diskTotal - diskUsable) / diskTotal * 100) + '% Usado'
+        diskChart.update()
     }
 
     const PageUpdateElements = (rosieData) => {
@@ -154,13 +201,21 @@
     }
 
     /*--------------------------------HELPERS-------------------------------------*/
-    //Change Metrics
-    function bytesToSize(bytes) {
+    //Change Metrics *Return String
+    const bytesToSize = (bytes) => {
         var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB']
         if (bytes == 0) return '0 Byte'
         var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)))
         return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i]
     }
+
+    //Format Bytes *Return Int
+    const bytesFormat = (bytes) => {
+        if (bytes == 0) return 0
+        var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)))
+        return Math.round(bytes / Math.pow(1024, i), 2)
+    }
+
     //Chart Inside Text Config
     Chart.pluginService.register({
         beforeDraw: function (chart) {
@@ -203,6 +258,7 @@
             }
         }
     });
+
     /*------------------------------PAGE LOAD LOGIC-------------------------------*/
     const OnLoadFunctions = () => {
         FirstChartDatas()
@@ -210,4 +266,5 @@
     }
 
     win.onload = OnLoadFunctions()
+
 })(document, window)

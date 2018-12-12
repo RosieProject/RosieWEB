@@ -305,38 +305,6 @@
 <script src="js/Dashboard.js"></script>
 <%--Colocar esses caras em outro lugar--%>
 <%--<script>
-    var $cpu = document.querySelector("[data-dados=cpu]") || undefined
-    var $disk = document.querySelector("[data-dados=disk]") || undefined
-    var $memory = document.querySelector("[data-dados=memory]") || undefined
-
-    var loopCpu;
-
-    function AtualizaCpu() {
-        PageMethods.AtualizarCpu(function (data) { $cpu.innerHTML = data }, fnerrorcallback)
-        loopCpu = setTimeout(AtualizaCpu, 2000)
-    }
-
-    var loopDisk;
-
-    function AtualizaDisk() {
-        PageMethods.AtualizarDisco(function (data) { $disk.innerHTML = data }, fnerrorcallback)
-        loopDisk = setTimeout(AtualizaDisk, 2000)
-    }
-
-    var loopMemory
-
-    function AtualizaMemory() {
-        PageMethods.AtualizarMemoria(function (data) { $memory.innerHTML = data }, fnerrorcallback)
-        loopMemory = setTimeout(AtualizaMemory, 2000)
-    }
-
-    function fnerrorcallback(result) {
-        alert(result.statusText);
-    }
-
-    var dataType;
-    var y = 0
-
     function roundBytesData(data) {
         if (data >= 1000000000000) {
             dataType = 'TB'
@@ -354,48 +322,6 @@
             dataType = 'Bytes'
             return data
         }
-    }
-
-    function updateDiskChart() {
-        //Ao Iniciar o Gráfico na tela, pega os primeiros 10 Dados do Banco e Exibe no Grafico
-        if (y === 0) {
-            PageMethods.AtualizarDiskFirst(function (datas) {
-                datas.forEach(function (data) {
-                    diskChart.data.labels.push(y++)
-                    diskChart.data.datasets[0].data.push(roundBytesData(data))
-                })
-                diskChart.update()
-            }, fnerrorcallback)
-        }
-        /*---*/
-        //Inicia a Atualização dos dados do grafico com uma função de callback (onSucess) do WebMethod do C#
-        PageMethods.AtualizarDisk(attData, fnerrorcallback)
-        /*---*/
-        //Função de callback chamado pelo WebMethod acima, que atualiza os dados no grafico com o parametro de retorno do WebMethod do C#
-        function attData(data) {
-            data = roundBytesData(data)
-            var dataLength = diskChart.data.datasets[0].data.length
-            var dataSetData = diskChart.data.datasets[0].data
-            //Verifica se o dado pego do Banco de Dados não é igual aos ultimos 3 dados do gráfico (ou seja, confirma se o dado esta sendo atualizado)
-            if (data !== dataSetData[dataLength - 1] || data !== dataSetData[dataLength - 2] || data !== dataSetData[dataLength - 3]) {
-                diskChart.data.datasets[0].data.push(data)
-                diskChart.data.labels.push(y++)
-                //Verifica se o Eixo X do gráfico passou de 10 Itens, se sim, exclui o primeiro dado do grafico
-                if (diskChart.data.labels.length > 10) {
-                    diskChart.data.labels.shift()
-                    diskChart.data.datasets[0].data.shift(1)
-                }
-                /*---*/
-                //Atualiza o gráfico com os novos dados
-                diskChart.update()
-                /*---*/
-            }
-            /*---*/
-            //Invoca um loop da função asíncronamente a cada 3 segundos
-            setTimeout(updateDiskChart, 3000)
-            /*--*/
-        }
-        /*---*/
     }
 
     var x = 0
@@ -440,53 +366,6 @@
         }
         /*---*/
     }
-
-    var z = 0
-
-    function updateMemoryChart() {
-        //Ao Iniciar o Gráfico na tela, pega os primeiros 10 Dados do Banco e Exibe no Grafico
-        if (z === 0) {
-            PageMethods.AtualizarMemoryFirst(function (datas) {
-                datas.forEach(function (data) {
-                    memoryChart.data.labels.push(z++)
-                    memoryChart.data.datasets[0].data.push(roundBytesData(data))
-                })
-                memoryChart.update()
-            }, fnerrorcallback)
-        }
-        /*---*/
-        //Inicia a Atualização dos dados do grafico com uma função de callback (onSucess) do WebMethod do C#
-        PageMethods.AtualizarMemory(attData, fnerrorcallback)
-        /*---*/
-        //Função de callback chamado pelo WebMethod acima, que atualiza os dados no grafico com o parametro de retorno do WebMethod do C#
-        function attData(data) {
-            data = roundBytesData(data)
-            var dataLength = memoryChart.data.datasets[0].data.length
-            var dataSetData = memoryChart.data.datasets[0].data
-            //Verifica se o dado pego do Banco de Dados não é igual aos ultimos 3 dados do gráfico (ou seja, confirma se o dado esta sendo atualizado)
-            if (data !== dataSetData[dataLength - 1] || data !== dataSetData[dataLength - 2] || data !== dataSetData[dataLength - 3]) {
-                memoryChart.data.datasets[0].data.push(data)
-                memoryChart.data.labels.push(z++)
-                //Verifica se o Eixo X do gráfico passou de 10 Itens, se sim, exclui o primeiro dado do grafico
-                if (memoryChart.data.labels.length > 10) {
-                    memoryChart.data.labels.shift()
-                    memoryChart.data.datasets[0].data.shift(1)
-                }
-                /*---*/
-                //Atualiza o gráfico com os novos dados
-                memoryChart.update()
-                /*---*/
-            }
-            /*---*/
-            //Invoca um loop da função asíncronamente a cada 3 segundos
-            setTimeout(updateMemoryChart, 3000)
-            /*--*/
-        }
-        /*---*/
-    }
-    updateMemoryChart()
-    updateDiskChart()
-    updateCpuChart()
 </script>--%>
 <%--Colocar esses caras em outro lugar--%>
 
