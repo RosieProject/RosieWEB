@@ -13,7 +13,10 @@ namespace RosieWEB
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(Session["userID"] == null || Session["userID"].Equals(""))
+            {
+                Response.Redirect("Login.aspx");
+            }
         }
 
         [WebMethod]
