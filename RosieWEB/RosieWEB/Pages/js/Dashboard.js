@@ -22,7 +22,7 @@
     const $ctxDiskDogChart = doc.querySelector('[data-chart="diskDogChart"]').getContext('2d')
 
     /*-----------------------------------CHARTS---------------------------------*/
-    const cpuLineChartDesign = {
+    var cpuLineChartDesign = {
         type: 'line',
         data: {
             labels: [],
@@ -53,10 +53,10 @@
         }
     }
     var cpuChart = new Chart($ctxCpuLineChart, cpuLineChartDesign)
-    const cpuChartLabels = cpuChart.data.labels
-    const cpuChartData = cpuChart.data.datasets[0].data
+    var cpuChartLabels = cpuChart.data.labels
+    var cpuChartData = cpuChart.data.datasets[0].data
 
-    const memoryDogChartDesign = {
+    var memoryDogChartDesign = {
         type: 'doughnut',
         data: {
             labels: ['Disponivel', 'Usado'],
@@ -84,11 +84,11 @@
             }
         }
     }
-    const memoryChart = new Chart($ctxMemoryDogChart, memoryDogChartDesign)
-    const memoryChartDatasets = memoryChart.data.datasets[0]
-    const memoryChartInText = memoryChart.options.elements.center
+    var memoryChart = new Chart($ctxMemoryDogChart, memoryDogChartDesign)
+    var memoryChartDatasets = memoryChart.data.datasets[0]
+    var memoryChartInText = memoryChart.options.elements.center
 
-    const diskDogChartDesign = {
+    var diskDogChartDesign = {
         type: 'doughnut',
         data: {
             labels: ['Disponivel', 'Usado'],
@@ -116,13 +116,13 @@
             }
         }
     }
-    const diskChart = new Chart($ctxDiskDogChart, diskDogChartDesign)
-    const diskChartDatasets = diskChart.data.datasets[0]
-    const diskChartInText = diskChart.options.elements.center
+    var diskChart = new Chart($ctxDiskDogChart, diskDogChartDesign)
+    var diskChartDatasets = diskChart.data.datasets[0]
+    var diskChartInText = diskChart.options.elements.center
 
     /*---------------------------CHARTS FIRST POPULATE LOGIC---------------------------*/
     const FirstChartDatas = () => {
-        PageMethods.FirstChartDatas(FirstChartDatasResponse)
+        PageMethods.FirstChartDatas(FirstChartDatasResponse, FirstChartDatasError)
     }
 
     const FirstChartDatasResponse = (response) => {
@@ -147,11 +147,11 @@
 
     const RosieDataQuery = () => {
         PageMethods.GetRosieData(RosieDataResponse, RosieDataError)
-        loopRosieDataQuery = setTimeout(RosieDataQuery, 5000)
+        loopRosieDataQuery = setTimeout(RosieDataQuery, 3000)
     }
 
     const RosieDataResponse = (response) => {
-        const rosieData = JSON.parse(response[0])
+        var rosieData = JSON.parse(response[0])
         console.log(rosieData)
         PageUpdateElements(rosieData)
         MemoryDogChartUpdate(rosieData)
@@ -181,8 +181,8 @@
     }
 
     const MemoryDogChartUpdate = (rosieData) => {
-        const memoryTotal = bytesFormat(rosieData.MemoryTotal)
-        const memoryUsable = bytesFormat(rosieData.MemoryUsable)
+        var memoryTotal = bytesFormat(rosieData.MemoryTotal)
+        var memoryUsable = bytesFormat(rosieData.MemoryUsable)
 
         memoryChartDatasets.data[0] = rosieData.MemoryUsable
         memoryChartDatasets.data[1] = rosieData.MemoryTotal - rosieData.MemoryUsable
@@ -191,8 +191,8 @@
     }
 
     const DiskDogChartUpdate = (rosieData) => {
-        const diskTotal = bytesFormat(rosieData.DiskTotal)
-        const diskUsable = bytesFormat(rosieData.DiskUsable)
+        var diskTotal = bytesFormat(rosieData.DiskTotal)
+        var diskUsable = bytesFormat(rosieData.DiskUsable)
 
         diskChartDatasets.data[0] = rosieData.DiskUsable
         diskChartDatasets.data[1] = rosieData.DiskTotal - rosieData.DiskUsable

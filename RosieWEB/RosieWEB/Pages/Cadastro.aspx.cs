@@ -79,11 +79,13 @@ namespace RosieWEB.Pages
                     $"VALUES ('{adminName}', '{adminEmail}', '{ComputeSha256Hash(adminPassword)}', 'Admin', {corpId})", conn)) {
                     HttpContext.Current.Session["ID_User"] = registerAdmin.ExecuteScalar();
                 }
-                using (SqlCommand registerPC = new SqlCommand($"INSERT INTO Computador (PC_Nome, ID_Usuario) " +
-                    $"OUTPUT INSERTED.ID_PC" +
-                    $"VALUES ('{adminName}', {HttpContext.Current.Session["ID_User"]})", conn))
-                {
+                using (SqlCommand registerPC = new SqlCommand($"INSERT INTO Computador (PC_Nome, ID_Usuario) OUTPUT INSERTED.ID_PC VALUES('{adminName}', {HttpContext.Current.Session["ID_User"]})", conn))
+                {                                       
                     HttpContext.Current.Session["ID_PC"] = registerPC.ExecuteScalar();
+                }
+                using (SqlCommand registerFirstData = new SqlCommand($"BEGIN TRANSACTION INSERT INTO CpuData (ID_PC, Usage_Cpu, Name_Cpu, UpTime_Cpu, LogicalProcessor_Cpu, PhysicalProcessor_Cpu) VALUES ({HttpContext.Current.Session["ID_PC"]}, DEFAULT, 'null', DEFAULT, DEFAULT, DEFAULT) INSERT INTO DiskData (ID_PC, Usable_Disk, Total_Disk) VALUES ({HttpContext.Current.Session["ID_PC"]}, DEFAULT, DEFAULT) INSERT INTO MemoryData (ID_PC, Usable_Memory, Total_Memory) VALUES ({HttpContext.Current.Session["ID_PC"]}, DEFAULT, DEFAULT) INSERT INTO OSData (ID_PC, OS_Family, Bitness_OS, ProcessCount_OS, ThreadCount_OS, Version_OS, Manufacturer_OS) VALUES ({HttpContext.Current.Session["ID_PC"]}, 'null', DEFAULT, DEFAULT, DEFAULT, 'null', 'null') COMMIT",conn))
+                {
+                    registerFirstData.ExecuteNonQuery();
                 }
             }
             return "Sucesso";

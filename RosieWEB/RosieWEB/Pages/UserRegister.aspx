@@ -141,11 +141,17 @@
             isAdmin = 'Admin'
         }
 
-        PageMethods.RegisterUser($userName.value, $userPass.value, $userEmail.value, isAdmin, responseSucess, responseError)
+        const CheckAdminResponse = (response) => {
+            if (response) {
+                PageMethods.RegisterUser($userName.value, $userPass.value, $userEmail.value, isAdmin, responseSucess, responseError)
+            } else {
+                alert('Você não tem permissão para cadastrar usuarios')
+            }
+        }
 
+        PageMethods.CheckAdmin(CheckAdminResponse, responseError)
 
         function responseSucess(data) {
-            console.log(data)
             notificationStatusResponse($userName.value)
         }
 

@@ -24,6 +24,7 @@ namespace RosieWEB.Pages
         {
             string strConn = ConfigurationManager.ConnectionStrings["connectRosie"].ToString();
             int userId = 0;
+            int userPC = 0;
 
             using (SqlConnection conn = new SqlConnection(strConn))
             {
@@ -35,12 +36,29 @@ namespace RosieWEB.Pages
                     userId = (int)registerUser.ExecuteScalar();
                 }
                 using (SqlCommand registerPC = new SqlCommand($"INSERT INTO Computador (PC_Nome, ID_Usuario) " +
-                    $"VALUES ('{userName}', {userId})", conn))
+                    $"OUTPUT INSERTED.ID_PC VALUES ('{userName}', {userId})", conn))
                 {
-                    registerPC.ExecuteNonQuery();
+                    userPC = (int)registerPC.ExecuteScalar();
+                }
+                using (SqlCommand registerFirstData = new SqlCommand($"BEGIN TRANSACTION INSERT INTO CpuData (ID_PC, Usage_Cpu, Name_Cpu, UpTime_Cpu, LogicalProcessor_Cpu, PhysicalProcessor_Cpu) VALUES ({userPC}, DEFAULT, 'null', DEFAULT, DEFAULT, DEFAULT) INSERT INTO DiskData (ID_PC, Usable_Disk, Total_Disk) VALUES ({userPC}, DEFAULT, DEFAULT) INSERT INTO MemoryData (ID_PC, Usable_Memory, Total_Memory) VALUES ({userPC}, DEFAULT, DEFAULT) INSERT INTO OSData (ID_PC, OS_Family, Bitness_OS, ProcessCount_OS, ThreadCount_OS, Version_OS, Manufacturer_OS) VALUES ({userPC}, 'null', DEFAULT, DEFAULT, DEFAULT, 'null', 'null') COMMIT", conn))
+                {
+                    registerFirstData.ExecuteNonQuery();
                 }
             }
             return false;
+        }
+
+        [WebMethod]
+        public static bool CheckAdmin()
+        {
+            if (HttpContext.Current.Session["userType"].Equals("Admin"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         private static string ComputeSha256Hash(string rawData)

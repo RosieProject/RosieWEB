@@ -271,7 +271,7 @@
                                                                 <td data-cpu-labels="cpuLogical">[QTD PROCESSADORES LÓGICOS]</td>
                                                             </tr>
                                                             <tr>
-                                                                <th>Qtd Processadores Lógicos</th>
+                                                                <th>Qtd Processadores Físicos</th>
                                                                 <td data-cpu-labels="cpuPhysical">[QTD PROCESSADORES FÍSICOS]</td>
                                                             </tr>
                                                         </tbody>
@@ -301,72 +301,7 @@
     </form>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
-<script src="js/Dashboard.js"></script>
-<%--Colocar esses caras em outro lugar--%>
-<%--<script>
-    function roundBytesData(data) {
-        if (data >= 1000000000000) {
-            dataType = 'TB'
-            return Math.round(data / 1000000000000)
-
-        } else if (data >= 1000000000) {
-            dataType = 'GB'
-            return Math.round(data / 1000000000)
-
-        } else if (data >= 1000000) {
-            dataType = 'MB'
-            return Math.round(data / 1000000)
-
-        } else {
-            dataType = 'Bytes'
-            return data
-        }
-    }
-
-    var x = 0
-
-    function updateCpuChart() {
-        //Ao Iniciar o Gráfico na tela, pega os primeiros 10 Dados do Banco e Exibe no Grafico
-        if (x === 0) {
-            PageMethods.AtualizarCpuFirst(function (datas) {
-                datas.forEach(function (data) {
-                    cpuChart.data.labels.push(x++)
-                    cpuChart.data.datasets[0].data.push(data)
-                })
-                cpuChart.update()
-            }, fnerrorcallback)
-        }
-        /*---*/
-        //Inicia a Atualização dos dados do grafico com uma função de callback (onSucess) do WebMethod do C#
-        PageMethods.AtualizarCpu(attData, fnerrorcallback)
-        /*---*/
-        //Função de callback chamado pelo WebMethod acima, que atualiza os dados no grafico com o parametro de retorno do WebMethod do C#
-        function attData(data) {
-            var dataLength = cpuChart.data.datasets[0].data.length
-            var dataSetData = cpuChart.data.datasets[0].data
-            //Verifica se o dado pego do Banco de Dados não é igual aos ultimos 3 dados do gráfico (ou seja, confirma se o dado esta sendo atualizado)
-            if (data !== dataSetData[dataLength - 1] || data !== dataSetData[dataLength - 2] || data !== dataSetData[dataLength - 3]) {
-                cpuChart.data.datasets[0].data.push(data)
-                cpuChart.data.labels.push(x++)
-                //Verifica se o Eixo X do gráfico passou de 10 Itens, se sim, exclui o primeiro dado do grafico
-                if (cpuChart.data.labels.length > 10) {
-                    cpuChart.data.labels.shift()
-                    cpuChart.data.datasets[0].data.shift(1)
-                }
-                /*---*/
-                //Atualiza o gráfico com os novos dados
-                cpuChart.update()
-                /*---*/
-            }
-            /*---*/
-            //Invoca um loop da função asíncronamente a cada 3 segundos
-            setTimeout(updateCpuChart, 5000)
-            /*--*/
-        }
-        /*---*/
-    }
-</script>--%>
-<%--Colocar esses caras em outro lugar--%>
+<script src="js/dashboard.js"></script>
 
 <!--   Core JS Files   -->
 <script src="assets/js/jquery.min.js" type="text/javascript"></script>

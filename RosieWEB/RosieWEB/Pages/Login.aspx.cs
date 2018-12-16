@@ -46,7 +46,7 @@ namespace RosieWEB.Pages
                 string senhaCript = ComputeSha256Hash(senha);
 
                 conn.Open();
-                using (SqlCommand searchUser = new SqlCommand($"SELECT ID_Usuario, ID_Empresa, Nome_Usuario, Email_Usuario, Senha_Usuario FROM Usuario WHERE Email_Usuario = '{email}' AND Senha_Usuario = '{senhaCript}'", conn))
+                using (SqlCommand searchUser = new SqlCommand($"SELECT ID_Usuario, ID_Empresa, Nome_Usuario, Email_Usuario, Senha_Usuario, Tipo_Usuario FROM Usuario WHERE Email_Usuario = '{email}' AND Senha_Usuario = '{senhaCript}'", conn))
                 {
                     SqlDataReader rd = searchUser.ExecuteReader();
                     if (rd.Read())
@@ -54,6 +54,7 @@ namespace RosieWEB.Pages
                         HttpContext.Current.Session["userID"] = rd.GetValue(0);
                         HttpContext.Current.Session["compID"] = rd.GetValue(1);
                         HttpContext.Current.Session["userName"] = rd.GetValue(2);
+                        HttpContext.Current.Session["userType"] = rd.GetValue(5);
 
                         return true;
                     }
