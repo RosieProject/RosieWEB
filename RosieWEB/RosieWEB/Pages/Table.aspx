@@ -88,7 +88,6 @@
                                     <th>CPU</th>
                                     <th>Memoria</th>
                                     <th>Disco</th>
-                                    <th>Estado</th>
                                 </thead>
                                 <tbody data-table="tbody">
                                 </tbody>
@@ -134,7 +133,7 @@
                 var tdCpu = document.createElement('TD')
                 var tdMemory = document.createElement('TD')
                 var tdDisk = document.createElement('TD')
-                var tdState = document.createElement('TD')
+                //var tdState = document.createElement('TD')
                 var text = document.createTextNode(JSON.parse(users[i]).userName)
                 tdName.appendChild(text)
                 tr.appendChild(tdName)
@@ -147,10 +146,10 @@
                 var text = document.createTextNode(bytesToSize(JSON.parse(users[i]).userDisk))
                 tdDisk.appendChild(text)
                 tr.appendChild(tdDisk)
-                var circle = document.createElement('DIV')
-                circle.setAttribute('style', 'width:20px; height:20px; background:' + 'green' + '; border-radius:100%; margin: 0 auto')
-                tdState.appendChild(circle)
-                tr.appendChild(tdState)
+                //var circle = document.createElement('DIV')
+                //circle.setAttribute('style', 'width:20px; height:20px; background:' + 'green' + '; border-radius:100%; margin: 0 auto')
+                //tdState.appendChild(circle)
+                //tr.appendChild(tdState)
 
                 var idPC = JSON.parse(users[i]).userComputer
                 tr.value = idPC

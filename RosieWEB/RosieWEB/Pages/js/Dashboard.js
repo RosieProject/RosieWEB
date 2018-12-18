@@ -290,9 +290,9 @@
 
     /*------------------------------PAGE LOAD LOGIC-------------------------------*/
     const OnLoadFunctions = () => {
-        UpdateUserName()
         FirstChartDatas()
         RosieDataQuery()
+        UpdateUserName()
     }
 
     win.onload = OnLoadFunctions()
