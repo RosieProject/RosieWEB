@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Global.asax" />
     <Content Include="Pages\Assets\css\animate.min.css" />
     <Content Include="Pages\Assets\css\bootstrap.min.css" />
     <Content Include="Pages\Assets\css\demo.css" />
@@ -102,6 +103,7 @@
     <Content Include="Pages\css\pluton.css" />
     <Content Include="Pages\css\style.css" />
     <Content Include="Pages\Dashboard.aspx" />
+    <Content Include="Default.aspx" />
     <Content Include="Pages\fonts\pluton.svg" />
     <Content Include="Pages\Home.aspx" />
     <Content Include="Pages\images\About.png" />
@@ -227,6 +229,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="Model\CpuChart.cs" />
     <Compile Include="Model\RosieDataResponse.cs" />
     <Compile Include="Model\UserComputerData.cs" />
@@ -244,6 +249,13 @@
     </Compile>
     <Compile Include="Pages\Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
@@ -284,37 +296,6 @@
     <Content Include="Pages\Assets\fonts\themify.ttf" />
     <Content Include="Pages\Assets\fonts\themify.woff" />
     <Content Include="Pages\Assets\js\.DS_Store" />
-    <Content Include="Pages\Assets\scss\.DS_Store" />
-    <Content Include="Pages\Assets\scss\paper-dashboard.scss" />
-    <Content Include="Pages\Assets\scss\paper\.DS_Store" />
-    <Content Include="Pages\Assets\scss\paper\mixins\_buttons.scss" />
-    <Content Include="Pages\Assets\scss\paper\mixins\_cards.scss" />
-    <Content Include="Pages\Assets\scss\paper\mixins\_chartist.scss" />
-    <Content Include="Pages\Assets\scss\paper\mixins\_icons.scss" />
-    <Content Include="Pages\Assets\scss\paper\mixins\_inputs.scss" />
-    <Content Include="Pages\Assets\scss\paper\mixins\_labels.scss" />
-    <Content Include="Pages\Assets\scss\paper\mixins\_navbars.scss" />
-    <Content Include="Pages\Assets\scss\paper\mixins\_sidebar.scss" />
-    <Content Include="Pages\Assets\scss\paper\mixins\_tabs.scss" />
-    <Content Include="Pages\Assets\scss\paper\mixins\_transparency.scss" />
-    <Content Include="Pages\Assets\scss\paper\mixins\_vendor-prefixes.scss" />
-    <Content Include="Pages\Assets\scss\paper\plugins\.DS_Store" />
-    <Content Include="Pages\Assets\scss\paper\_alerts.scss" />
-    <Content Include="Pages\Assets\scss\paper\_buttons.scss" />
-    <Content Include="Pages\Assets\scss\paper\_cards.scss" />
-    <Content Include="Pages\Assets\scss\paper\_chartist.scss" />
-    <Content Include="Pages\Assets\scss\paper\_checkbox-radio.scss" />
-    <Content Include="Pages\Assets\scss\paper\_dropdown.scss" />
-    <Content Include="Pages\Assets\scss\paper\_footers.scss" />
-    <Content Include="Pages\Assets\scss\paper\_inputs.scss" />
-    <Content Include="Pages\Assets\scss\paper\_misc.scss" />
-    <Content Include="Pages\Assets\scss\paper\_mixins.scss" />
-    <Content Include="Pages\Assets\scss\paper\_navbars.scss" />
-    <Content Include="Pages\Assets\scss\paper\_responsive.scss" />
-    <Content Include="Pages\Assets\scss\paper\_sidebar-and-main-panel.scss" />
-    <Content Include="Pages\Assets\scss\paper\_tables.scss" />
-    <Content Include="Pages\Assets\scss\paper\_typography.scss" />
-    <Content Include="Pages\Assets\scss\paper\_variables.scss" />
     <Content Include="Pages\fonts\pluton.eot" />
     <Content Include="Pages\fonts\pluton.ttf" />
     <Content Include="Pages\fonts\pluton.woff" />
@@ -405,6 +386,7 @@
     <Content Include="Pages\Login\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
     <Content Include="Pages\Login\vendor\bootstrap\css\bootstrap.css.map" />
     <Content Include="Pages\Login\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <None Include="Properties\PublishProfiles\RosieNoc - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
