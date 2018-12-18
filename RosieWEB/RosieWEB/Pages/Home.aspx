@@ -121,7 +121,7 @@
         <div class="container">
             <!-- Start title section -->
             <div class="title">
-                <h1>Nós propomos a</h1>
+                <h1>Nos propomos a</h1>
                 <!-- Section's title goes here -->
                 <p></p>
                 <!--Simple description for section goes here. -->
@@ -133,7 +133,7 @@
                             <img class="img-circle" src="images/Service1.png" alt="service 1">
                         </div>
                         <h3>Monitoramento</h3>
-                        <p>Monitoramos os hardwares da sua empresa.</p>
+                        <p>Monitorarmos os computadores da sua empresa.</p>
                     </div>
                 </div>
                 <div class="span4">
@@ -142,7 +142,7 @@
                             <img class="img-circle" src="images/Service2.png" alt="service 2" />
                         </div>
                         <h3>Velocidade</h3>
-                        <p>Fazendo assim com que ela tinha mais velocidade na resolução de problemas.</p>
+                        <p>Fazendo com que ela tenha mais velocidade na resolução de problemas.</p>
                     </div>
                 </div>
                 <div class="span4">
@@ -151,7 +151,7 @@
                             <img class="img-circle" src="images/Service3.png" alt="service 3">
                         </div>
                         <h3>Lucro</h3>
-                        <p>Evitando assim disperdicio de tempo e dinheiro.</p>
+                        <p>Evitando desperdício de tempo e dinheiro.</p>
                     </div>
                 </div>
             </div>
@@ -164,7 +164,7 @@
         <div class="container">
             <div class=" title">
                 <h1>FAQ</h1>
-                <p>Perguntas que recebemos com frequencia.</p>
+                <p>Perguntas que recebemos com frequência.</p>
             </div>
 
             <!-- Start details for portfolio project 1 -->
@@ -267,7 +267,7 @@
                         </ul>
                         <div class="mask">
                             <h2>Desenvolvedor</h2>
-                            <p>When you stop expecting people to be perfect, you can like them for who they are.</p>
+                            <p></p>
                         </div>
                     </div>
                 </div>
@@ -294,7 +294,7 @@
                         </ul>
                         <div class="mask">
                             <h2>Desenvolvedor</h2>
-                            <p>When you stop expecting people to be perfect, you can like them for who they are.</p>
+                            <p></p>
                         </div>
                     </div>
                 </div>
@@ -323,7 +323,7 @@
                             </ul>
                             <div class="mask">
                                 <h2>Desenvolvedor</h2>
-                                <p>When you stop expecting people to be perfect, you can like them for who they are.</p>
+                                <p></p>
                             </div>
                         </div>
                     </div>
@@ -333,7 +333,7 @@
 
                 <div class="about-text centered">
                     <h3>Sobre nós</h3>
-                    <p>Todos somos alunos da faculdade Bandte no curso de analise e desenvolvimento de sistemas.</p>
+                    <p>Todos somos alunos da faculdade Bandtec no curso de analise e desenvolvimento de sistemas.</p>
                 </div>
             </div>
         </div>
