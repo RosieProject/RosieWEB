@@ -154,8 +154,11 @@
     <Content Include="Pages\images\Slider03.png" />
     <Content Include="Pages\images\Team1.jpg" />
     <Content Include="Pages\images\Team1.png" />
+    <Content Include="Pages\images\team2.jpg" />
     <Content Include="Pages\images\Team2.png" />
+    <Content Include="Pages\images\team3.jpg" />
     <Content Include="Pages\images\Team3.png" />
+    <Content Include="Pages\images\team4.jpg" />
     <Content Include="Pages\js\app.js" />
     <Content Include="Pages\js\bootstrap.js" />
     <Content Include="Pages\js\Cadastro.js" />

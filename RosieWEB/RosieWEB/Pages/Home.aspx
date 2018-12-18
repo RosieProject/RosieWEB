@@ -246,8 +246,8 @@
                 </div>
                 <div class="span4" id="second-person">
                     <div class="thumbnail">
-                        <img src="images/Team2.png" alt="team 1">
-                        <h3>John Doe</h3>
+                        <img src="images/team2.jpg" alt="team 1">
+                        <h3>Luiz Carlos</h3>
                         <ul class="social">
                             <li>
                                 <a href="">
@@ -266,15 +266,15 @@
                             </li>
                         </ul>
                         <div class="mask">
-                            <h2>Designer</h2>
+                            <h2>Desenvolvedor</h2>
                             <p>When you stop expecting people to be perfect, you can like them for who they are.</p>
                         </div>
                     </div>
                 </div>
                 <div class="span4" id="third-person">
                     <div class="thumbnail">
-                        <img src="images/Team3.png" alt="team 1">
-                        <h3>John Doe</h3>
+                        <img src="images/team3.jpg" alt="team 1"/>
+                        <h3>Andressa Souza</h3>
                         <ul class="social">
                             <li>
                                 <a href="">
@@ -293,7 +293,7 @@
                             </li>
                         </ul>
                         <div class="mask">
-                            <h2>Photographer</h2>
+                            <h2>Desenvolvedor</h2>
                             <p>When you stop expecting people to be perfect, you can like them for who they are.</p>
                         </div>
                     </div>
@@ -302,8 +302,8 @@
                 <center>
                     <div class="span4" id="first-person">
                         <div class="thumbnail">
-                            <img src="images/Team1.png" alt="team 1">
-                            <h3>John Doe</h3>
+                            <img src="images/team4.jpg" alt="team 1">
+                            <h3>Caio Massayuki</h3>
                             <ul class="social">
                                 <li>
                                     <a href="">
@@ -322,7 +322,7 @@
                                 </li>
                             </ul>
                             <div class="mask">
-                                <h2>Copywriter</h2>
+                                <h2>Desenvolvedor</h2>
                                 <p>When you stop expecting people to be perfect, you can like them for who they are.</p>
                             </div>
                         </div>
