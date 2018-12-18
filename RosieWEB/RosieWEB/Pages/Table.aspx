@@ -71,7 +71,7 @@
                                 <span class="icon-bar bar2"></span>
                                 <span class="icon-bar bar3"></span>
                             </button>
-                            <a class="navbar-brand" href="#">Table List</a>
+                            <a class="navbar-brand" href="#">Lista de Computadores</a>
                         </div>
                     </div>
                 </nav>

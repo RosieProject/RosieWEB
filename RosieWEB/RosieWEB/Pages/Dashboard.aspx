@@ -79,7 +79,7 @@
                                     <span class="icon-bar bar2"></span>
                                     <span class="icon-bar bar3"></span>
                                 </button>
-                                <a class="navbar-brand" href="#">[Nome do Usuario Selecionado]</a>
+                                <a class="navbar-brand" href="#" data-label="userName">[Nome do Usuario Selecionado]</a>
                             </div>
                         </div>
                     </nav>

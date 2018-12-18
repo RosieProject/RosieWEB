@@ -16,6 +16,8 @@
     const $lblDiskUsage = doc.querySelector('[data-dados="diskUnique"]')
     const $lblMemoryUsage = doc.querySelector('[data-dados="memoryUnique"]')
 
+    const $lblUserName = doc.querySelector('[data-label="userName"]')
+
     /*-------------------------------CHART ELEMENTS------------------------------*/
     const $ctxCpuLineChart = doc.querySelector('[data-chart="cpuLineChart"]').getContext('2d')
     const $ctxMemoryDogChart = doc.querySelector('[data-chart="memoryDogChart"]').getContext('2d')
@@ -146,7 +148,7 @@
     var loopRosieDataQuery
 
     const RosieDataQuery = () => {
-        PageMethods.GetRosieData(RosieDataResponse, RosieDataError)
+        PageMethods.GetRosieData(RosieDataResponse, ResponseError)
         loopRosieDataQuery = setTimeout(RosieDataQuery, 3000)
     }
 
@@ -159,7 +161,7 @@
         CpuLineChartUpdate(rosieData)
     }
 
-    const RosieDataError = (error) => {
+    const ResponseError = (error) => {
         alert('Houve um erro na requisição' + error)
     }
 
@@ -216,6 +218,15 @@
         $lblCpuUsage.innerHTML = Math.round(rosieData.CpuUsage) + '%'
         $lblDiskUsage.innerHTML = bytesToSize(rosieData.DiskTotal - rosieData.DiskUsable)
         $lblMemoryUsage.innerHTML = bytesToSize(rosieData.MemoryTotal - rosieData.MemoryUsable)
+    }
+
+    const UpdateUserName = () => {
+        PageMethods.GetUserName(UserNameResponse, ResponseError)
+    }
+
+    const UserNameResponse = (response) => {
+        console.log(response)
+        $lblUserName.text = response
     }
 
     /*--------------------------------HELPERS-------------------------------------*/
@@ -279,6 +290,7 @@
 
     /*------------------------------PAGE LOAD LOGIC-------------------------------*/
     const OnLoadFunctions = () => {
+        UpdateUserName()
         FirstChartDatas()
         RosieDataQuery()
     }

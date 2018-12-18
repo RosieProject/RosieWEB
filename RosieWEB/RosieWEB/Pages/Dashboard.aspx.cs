@@ -98,5 +98,20 @@ namespace RosieWEB
                 }
             }
         }
+
+        [WebMethod]
+        public static string GetUserName()
+        {
+            string strConn = ConfigurationManager.ConnectionStrings["connectRosie"].ToString();
+
+            using (SqlConnection conn = new SqlConnection(strConn))
+            {
+                conn.Open();
+                using (SqlCommand getUserName = new SqlCommand($"SELECT Usuario FROM UserComputerData WHERE PC = {HttpContext.Current.Session["ID_PC"]}", conn))
+                {
+                    return getUserName.ExecuteScalar().ToString();
+                }
+            }
+        }
     }
 }
